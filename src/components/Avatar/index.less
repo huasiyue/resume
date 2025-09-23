@@ -47,8 +47,23 @@
   }
 }
 
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 确保打印时头像可见 */
 @media print {
-  .avatar.avatar-hidden {
-    display: none!important;
+  .avatar {
+    display: inline-flex !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .ant-avatar img {
+    visibility: visible !important;
+    display: block !important;
   }
 }
+

@@ -56,6 +56,10 @@ export type ResumeConfig = {
     [moduleKey: string]: boolean;
   };
 
+  /** 模块排序（Template2 两列布局） */
+  moduleOrderBasic?: string[]; // 左列（basic-info）：educationList, workList, aboutme, skillList, awardList
+  moduleOrderMain?: string[];  // 右列（main-info）：workExpList, projectList
+
   /** 教育背景 */
   educationList?: Array<{
     edu_time: [string | undefined, string | number];

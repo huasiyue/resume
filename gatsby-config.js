@@ -1,13 +1,6 @@
 module.exports = {
-  pathPrefix: '/resume',
   siteMetadata: {
-    title: 'Resume Generator',
-    githubUrl: 'https://github.com/visiky/resume.git',
-    author: 'visiky',
-    contact: 'https://github.com/visiky',
-  },
-  flags: {
-    DEV_SSR: false,
+    title: 'My Resume',
   },
   plugins: [
     {

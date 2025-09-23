@@ -7,7 +7,7 @@ import {
   Radio,
   Popover,
   Input,
-  Switch,
+  Switch, // 新增
 } from 'antd';
 import { DeleteFilled, InfoCircleFilled } from '@ant-design/icons';
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
@@ -105,7 +105,7 @@ export const Drawer: React.FC<Props> = props => {
     800
   );
 
-  const [type, setType] = useState('template');
+  const [type, setType] = useState('module');
 
   const swapItems = (moduleKey: string, oldIdx: number, newIdx: number) => {
     const newValues = _.clone(_.get(props.value, moduleKey, []));
@@ -132,16 +132,6 @@ export const Drawer: React.FC<Props> = props => {
 
   const DEFAULT_TITLE_MAP = getDefaultTitleNameMap({ intl });
   const isList = _.endsWith(childrenDrawer, 'List');
-
-  // 设置模块的显示/隐藏状态
-  const toggleModuleVisibility = (key, isVisible) => {
-    props.onValueChange({
-      moduleHiddenMap: {
-        ...(props.value.moduleHiddenMap || {}),
-        [key]: !isVisible,
-      },
-    });
-  };
 
   // #region 1 render: moduleContent
   const renderModuleList = ({ icon, key, name }, idx, values) => {
@@ -174,12 +164,19 @@ export const Drawer: React.FC<Props> = props => {
         </span>
         </div>
         <span onClick={e => e.stopPropagation()}>
-          <Switch
-            size="small"
-            checked={!isHidden}
-            onChange={checked => toggleModuleVisibility(key, checked)}
-          />
-        </span>
+        <Switch
+          size="small"
+          checked={!isHidden}
+          onChange={checked => {
+            props.onValueChange({
+              moduleHiddenMap: {
+                ...(props.value.moduleHiddenMap || {}),
+                [key]: !checked,
+              },
+            });
+          }}
+        />
+      </span>
       </div>
     );
 
@@ -236,7 +233,10 @@ export const Drawer: React.FC<Props> = props => {
 
   // #region 1.2 render: ModuleListItem when !_.endsWith(module.key,'List')
   const renderModuleListItem = ({ icon, key, name }) => {
-    const isHidden = !!props.value?.moduleHiddenMap?.[key];
+    const isHidden = key === 'avatar'
+      ? !!props.value?.avatar?.hidden
+      : !!props.value?.moduleHiddenMap?.[key];
+
     return (
       <div className="module-item" key={key}>
         <Collapse
@@ -249,28 +249,44 @@ export const Drawer: React.FC<Props> = props => {
           <Panel
             header={
               <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div
-                  style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                <span
+                  className="item-icon"
                   onClick={(e) => {
                     e.stopPropagation();
                     updateCurrentContent(_.get(props.value, key));
                     setChildrenDrawer(key);
                   }}
-                >
-                  <span className="item-icon">{icon}</span>
-                  <span className="item-name">{name}</span>
+                >{icon}</span>
+                  <span
+                    className="item-name"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      updateCurrentContent(_.get(props.value, key));
+                      setChildrenDrawer(key);
+                    }}
+                  >{name}</span>
                 </div>
-                <span
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    toggleModuleVisibility(key, !isHidden);
-                  }}
-                >
+                <span onClick={e => e.stopPropagation()}>
                 <Switch
                   size="small"
                   checked={!isHidden}
-                  onChange={(checked) => {
-                    toggleModuleVisibility(key, checked);
+                  onChange={checked => {
+                    // 特殊处理头像和个人信息的隐藏逻辑
+                    if (key === 'avatar') {
+                      // 头像隐藏在avatar.hidden中
+                      const newAvatar = { ...(props.value.avatar || {}) };
+                      newAvatar.hidden = !checked;
+                      props.onValueChange({ avatar: newAvatar });
+                    } else {
+                      // 其他模块使用moduleHiddenMap
+                      props.onValueChange({
+                        moduleHiddenMap: {
+                          ...(props.value.moduleHiddenMap || {}),
+                          [key]: !checked,
+                        },
+                      });
+                    }
                   }}
                 />
               </span>
@@ -285,8 +301,79 @@ export const Drawer: React.FC<Props> = props => {
   };
   // #endregion
 
+  // 排序相关：定义左右列模块与当前顺序
+  const BASIC_KEYS = ['educationList', 'workList', 'aboutme', 'skillList', 'awardList'];
+  const MAIN_KEYS = ['workExpList', 'projectList'];
+  const moduleOrderBasic = _.get(props.value, 'moduleOrderBasic', BASIC_KEYS);
+  const moduleOrderMain = _.get(props.value, 'moduleOrderMain', MAIN_KEYS);
+  const nameMap = modules.reduce((acc, m) => ({ ...acc, [m.key]: m.name }), {});
+
   const moduleContent = (
     <DndProvider backend={HTML5Backend}>
+      {/* 模块顺序面板 */}
+      <Collapse ghost>
+        <Panel
+          header={
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span><FormattedMessage id="模块顺序" /></span>
+              <Button
+                size="small"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  props.onValueChange({
+                    moduleOrderBasic: BASIC_KEYS,
+                    moduleOrderMain: MAIN_KEYS,
+                  });
+                }}
+              >
+                重置排序
+              </Button>
+            </div>
+          }
+          key="module-order"
+        >
+          <div>
+            <div style={{ fontWeight: 600 }}>
+              <FormattedMessage id="左侧区域" />（basic-info）
+            </div>
+            {moduleOrderBasic.map((key, idx) => (
+              <DragableRow
+                key={`basic-${idx}`}
+                index={idx}
+                moveRow={(oldIdx, newIdx) => {
+                  props.onValueChange({
+                    moduleOrderBasic: arrayMove(moduleOrderBasic, newIdx, oldIdx),
+                  });
+                }}
+              >
+                <div style={{ padding: '6px 8px', borderBottom: '1px dashed #eee' }}>
+                  {`${idx + 1}. ${nameMap[key] || key}`}
+                </div>
+              </DragableRow>
+            ))}
+
+            <div style={{ fontWeight: 600, marginTop: 12 }}>
+              <FormattedMessage id="右侧区域" />（main-info）
+            </div>
+            {moduleOrderMain.map((key, idx) => (
+              <DragableRow
+                key={`main-${idx}`}
+                index={idx}
+                moveRow={(oldIdx, newIdx) => {
+                  props.onValueChange({
+                    moduleOrderMain: arrayMove(moduleOrderMain, newIdx, oldIdx),
+                  });
+                }}
+              >
+                <div style={{ padding: '6px 8px', borderBottom: '1px dashed #eee' }}>
+                  {`${idx + 1}. ${nameMap[key] || key}`}
+                </div>
+              </DragableRow>
+            ))}
+          </div>
+        </Panel>
+      </Collapse>
+
       <div className="module-list">
         {modules.map((module, idx) => {
           if (!_.endsWith(module.key, 'List')) {
@@ -333,8 +420,6 @@ export const Drawer: React.FC<Props> = props => {
       </AntdDrawer>
     </DndProvider>
   );
-
-  // #endregion
 
   return (
     <>
