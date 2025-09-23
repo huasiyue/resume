@@ -1,0 +1,24 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+
+  background: rgb(39, 63, 117);
+  color: rgba(255, 255, 255, 0.85);
+
+  .action-link {
+    margin: 0 4px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.85);
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+@media print {
+  header {
+    display: none;
+  }
+}
