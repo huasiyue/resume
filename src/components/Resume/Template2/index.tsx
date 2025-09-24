@@ -661,7 +661,7 @@ export const Template2: React.FC<Props> = props => {
                     </div>
                     <div className="section-detail">
                       <span>
-                        <FormattedMessage id="本人工作" />：
+                        <FormattedMessage id=" 本人工作" />：
                       </span>
                       <span className="research-content">
                         {research?.research_content_isHtml ? (
@@ -674,7 +674,7 @@ export const Template2: React.FC<Props> = props => {
                     {research.research_achievement && (
                       <div className="section-detail">
                         <span>
-                          <FormattedMessage id="取得成果" />：
+                          <FormattedMessage id=" 取得成果" />：
                         </span>
                         <span className="research-achievement">
                           {research?.research_achievement_isHtml ? (
