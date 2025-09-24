@@ -466,25 +466,14 @@ export const CONTENT_OF_MODULE = ({ intl }) => {
     // 添加荣誉奖项表单定义
     honorList: [
       {
-        type: 'input',
-        attributeId: 'honor_info',
+        type: 'textArea',
+        attributeId: 'honor_desc',
         displayName: intl.formatMessage({ id: '奖项内容' }),
-        formItemProps: { rules: [{ required: true }] },
+        cfg: { autoSize: { minRows: 4 }, showCount: true },
       },
       {
         type: 'checkbox',
-        attributeId: 'honor_info_isHtml',
-        displayName: intl.formatMessage({ id: 'HTML模式' }),
-        formItemProps: { valuePropName: 'checked' },
-      },
-      {
-        type: 'input',
-        attributeId: 'honor_time',
-        displayName: intl.formatMessage({ id: '获奖时间' }),
-      },
-      {
-        type: 'checkbox',
-        attributeId: 'honor_time_isHtml',
+        attributeId: 'honor_desc_isHtml',
         displayName: intl.formatMessage({ id: 'HTML模式' }),
         formItemProps: { valuePropName: 'checked' },
       },

@@ -168,9 +168,11 @@ export const Template2: React.FC<Props> = props => {
           </Wrapper>
         ) : null;
       case 'honorList':
-        return !(hiddenMap && hiddenMap.honorList) && honorList && honorList.length > 0 ? (
+        return !(hiddenMap && hiddenMap.honorList) && honorList && (
+          Array.isArray(honorList) ? honorList.length > 0 : (honorList as any).honor_desc
+        ) ? (
           <Wrapper title={titleNameMap.honorList || "荣誉奖项"} className="experience" color={theme.color}>
-            {honorList.map((honor, idx) => {
+            {Array.isArray(honorList) ? honorList.map((honor, idx) => {
               return (
                 <div key={idx.toString()}>
                   <TrophyFilled style={{ color: '#ffc107', marginRight: '8px' }} />
@@ -192,7 +194,15 @@ export const Template2: React.FC<Props> = props => {
                   ) : null}
                 </div>
               );
-            })}
+            }) : (
+              <div>
+                {(honorList as any).honor_desc_isHtml ? (
+                  <span dangerouslySetInnerHTML={{ __html: (honorList as any).honor_desc || '' }} />
+                ) : (
+                  <span>{(honorList as any).honor_desc}</span>
+                )}
+              </div>
+            )}
           </Wrapper>
         ) : null;
       case 'studentWorkList':
@@ -530,9 +540,11 @@ export const Template2: React.FC<Props> = props => {
           </Wrapper>
         ) : null;
       case 'honorList':
-        return !(hiddenMap && hiddenMap.honorList) && honorList && honorList.length > 0 ? (
+        return !(hiddenMap && hiddenMap.honorList) && honorList && (
+          Array.isArray(honorList) ? honorList.length > 0 : (honorList as any).honor_desc
+        ) ? (
           <Wrapper title={titleNameMap.honorList || "荣誉奖项"} className="experience" color={theme.color}>
-            {honorList.map((honor, idx) => {
+            {Array.isArray(honorList) ? honorList.map((honor, idx) => {
               return (
                 <div key={idx.toString()}>
                   <TrophyFilled style={{ color: '#ffc107', marginRight: '8px' }} />
@@ -554,7 +566,15 @@ export const Template2: React.FC<Props> = props => {
                   ) : null}
                 </div>
               );
-            })}
+            }) : (
+              <div>
+                {(honorList as any).honor_desc_isHtml ? (
+                  <span dangerouslySetInnerHTML={{ __html: (honorList as any).honor_desc || '' }} />
+                ) : (
+                  <span>{(honorList as any).honor_desc}</span>
+                )}
+              </div>
+            )}
           </Wrapper>
         ) : null;
       case 'studentWorkList':

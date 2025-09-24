@@ -131,7 +131,7 @@ export const Drawer: React.FC<Props> = props => {
   }, [intl]);
 
   const DEFAULT_TITLE_MAP = getDefaultTitleNameMap({ intl });
-  const isList = childrenDrawer !== 'studentWorkList' && _.endsWith(childrenDrawer, 'List');
+  const isList = childrenDrawer !== 'studentWorkList' && childrenDrawer !== 'honorList' && _.endsWith(childrenDrawer, 'List');
 
   // #region 1 render: moduleContent
   const renderModuleList = ({ icon, key, name }, idx, values) => {
@@ -391,7 +391,7 @@ export const Drawer: React.FC<Props> = props => {
 
       <div className="module-list">
         {modules.map((module, idx) => {
-          if (!_.endsWith(module.key, 'List') || module.key === 'studentWorkList') {
+          if (!_.endsWith(module.key, 'List') || module.key === 'studentWorkList' || module.key === 'honorList') {
             return renderModuleListItem(module);
           }
           const values = _.get(props.value, module.key, []);

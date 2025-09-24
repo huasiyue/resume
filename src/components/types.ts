@@ -172,15 +172,11 @@ export type ResumeConfig = {
   }>;
 
   /** 荣誉奖项 */
-  honorList?: Array<{
-    // 奖项
-    honor_info: string;
-    honor_time?: string;
-
+  honorList?: {
+    honor_desc?: string;
     /** HTML 模式开关 */
-    honor_info_isHtml?: boolean;
-    honor_time_isHtml?: boolean;
-  }>;
+    honor_desc_isHtml?: boolean;
+  };
 
   /** 作品 */
   workList?: Array<{
