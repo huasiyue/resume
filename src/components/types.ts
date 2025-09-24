@@ -68,19 +68,13 @@ export type ResumeConfig = {
   moduleOrderBasic?: string[]; // 左列（basic-info）：educationList, workList, aboutme, skillList, awardList
   moduleOrderMain?: string[];  // 右列（main-info）：workExpList, projectList
 
-  /** 教育背景 */
-  educationList?: Array<{
-    edu_time: [string | undefined, string | number];
-    school: string;
-    major?: string;
-    /** 学历 */
-    academic_degree?: string;
-
+  /** 教育背景：单文本 */
+  educationList?: {
+    /** 单文本描述 */
+    education_desc?: string;
     /** HTML 模式开关 */
-    school_isHtml?: boolean;
-    major_isHtml?: boolean;
-    academic_degree_isHtml?: boolean;
-  }>;
+    education_desc_isHtml?: boolean;
+  };
 
   /** 工作经历 */
   workExpList?: Array<{

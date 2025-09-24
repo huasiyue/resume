@@ -195,22 +195,16 @@ export const CONTENT_OF_MODULE = ({ intl }) => {
     ],
     educationList: [
       {
-        type: 'input',
-        attributeId: 'edu_time',
-        displayName: intl.formatMessage({ id: '起始时间' }),
-        formItemProps: { rules: [{ required: true }] },
-        // cfg: { picker: 'month' },
+        type: 'textArea',
+        attributeId: 'education_desc',
+        displayName: intl.formatMessage({ id: '教育背景' }),
+        cfg: { autoSize: { minRows: 4 }, showCount: true },
       },
       {
-        type: 'input',
-        attributeId: 'school',
-        displayName: intl.formatMessage({ id: '学校' }),
-        formItemProps: { rules: [{ required: true }] },
-      },
-      {
-        type: 'input',
-        attributeId: 'major',
-        displayName: intl.formatMessage({ id: '专业' }),
+        type: 'checkbox',
+        attributeId: 'education_desc_isHtml',
+        displayName: intl.formatMessage({ id: 'HTML模式' }),
+        formItemProps: { valuePropName: 'checked' },
       },
     ],
     projectList: [

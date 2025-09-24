@@ -107,64 +107,27 @@ export const Template2: React.FC<Props> = props => {
   const orderBasic = _.get(value, 'moduleOrderBasic', DEFAULT_BASIC_ORDER);
   const orderMain = _.get(value, 'moduleOrderMain', DEFAULT_MAIN_ORDER);
 
+  // renderBasicSection
   const renderBasicSection = (key: string) => {
     switch (key) {
       case 'educationList':
-        return !(hiddenMap && hiddenMap.educationList) && educationList && educationList.length > 0 ? (
+        return !(hiddenMap && hiddenMap.educationList) && (educationList as any)?.education_desc ? (
           <Wrapper
             title={titleNameMap.educationList}
             className="section section-education"
             color={theme.color}
           >
-            {educationList.map((education, idx) => {
-              const [start, end] = education.edu_time;
-              return (
-                <div key={idx.toString()} className="education-item">
-                  <div>
-                    <span>
-                      <b>
-                        {education?.school_isHtml ? (
-                          <span dangerouslySetInnerHTML={{ __html: education.school || '' }} />
-                        ) : (
-                          education.school
-                        )}
-                      </b>
-                      <span style={{ marginLeft: '8px' }}>
-                        {education.major && (
-                          <>
-                            {education?.major_isHtml ? (
-                              <span dangerouslySetInnerHTML={{ __html: education.major || '' }} />
-                            ) : (
-                              <span>{education.major}</span>
-                            )}
-                          </>
-                        )}
-                        {education.academic_degree && (
-                          <span className="sub-info" style={{ marginLeft: '4px' }}>
-                            {education?.academic_degree_isHtml ? (
-                              <span
-                                dangerouslySetInnerHTML={{
-                                  __html: education.academic_degree || '',
-                                }}
-                              />
-                            ) : (
-                              <>({education.academic_degree})</>
-                            )}
-                          </span>
-                        )}
-                      </span>
-                    </span>
-                    <span className="sub-info" style={{ float: 'right' }}>
-                      {start}
-                      {end ? ` ~ ${end}` : ' 至今'}
-                    </span>
-                  </div>
-                  {education.edu_mainwork && (
-                    <div className="education-description">{education.edu_mainwork}</div>
-                  )}
-                </div>
-              );
-            })}
+            <div className="education-item">
+              {(educationList as any).education_desc_isHtml ? (
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: (educationList as any).education_desc || '',
+                  }}
+                />
+              ) : (
+                <span>{(educationList as any).education_desc}</span>
+              )}
+            </div>
           </Wrapper>
         ) : null;
       case 'honorList':
@@ -349,6 +312,7 @@ export const Template2: React.FC<Props> = props => {
                         </Tag>
                       )}
                     </div>
+                    {/* 下面内容不变 */}
                     <div className="section-detail">
                       <span>
                         <FormattedMessage id="项目概述" />：
@@ -398,65 +362,27 @@ export const Template2: React.FC<Props> = props => {
     }
   };
 
-  // 新增：统一渲染函数，支持所有模块在任意列渲染
-  const renderSection = (key: string) => {
+  // renderSection
+    const renderSection = (key: string) => {
     switch (key) {
       case 'educationList':
-        return !(hiddenMap && hiddenMap.educationList) && educationList && educationList.length > 0 ? (
+        return !(hiddenMap && hiddenMap.educationList) && (educationList as any)?.education_desc ? (
           <Wrapper
             title={titleNameMap.educationList}
             className="section section-education"
             color={theme.color}
           >
-            {educationList.map((education, idx) => {
-              const [start, end] = education.edu_time;
-              return (
-                <div key={idx.toString()} className="education-item">
-                  <div>
-                    <span>
-                      <b>
-                        {education?.school_isHtml ? (
-                          <span dangerouslySetInnerHTML={{ __html: education.school || '' }} />
-                        ) : (
-                          education.school
-                        )}
-                      </b>
-                      <span style={{ marginLeft: '8px' }}>
-                        {education.major && (
-                          <>
-                            {education?.major_isHtml ? (
-                              <span dangerouslySetInnerHTML={{ __html: education.major || '' }} />
-                            ) : (
-                              <span>{education.major}</span>
-                            )}
-                          </>
-                        )}
-                        {education.academic_degree && (
-                          <span className="sub-info" style={{ marginLeft: '4px' }}>
-                            {education?.academic_degree_isHtml ? (
-                              <span
-                                dangerouslySetInnerHTML={{
-                                  __html: education.academic_degree || '',
-                                }}
-                              />
-                            ) : (
-                              <>({education.academic_degree})</>
-                            )}
-                          </span>
-                        )}
-                      </span>
-                    </span>
-                    <span className="sub-info" style={{ float: 'right' }}>
-                      {start}
-                      {end ? ` ~ ${end}` : ' 至今'}
-                    </span>
-                  </div>
-                  {education.edu_mainwork && (
-                    <div className="education-description">{education.edu_mainwork}</div>
-                  )}
-                </div>
-              );
-            })}
+            <div className="education-item">
+              {(educationList as any).education_desc_isHtml ? (
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: (educationList as any).education_desc || '',
+                  }}
+                />
+              ) : (
+                <span>{(educationList as any).education_desc}</span>
+              )}
+            </div>
           </Wrapper>
         ) : null;
       case 'workList':
