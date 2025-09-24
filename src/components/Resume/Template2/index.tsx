@@ -59,6 +59,15 @@ export const Template2: React.FC<Props> = props => {
   /** 工作经历 */
   const workExpList = _.get(value, 'workExpList');
 
+  /** 科研经历 */
+  const researchList = _.get(value, 'researchList');
+
+  /** 荣誉奖项 */
+  const honorList = _.get(value, 'honorList');
+
+  /** 学生工作 */
+  const studentWorkList = _.get(value, 'studentWorkList');
+
   /** 项目经验 */
   const projectList = _.get(value, 'projectList');
 
@@ -75,18 +84,33 @@ export const Template2: React.FC<Props> = props => {
   const aboutme = _.get(value, 'aboutme');
 
   /** 隐藏映射 */
-  const hiddenMap = _.get(value, 'moduleHiddenMap', {});
+// 在获取 hiddenMap 后添加
+  const hiddenMap = _.get(value, 'moduleHiddenMap', {}) as {
+    [key: string]: boolean;
+    educationList?: boolean;
+    workExpList?: boolean;
+    projectList?: boolean;
+    researchList?: boolean;
+    honorList?: boolean;
+    studentWorkList?: boolean;
+    skillList?: boolean;
+    awardList?: boolean;
+    workList?: boolean;
+    aboutme?: boolean;
+    profile?: boolean;
+  };
 
   /** 模块排序（两列） */
-  const DEFAULT_BASIC_ORDER = ['educationList', 'workList', 'aboutme', 'skillList', 'awardList'];
-  const DEFAULT_MAIN_ORDER = ['workExpList', 'projectList'];
+  const DEFAULT_BASIC_ORDER = ['educationList', 'workList', 'aboutme', 'skillList', 'awardList', 'honorList', 'studentWorkList'];
+  const DEFAULT_MAIN_ORDER = ['workExpList', 'projectList', 'researchList'];
+
   const orderBasic = _.get(value, 'moduleOrderBasic', DEFAULT_BASIC_ORDER);
   const orderMain = _.get(value, 'moduleOrderMain', DEFAULT_MAIN_ORDER);
 
   const renderBasicSection = (key: string) => {
     switch (key) {
       case 'educationList':
-        return !hiddenMap?.educationList && educationList?.length ? (
+        return !(hiddenMap && hiddenMap.educationList) && educationList && educationList.length > 0 ? (
           <Wrapper
             title={titleNameMap.educationList}
             className="section section-education"
@@ -140,8 +164,52 @@ export const Template2: React.FC<Props> = props => {
             })}
           </Wrapper>
         ) : null;
+      case 'honorList':
+        return !(hiddenMap && hiddenMap.honorList) && honorList && honorList.length > 0 ? (
+          <Wrapper title={titleNameMap.honorList || "荣誉奖项"} className="experience" color={theme.color}>
+            {honorList.map((honor, idx) => {
+              return (
+                <div key={idx.toString()}>
+                  <TrophyFilled style={{ color: '#ffc107', marginRight: '8px' }} />
+                  {honor?.honor_info_isHtml ? (
+                    <span
+                      className="info-name"
+                      dangerouslySetInnerHTML={{ __html: honor.honor_info || '' }}
+                    />
+                  ) : (
+                    <span className="info-name">{honor.honor_info}</span>
+                  )}
+                  {honor?.honor_time_isHtml ? (
+                    <span
+                      className="sub-info honor-time"
+                      dangerouslySetInnerHTML={{ __html: honor.honor_time || '' }}
+                    />
+                  ) : honor.honor_time ? (
+                    <span className="sub-info honor-time">({honor.honor_time})</span>
+                  ) : null}
+                </div>
+              );
+            })}
+          </Wrapper>
+        ) : null;
+      case 'studentWorkList':
+        return !(hiddenMap && hiddenMap.studentWorkList) && studentWorkList && studentWorkList.length > 0 ? (
+          <Wrapper title={titleNameMap.studentWorkList || "学生工作"} className="experience" color={theme.color}>
+            {studentWorkList.map((work, idx) => {
+              return (
+                <div key={idx.toString()}>
+                  <div>
+                    <CrownFilled style={{ color: '#ffc107', marginRight: '8px' }} />
+                    <b className="info-name">{work.student_work_name}</b>
+                  </div>
+                  {work.student_work_desc && <div>{work.student_work_desc}</div>}
+                </div>
+              );
+            })}
+          </Wrapper>
+        ) : null;
       case 'workList':
-        return !hiddenMap?.workList && workList?.length ? (
+        return !(hiddenMap && hiddenMap.workList) && workList && workList.length > 0 ? (
           <Wrapper title={titleNameMap.workList} className="section section-work" color={theme.color}>
             {workList.map((work, idx) => {
               return (
@@ -149,9 +217,11 @@ export const Template2: React.FC<Props> = props => {
                   <div>
                     <CrownFilled style={{ color: '#ffc107', marginRight: '8px' }} />
                     <b className="info-name">{work.work_name}</b>
-                    <a className="sub-info" href={work.visit_link}>
-                      <FormattedMessage id="访问链接" />
-                    </a>
+                    {(work as any).visit_link && (
+                      <a className="sub-info" href={(work as any).visit_link}>
+                        <FormattedMessage id="访问链接" />
+                      </a>
+                    )}
                   </div>
                   {work.work_desc && <div>{work.work_desc}</div>}
                 </div>
@@ -159,10 +229,11 @@ export const Template2: React.FC<Props> = props => {
             })}
           </Wrapper>
         ) : null;
-// 修复类型错误
       case 'aboutme':
-        return !hiddenMap?.aboutme && aboutme && typeof aboutme === 'object' ? (
-          <Wrapper title={<FormattedMessage id="自我介绍" />} className="section section-aboutme" color={theme.color}>
+        return !(hiddenMap as any)?.aboutme && aboutme && (
+          Array.isArray(aboutme) ? aboutme.length > 0 : aboutme.aboutme_desc
+        ) ? (
+          <Wrapper title={titleNameMap.aboutme || <FormattedMessage id="自我介绍" />} className="section section-aboutme" color={theme.color}>
             {/* 检查是否是数组再使用map */}
             {Array.isArray(aboutme) ? aboutme.map((d, idx) => (
               <div key={`${idx}`}>{d}</div>
@@ -171,9 +242,8 @@ export const Template2: React.FC<Props> = props => {
             )}
           </Wrapper>
         ) : null;
-
       case 'skillList':
-        return !hiddenMap?.skillList && skillList?.length ? (
+        return !(hiddenMap && hiddenMap.skillList) && skillList && skillList.length > 0 ? (
           <Wrapper title={titleNameMap.skillList} className="section section-skill" color={theme.color}>
             {skillList.map((skill, idx) => {
               const skills = _.split(skill.skill_desc, '\n').join('；');
@@ -192,7 +262,7 @@ export const Template2: React.FC<Props> = props => {
           </Wrapper>
         ) : null;
       case 'awardList':
-        return !hiddenMap?.awardList && awardList?.length ? (
+        return !(hiddenMap && hiddenMap.awardList) && awardList && awardList.length > 0 ? (
           <Wrapper title={titleNameMap.awardList} className="section section-award" color={theme.color}>
             {awardList.map((award, idx) => {
               return (
@@ -227,8 +297,8 @@ export const Template2: React.FC<Props> = props => {
   const renderMainSection = (key: string) => {
     switch (key) {
       case 'workExpList':
-        return !hiddenMap?.workExpList && workExpList?.length ? (
-          <Wrapper className="experience" title={titleNameMap.workExpList} color={theme.color}>
+        return !(hiddenMap && hiddenMap.workExpList) && workExpList && workExpList.length > 0 ? (
+          <Wrapper title={titleNameMap.workExpList} className="experience" color={theme.color}>
             <div className="section section-work-exp">
               {_.map(workExpList, (work, idx) => {
                 const [start = null, end = null] =
@@ -253,8 +323,8 @@ export const Template2: React.FC<Props> = props => {
           </Wrapper>
         ) : null;
       case 'projectList':
-        return !hiddenMap?.projectList && projectList?.length ? (
-          <Wrapper className="skill" title={titleNameMap.projectList} color={theme.color}>
+        return !(hiddenMap && hiddenMap.projectList) && projectList && projectList.length > 0 ? (
+          <Wrapper title={titleNameMap.projectList} className="skill" color={theme.color}>
             <div className="section section-project">
               {_.map(projectList, (project, idx) =>
                 project ? (
@@ -278,6 +348,82 @@ export const Template2: React.FC<Props> = props => {
                       </span>
                       <span className="project-content">{project.project_content}</span>
                     </div>
+                  </div>
+                ) : null
+              )}
+            </div>
+          </Wrapper>
+        ) : null;
+      case 'researchList':
+        return !(hiddenMap && hiddenMap.researchList) && researchList && researchList.length > 0 ? (
+          <Wrapper title={titleNameMap?.researchList || "科研经历"} className="experience" color={theme.color}>
+            <div className="section section-research">
+              {_.map(researchList, (research, idx) =>
+                research ? (
+                  <div className="section-item" key={idx.toString()}>
+                    <div className="section-info">
+                      <b className="info-name">
+                        {research?.research_name_isHtml ? (
+                          <span dangerouslySetInnerHTML={{ __html: research.research_name || '' }} />
+                        ) : (
+                          research.research_name
+                        )}
+                        <span className="info-time">
+                    {research?.research_time_isHtml ? (
+                      <span dangerouslySetInnerHTML={{ __html: research.research_time || '' }} />
+                    ) : (
+                      research.research_time
+                    )}
+                  </span>
+                      </b>
+                      {research.research_role && (
+                        <Tag color={theme.tagColor}>
+                          {research?.research_role_isHtml ? (
+                            <span dangerouslySetInnerHTML={{ __html: research.research_role || '' }} />
+                          ) : (
+                            research.research_role
+                          )}
+                        </Tag>
+                      )}
+                    </div>
+                    <div className="section-detail">
+                <span>
+                  <FormattedMessage id="项目概述" />：
+                </span>
+                      <span>
+                  {research?.research_desc_isHtml ? (
+                    <span dangerouslySetInnerHTML={{ __html: research.research_desc || '' }} />
+                  ) : (
+                    research.research_desc
+                  )}
+                </span>
+                    </div>
+                    <div className="section-detail">
+                <span>
+                  <FormattedMessage id="本人工作" />：
+                </span>
+                      <span className="research-content">
+                  {research?.research_content_isHtml ? (
+                    <span dangerouslySetInnerHTML={{ __html: research.research_content || '' }} />
+                  ) : (
+                    research.research_content
+                  )}
+                </span>
+                    </div>
+                    {research.research_achievement && (
+                      <div className="section-detail">
+                  <span>
+                    <FormattedMessage id="取得成果" />：
+                  </span>
+                        <span className="research-achievement">
+                    {research?.research_achievement_isHtml ? (
+                      <span dangerouslySetInnerHTML={{ __html: research.research_achievement || '' }} />
+                    ) : (
+                      research.research_achievement
+                    )}
+                  </span>
+                      </div>
+                    )}
                   </div>
                 ) : null
               )}

@@ -27,6 +27,10 @@
   "专业技能": "Professional skills",
   "工作经历": "Work experience",
   "项目经历": "Project experience",
+  "科研经历": "Research Experience",
+  "研究描述": "Research Description",
+  "荣誉奖项": "Honors & Awards",
+  "学生工作": "Student Work",
   "隐藏头像": "Hide avatar",
   "头像地址": "Avatar url",
   "头像形状": "头像形状",
@@ -83,5 +87,9 @@
   "确定": "Ok",
   "无用户信息模式下，不允许预览": "",
   "Github": "Github",
-  "编辑之后，请及时存储个人信息到个人仓库中。": "编辑之后，请及时存储个人信息到个人仓库中。"
+  "编辑之后，请及时存储个人信息到个人仓库中。": "编辑之后，请及时存储个人信息到个人仓库中。",
+  "模块顺序": "Module Order",
+  "左侧区域": "Left Column",
+  "右侧区域": "Right Column",
+  "重置排序": "Reset Order"
 }

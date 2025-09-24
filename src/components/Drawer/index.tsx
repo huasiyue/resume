@@ -302,8 +302,10 @@ export const Drawer: React.FC<Props> = props => {
   // #endregion
 
   // 排序相关：定义左右列模块与当前顺序
-  const BASIC_KEYS = ['educationList', 'workList', 'aboutme', 'skillList', 'awardList'];
-  const MAIN_KEYS = ['workExpList', 'projectList'];
+  // 这里是关键修改点：添加新模块到默认排序中
+  const BASIC_KEYS = ['educationList', 'workList', 'aboutme', 'skillList', 'awardList', 'honorList', 'studentWorkList'];
+  const MAIN_KEYS = ['workExpList', 'projectList', 'researchList'];
+
   const moduleOrderBasic = _.get(props.value, 'moduleOrderBasic', BASIC_KEYS);
   const moduleOrderMain = _.get(props.value, 'moduleOrderMain', MAIN_KEYS);
   const nameMap = modules.reduce((acc, m) => ({ ...acc, [m.key]: m.name }), {});

@@ -22,6 +22,8 @@ export type ResumeConfig = {
     /** 职位 */
     positionTitle?: string;
 
+    job_title?: string; // 添加这一行
+
     /** HTML 模式开关 */
     name_isHtml?: boolean;
     mobile_isHtml?: boolean;
@@ -41,12 +43,18 @@ export type ResumeConfig = {
     workExpList?: string;
     /** 默认: 项目经历 */
     projectList?: string;
+    /** 默认: 科研经历 */
+    researchList?: string;
     /** 默认: 个人技能 */
     skillList?: string;
     /** 默认: 更多信息 */
     awardList?: string;
+    /** 默认: 荣誉奖项 */
+    honorList?: string;
     /** 默认: 作品 */
     workList?: string;
+    /** 默认: 学生工作 */
+    studentWorkList?: string;
     /** 自我介绍 */
     aboutme?: string;
   };
@@ -108,6 +116,29 @@ export type ResumeConfig = {
     project_time_isHtml?: boolean;
   }>;
 
+  /** 科研经历 */
+  researchList?: Array<{
+    /** 科研项目名称 */
+    research_name: string;
+    /** 担任角色 */
+    research_role: string;
+    /** 描述 */
+    research_desc?: string;
+    /** 科研内容，负责内容 */
+    research_content?: string;
+    /** 科研时间 */
+    research_time?: string;
+    research_achievement?: string;
+
+    /** HTML 模式开关 */
+    research_name_isHtml?: boolean;
+    research_role_isHtml?: boolean;
+    research_desc_isHtml?: boolean;
+    research_content_isHtml?: boolean;
+    research_time_isHtml?: boolean;
+    research_achievement_isHtml?: boolean; // 添加这一行
+  }>;
+
   /** 个人技能 */
   skillList?: Array<{
     /** 技能项 */
@@ -133,17 +164,41 @@ export type ResumeConfig = {
     award_time_isHtml?: boolean;
   }>;
 
+  /** 荣誉奖项 */
+  honorList?: Array<{
+    // 奖项
+    honor_info: string;
+    honor_time?: string;
+
+    /** HTML 模式开关 */
+    honor_info_isHtml?: boolean;
+    honor_time_isHtml?: boolean;
+  }>;
+
   /** 作品 */
   workList?: Array<{
     work_name?: string;
     work_desc?: string;
-    visit_link?: string;
+    // visit_link?: string;
 
     /** HTML 模式开关 */
     work_name_isHtml?: boolean;
     work_desc_isHtml?: boolean;
     visit_link_isHtml?: boolean;
   }>;
+
+  /** 学生工作 */
+  studentWorkList?: Array<{
+    student_work_name?: string;
+    student_work_desc?: string;
+    visit_link?: string;
+
+    /** HTML 模式开关 */
+    student_work_name_isHtml?: boolean;
+    student_work_desc_isHtml?: boolean;
+    visit_link_isHtml?: boolean;
+  }>;
+
 
   /** 自我介绍 */
   aboutme?: {

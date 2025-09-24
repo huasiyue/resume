@@ -9,6 +9,9 @@ import {
   ProjectTwoTone,
   ToolTwoTone,
   ScheduleTwoTone,
+  ExperimentOutlined,
+  TrophyOutlined,
+  TeamOutlined,
 } from '@ant-design/icons';
 import _ from 'lodash-es';
 import { intl } from '@/i18n';
@@ -19,9 +22,9 @@ import type { ResumeConfig } from '@/components/types';
  * ② 后续支持添加自定义模块
  */
 export const MODULES = ({
-  intl,
-  titleNameMap,
-}: {
+                          intl,
+                          titleNameMap,
+                        }: {
   intl: any;
   titleNameMap?: ResumeConfig['titleNameMap'];
 }) => {
@@ -65,6 +68,23 @@ export const MODULES = ({
       name: intl.formatMessage({ id: '工作经历' }),
       icon: <TagsTwoTone />,
       key: 'workExpList',
+    },
+    {
+      key: 'researchList',
+      name: titleNameMap?.researchList || intl.formatMessage({ id: '科研经历' }),
+      icon: <ExperimentOutlined />,
+    },
+    // 添加荣誉奖项
+    {
+      key: 'honorList',
+      name: titleNameMap?.honorList || intl.formatMessage({ id: '荣誉奖项' }),
+      icon: <TrophyOutlined />,
+    },
+    // 添加学生工作
+    {
+      key: 'studentWorkList',
+      name: titleNameMap?.studentWorkList || intl.formatMessage({ id: '学生工作' }),
+      icon: <TeamOutlined />,
     },
     {
       name: intl.formatMessage({ id: '项目经历' }),
@@ -356,6 +376,117 @@ export const CONTENT_OF_MODULE = ({ intl }) => {
         attributeId: 'award_time_isHtml',
         displayName: intl.formatMessage({ id: 'HTML模式' }),
         formItemProps: { valuePropName: 'checked' },
+      },
+    ],
+    // 添加科研经历表单定义
+    researchList: [
+      {
+        type: 'input',
+        attributeId: 'research_time',
+        displayName: intl.formatMessage({ id: '研究时间' }),
+        formItemProps: { rules: [{ required: true }] },
+      },
+      {
+        type: 'input',
+        attributeId: 'research_name',
+        displayName: intl.formatMessage({ id: '科研项目名称' }),
+        formItemProps: { rules: [{ required: true }] },
+      },
+      {
+        type: 'input',
+        attributeId: 'research_role',
+        displayName: intl.formatMessage({ id: '担任角色' }),
+      },
+      {
+        type: 'textArea',
+        attributeId: 'research_desc',
+        displayName: intl.formatMessage({ id: '研究描述' }),
+        cfg: { autoSize: { minRows: 6 }, showCount: true },
+      },
+      {
+        type: 'checkbox',
+        attributeId: 'research_desc_isHtml',
+        displayName: intl.formatMessage({ id: 'HTML模式' }),
+        formItemProps: { valuePropName: 'checked' },
+      },
+      {
+        type: 'textArea',
+        attributeId: 'research_content',
+        displayName: intl.formatMessage({ id: '主要工作' }),
+        cfg: { autoSize: { minRows: 6 }, showCount: true },
+        formItemProps: { style: { marginTop: 25 } },
+      },
+      {
+        type: 'checkbox',
+        attributeId: 'research_content_isHtml',
+        displayName: intl.formatMessage({ id: 'HTML模式' }),
+        formItemProps: { valuePropName: 'checked' },
+      },
+      {
+        type: 'textArea',
+        attributeId: 'research_achievement',
+        displayName: intl.formatMessage({ id: '取得成果' }),
+        cfg: { autoSize: { minRows: 6 }, showCount: true },
+        formItemProps: { style: { marginTop: 25 } },
+      },
+      {
+        type: 'checkbox',
+        attributeId: 'research_achievement_isHtml',
+        displayName: intl.formatMessage({ id: 'HTML模式' }),
+        formItemProps: { valuePropName: 'checked' },
+      },
+    ],
+
+    // 添加荣誉奖项表单定义
+    honorList: [
+      {
+        type: 'input',
+        attributeId: 'honor_info',
+        displayName: intl.formatMessage({ id: '奖项内容' }),
+        formItemProps: { rules: [{ required: true }] },
+      },
+      {
+        type: 'checkbox',
+        attributeId: 'honor_info_isHtml',
+        displayName: intl.formatMessage({ id: 'HTML模式' }),
+        formItemProps: { valuePropName: 'checked' },
+      },
+      {
+        type: 'input',
+        attributeId: 'honor_time',
+        displayName: intl.formatMessage({ id: '获奖时间' }),
+      },
+      {
+        type: 'checkbox',
+        attributeId: 'honor_time_isHtml',
+        displayName: intl.formatMessage({ id: 'HTML模式' }),
+        formItemProps: { valuePropName: 'checked' },
+      },
+    ],
+    // 添加学生工作表单定义
+    studentWorkList: [
+      {
+        type: 'input',
+        attributeId: 'student_work_name',
+        displayName: intl.formatMessage({ id: '工作名称' }),
+        formItemProps: { rules: [{ required: true }] },
+      },
+      {
+        type: 'textArea',
+        attributeId: 'student_work_desc',
+        displayName: intl.formatMessage({ id: '工作描述' }),
+        cfg: { autoSize: { minRows: 4 }, showCount: true },
+      },
+      {
+        type: 'checkbox',
+        attributeId: 'student_work_desc_isHtml',
+        displayName: intl.formatMessage({ id: 'HTML模式' }),
+        formItemProps: { valuePropName: 'checked' },
+      },
+      {
+        type: 'input',
+        attributeId: 'visit_link',
+        displayName: intl.formatMessage({ id: '相关链接' }),
       },
     ],
   };

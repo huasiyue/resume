@@ -65,6 +65,34 @@ export const RESUME_INFO: ResumeConfig = {
         '前端实习生。使用 Vue 来实现平台功能和逻辑，再用 ECharts 来对数据挖掘分析后的可视化结果进行展示',
     },
   ],
+// 在resume.ts的RESUME_INFO中添加
+  researchList: [
+    {
+      research_name: '机器学习在自然语言处理中的应用',
+      research_role: '主要研究员',
+      research_time: '2019-2021',
+      research_desc: '研究如何利用深度学习技术提高文本分类和情感分析的准确率',
+      research_content: '负责算法设计与实现，数据集处理，实验结果分析与论文撰写',
+      research_achievement: '发表高水平论文两篇，算法性能超过现有基准10%，开发了可复用的模型框架'
+    }
+  ],
+
+  honorList: [
+    {
+      honor_info: '优秀毕业生',
+      honor_time: '2018'
+    },
+    {
+      honor_info: '校级编程大赛一等奖',
+      honor_time: '2017'
+    }
+  ],
+  studentWorkList: [
+    {
+      student_work_name: '学生会技术部',
+      student_work_desc: '负责学生活动网站开发与维护，为校内活动提供技术支持'
+    }
+  ],
   skillList: [
     {
       skill_name: 'HTML 和 CSS',
@@ -180,6 +208,33 @@ export const RESUME_INFO: ResumeConfig = {
             '前端早早聊 分享 “如何构思和开发开箱即用的可视化图表库 G2Plot”',
           award_time: '2021.07',
         },
+      ],
+// 在resume.ts的locales['en-US']中添加
+      researchList: [
+        {
+          research_name: 'Application of Machine Learning in NLP',
+          research_role: 'Lead Researcher',
+          research_time: '2019-2021',
+          research_desc: 'Research on improving accuracy of text classification and sentiment analysis using deep learning',
+          research_content: 'Responsible for algorithm design, dataset processing, result analysis and paper writing',
+          research_achievement: 'Published two high-quality papers, algorithm performance exceeded existing benchmarks by 10%, developed a reusable model framework'
+        }
+      ],
+      honorList: [
+        {
+          honor_info: 'Outstanding Graduate',
+          honor_time: '2018'
+        },
+        {
+          honor_info: 'First Prize in University Programming Contest',
+          honor_time: '2017'
+        }
+      ],
+      studentWorkList: [
+        {
+          student_work_name: 'Tech Department of Student Union',
+          student_work_desc: 'Responsible for development and maintenance of student activity websites'
+        }
       ],
       workExpList: [
         {
