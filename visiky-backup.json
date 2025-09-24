@@ -52,37 +52,19 @@
       "work_desc": "1. 担任蚂蚁高管决策和管理协同产品 “数据作战室” 的前端负责人\r\n2. 负责蚂蚁敏捷 BI 产品 “DeepInsight” 的可视分析模块产品能力建设\n3. 数据可视化 AntV 团队核心成员，负责 G2、G2Plot 开源技术的建设"
     }
   ],
-  "skillList": [
-    {
-      "skill_name": "HTML 和 CSS",
-      "skill_desc": "",
-      "skill_level": 89
-    },
-    {
-      "skill_name": "TypeScript / JavaScript",
-      "skill_level": 90
-    },
-    {
-      "skill_name": "数据可视化",
-      "skill_desc": "丰富的可视化工程实践以及开源经验",
-      "skill_level": 90
-    },
-    {
-      "skill_name": "React / 前端工程化",
-      "skill_desc": "大型前端项目经验以及组件库开发经验",
-      "skill_level": 80
-    }
-  ],
+  "skillList": [],
   "projectList": [
     {
       "project_name": "实验室情报管理中心（LabIC）",
       "project_role": "Project Manager & Developer",
       "project_time": "2014.12 - 2025.04",
-      "project_desc": "",
-      "project_content": "",
+      "project_desc": "LabIC面向高校实验室，构建一站式学术情报管理平台，实现科研成果、论文、专利等多源学术信息的自动采集、解析与可视化展示。平台集成RSS订阅、AI大模型解析与数据大屏，实现学术动态实时跟踪、团队科研画像生成及跨实验室协作，助力科研人员精准掌握前沿研究方向，提高学术管理效率。",
+      "project_content": "设计并实现学术情报收集与AI自动化解析系统，支持期刊RSS订阅与自动更新；构建数据大屏与成员科研画像，直观展示成果与学术轨迹；搭建信息管理系统，覆盖成员学术信息与资产管理，提升科研数据处理与展示效率。",
       "dataIndex": 0,
-      "project_tech_stack": "1",
-      "project_achievement": "1"
+      "project_tech_stack": "<span style=\"background:#e3f2fd; color:#1976d2; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">Spring Boot</span>\n<span style=\"background:#e8f5e9; color:#388e3c; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">MongoDB</span>\n<span style=\"background:#fff3e0; color:#f57c00; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">Redis</span>\n<span style=\"background:#ede7f6; color:#512da8; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">Spring Security</span>\n<span style=\"background:#f1f8e9; color:#689f38; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">Sa-Token</span>\n<span style=\"background:#f3e5f5; color:#7b1fa2; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">Ant Design</span>\n<span style=\"background:#ede7f6; color:#512da8; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">Ant Design Pro</span>\n<span style=\"background:#fce4ec; color:#c2185b; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">React</span>\n<span style=\"background:#fff0f5; color:#c2185b; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">ECharts</span>\n<span style=\"background:#f9fbe7; color:#827717; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">Selenium Grid</span>\n<span style=\"background:#fce4ec; color:#880e4f; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">DeepSeek-r1</span>\n<span style=\"background:#e8eaf6; color:#1a237e; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">Dify</span>",
+      "project_tech_stack_isHtml": true,
+      "project_achievement": "<span style=\"background:#fff3e0; color:#ef6c00; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">全国大学生计算机设计大赛三等奖</span>\n<span style=\"background:#fff3e0; color:#ef6c00; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">全国大学生计算机设计大赛山东省一等奖</span>",
+      "project_achievement_isHtml": true
     },
     {
       "project_time": "2024.10 - 2024.11",
@@ -90,17 +72,14 @@
       "project_role": "Developer",
       "project_desc": "项目面向本地医院代谢性疾病管理需求，目标是构建“私有化部署+数据自主管控”的诊疗管理系统。项目涵盖系统架构设计、数据标准化处理、HIS对接、随访与质控模块研发，实现患者诊疗、随访、科研数据的本地化闭环管理，解决医院数据依赖外部平台和科研数据受限等核心痛点。",
       "project_content": "参与系统需求分析与核心功能设计，负责数据库建模与本地化存储方案设计；实现HIS数据导入与批量处理流程，支持患者、医师等基础信息高效录入；并协助测试与文档整理，保障系统落地。",
-      "dataIndex": 1
+      "dataIndex": 1,
+      "project_tech_stack": "<span style=\"background:#e3f2fd; color:#1976d2; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">Spring Boot</span>\n<span style=\"background:#e8f5e9; color:#388e3c; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">MongoDB</span>\n<span style=\"background:#fff3e0; color:#f57c00; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">Redis</span>\n<span style=\"background:#f3e5f5; color:#7b1fa2; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">Ant Design</span>\n<span style=\"background:#ede7f6; color:#512da8; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">Ant Design Pro</span>\n<span style=\"background:#fff0f5; color:#c2185b; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">ECharts</span>",
+      "project_tech_stack_isHtml": true,
+      "project_achievement": "<span style=\"background:#ede7f6; color:#4527a0; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">\n因瑞金医院公开数据政策，项目后期终止\n</span>",
+      "project_achievement_isHtml": true
     }
   ],
-  "workList": [
-    {
-      "work_name": "234",
-      "work_desc": "1. 担任蚂蚁高管决策和管理协同产品 “数据作战室” 的前端负责人\r\n2. 负责蚂蚁敏捷 BI 产品 “DeepInsight” 的可视分析模块产品能力建设\n3. 数据可视化 AntV 团队核心成员，负责 G2、G2Plot 开源技术的建设",
-      "work_desc_isHtml": false,
-      "visit_link": "234"
-    }
-  ],
+  "workList": [],
   "aboutme": {
     "aboutme_desc": "\n    ",
     "aboutme_isHtml": false,
@@ -109,7 +88,7 @@
   "moduleHiddenMap": {
     "avatar": false,
     "profile": false,
-    "aboutme": true,
+    "aboutme": false,
     "educationList": false,
     "awardList": true,
     "workList": true,
@@ -117,22 +96,22 @@
     "workExpList": true,
     "projectList": false,
     "researchList": false,
-    "honorList": true,
-    "studentWorkList": true
+    "honorList": false,
+    "studentWorkList": false
   },
   "moduleOrderBasic": [
-    "educationList",
-    "workList",
     "aboutme",
     "skillList",
     "awardList",
-    "honorList",
-    "studentWorkList"
-  ],
-  "moduleOrderMain": [
     "researchList",
+    "educationList",
+    "workList",
     "projectList",
     "workExpList"
+  ],
+  "moduleOrderMain": [
+    "honorList",
+    "studentWorkList"
   ],
   "researchList": [
     {
@@ -162,7 +141,7 @@
       "research_desc_isHtml": false,
       "research_content": "负责数据集收集与预处理算法设计，完成复杂谱图数据向量化处理；搭建基于DNN的跨仪器谱图预测模型，进行参数调优，并开展相似度评估与结果验证。",
       "research_content_isHtml": false,
-      "research_achievement": "<span style=\"background: #f3e5f5; color: #7b1fa2; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;\">\n  项目推进未达预期，留有遗憾\n</span>",
+      "research_achievement": "<span style=\"background:#ede7f6; color:#4527a0; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">\n项目推进未达预期，留有遗憾\n</span>\n",
       "research_achievement_isHtml": true,
       "dataIndex": 2
     },
@@ -174,25 +153,33 @@
       "research_desc_isHtml": false,
       "research_content": "负责完整的数据预处理流程，包括文本清洗、Spacy分词和动态词汇表构建；实现GloVe词嵌入表示和注意力机制；设计并完成了CNN、RNN、Transformer等多种模型的训练与对比实验；分析了数据量对模型泛化能力的影响，撰写了实验报告和论文初稿。",
       "research_content_isHtml": false,
-      "dataIndex": 2,
-      "research_achievement": "  <span style=\"background: #e3f2fd; color: #1976d2; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;\">\n    论文1篇投稿中\n  </span>\n  <span style=\"background: #e8f5e9; color: #388e3c; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;\">\n    软著1项\n  </span>\n  <span style=\"background: #fff3e0; color: #f57c00; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;\">\n    全国大学生计算机设计大赛山东省一等奖\n  </span>",
+      "dataIndex": 3,
+      "research_achievement": "<span style=\"background:#e1f5fe; color:#0288d1; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">论文1篇投稿中</span>\n<span style=\"background:#e8f5e9; color:#2e7d32; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">软著1项</span>\n<span style=\"background:#fff3e0; color:#ef6c00; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">全国大学生计算机设计大赛山东省一等奖</span>",
       "research_achievement_isHtml": true
     }
   ],
   "honorList": [
     {
-      "honor_info": "1",
-      "honor_time": "1"
+      "honor_info": "国家奖学金",
+      "honor_time": "2024",
+      "dataIndex": 0
+    },
+    {
+      "honor_info": "校级优秀学生标兵",
+      "honor_time": "2024"
     }
   ],
-  "studentWorkList": [
-    {
+  "studentWorkList": {
+    "0": {
       "student_work_name": "1",
       "student_work_desc": "1",
       "visit_link": "",
       "dataIndex": 0
-    }
-  ],
+    },
+    "student_work_desc": "<div style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Microsoft Yahei', 'PingFang SC', 'Hiragino Sans GB'; font-size:12px; color:#222; line-height:1.15; max-width:100%;\">\n  <ul style=\"list-style:none; padding:6px 8px; margin:0; width:100%;\">\n\n    <li style=\"display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(0,0,0,0.06); width:100%;\">\n      <div style=\"flex:1; min-width:0; overflow:hidden;\">\n        <div>\n          <span style=\"font-weight:600; display:inline-block; max-width:calc(100% - 120px); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">山东第一医科大学 — 2022级计算机科学与技术专业</span>\n          <span style=\"font-size:11px; color:#555; margin-left:8px;\">心理委员、舍长</span>\n        </div>\n      </div>\n      <div style=\"flex:0 0 auto; text-align:right; font-size:11px; color:#666; white-space:nowrap; margin-left:8px;\">2022.09 - 2026.06</div>\n    </li>\n\n    <li style=\"display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(0,0,0,0.06); width:100%;\">\n      <div style=\"flex:1; min-width:0; overflow:hidden;\">\n        <div>\n          <span style=\"font-weight:600; display:inline-block; max-width:calc(100% - 120px); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">山东第一医科大学医学信息工程学院 - 科技创新协会</span>\n          <span style=\"font-size:11px; color:#555; margin-left:8px;\">干事</span>\n        </div>\n      </div>\n      <div style=\"flex:0 0 auto; text-align:right; font-size:11px; color:#666; white-space:nowrap; margin-left:8px;\">2022.09 - 2023.07</div>\n    </li>\n\n    <li style=\"display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(0,0,0,0.06); width:100%;\">\n      <div style=\"flex:1; min-width:0; overflow:hidden;\">\n        <div>\n          <span style=\"font-weight:600; display:inline-block; max-width:calc(100% - 120px); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">山东第一医科大学医学信息工程学院 - 大学生心理健康协会</span>\n          <span style=\"font-size:11px; color:#555; margin-left:8px;\">新媒体副部长</span>\n        </div>\n      </div>\n      <div style=\"flex:0 0 auto; text-align:right; font-size:11px; color:#666; white-space:nowrap; margin-left:8px;\">2023.05 - 2024.07</div>\n    </li>\n\n    <li style=\"display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(0,0,0,0.06); width:100%;\">\n      <div style=\"flex:1; min-width:0; overflow:hidden;\">\n        <div>\n          <span style=\"font-weight:600; display:inline-block; max-width:calc(100% - 120px); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">山东第一医科大学医学信息工程学院 - 科技创新协会</span>\n          <span style=\"font-size:11px; color:#555; margin-left:8px;\">竞赛部部长</span>\n        </div>\n      </div>\n      <div style=\"flex:0 0 auto; text-align:right; font-size:11px; color:#666; white-space:nowrap; margin-left:8px;\">2023.09 - 2024.07</div>\n    </li>\n\n    <li style=\"display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(0,0,0,0.06); width:100%;\">\n      <div style=\"flex:1; min-width:0; overflow:hidden;\">\n        <div>\n          <span style=\"font-weight:600; display:inline-block; max-width:calc(100% - 120px); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">山东第一医科大学医学信息与人工智能学院 - 大学生心理健康协会</span>\n          <span style=\"font-size:11px; color:#555; margin-left:8px;\">主席团</span>\n        </div>\n      </div>\n      <div style=\"flex:0 0 auto; text-align:right; font-size:11px; color:#666; white-space:nowrap; margin-left:8px;\">2024.09 - 2025.07</div>\n    </li>\n\n    <li style=\"display:flex; justify-content:space-between; padding:6px 0; width:100%;\">\n      <div style=\"flex:1; min-width:0; overflow:hidden;\">\n        <div>\n          <span style=\"font-weight:600; display:inline-block; max-width:calc(100% - 120px); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">山东第一医科大学医学信息与人工智能学院 - 科技创新协会</span>\n          <span style=\"font-size:11px; color:#555; margin-left:8px;\">会长</span>\n        </div>\n      </div>\n      <div style=\"flex:0 0 auto; text-align:right; font-size:11px; color:#666; white-space:nowrap; margin-left:8px;\">2024.09 - 2025.07</div>\n    </li>\n\n  </ul>\n</div>\n",
+    "student_work_name": "1",
+    "student_work_desc_isHtml": true
+  },
   "theme": {
     "color": "#2f5785",
     "tagColor": "#8bc34a"

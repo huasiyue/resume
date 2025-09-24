@@ -492,12 +492,6 @@ export const CONTENT_OF_MODULE = ({ intl }) => {
     // 添加学生工作表单定义
     studentWorkList: [
       {
-        type: 'input',
-        attributeId: 'student_work_name',
-        displayName: intl.formatMessage({ id: '工作名称' }),
-        formItemProps: { rules: [{ required: true }] },
-      },
-      {
         type: 'textArea',
         attributeId: 'student_work_desc',
         displayName: intl.formatMessage({ id: '工作描述' }),
@@ -508,11 +502,6 @@ export const CONTENT_OF_MODULE = ({ intl }) => {
         attributeId: 'student_work_desc_isHtml',
         displayName: intl.formatMessage({ id: 'HTML模式' }),
         formItemProps: { valuePropName: 'checked' },
-      },
-      {
-        type: 'input',
-        attributeId: 'visit_link',
-        displayName: intl.formatMessage({ id: '相关链接' }),
       },
     ],
   };

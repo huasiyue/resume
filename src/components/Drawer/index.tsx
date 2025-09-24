@@ -131,7 +131,7 @@ export const Drawer: React.FC<Props> = props => {
   }, [intl]);
 
   const DEFAULT_TITLE_MAP = getDefaultTitleNameMap({ intl });
-  const isList = _.endsWith(childrenDrawer, 'List');
+  const isList = childrenDrawer !== 'studentWorkList' && _.endsWith(childrenDrawer, 'List');
 
   // #region 1 render: moduleContent
   const renderModuleList = ({ icon, key, name }, idx, values) => {
@@ -309,10 +309,11 @@ export const Drawer: React.FC<Props> = props => {
   const moduleOrderBasic = _.get(props.value, 'moduleOrderBasic', BASIC_KEYS);
   const moduleOrderMain = _.get(props.value, 'moduleOrderMain', MAIN_KEYS);
   const nameMap = modules.reduce((acc, m) => ({ ...acc, [m.key]: m.name }), {});
+  const combinedOrder = [...moduleOrderBasic, ...moduleOrderMain];
 
   const moduleContent = (
     <DndProvider backend={HTML5Backend}>
-      {/* 模块顺序面板 */}
+      {/* 模块顺序面板（合并为一个列表） */}
       <Collapse ghost>
         <Panel
           header={
@@ -335,40 +336,52 @@ export const Drawer: React.FC<Props> = props => {
           key="module-order"
         >
           <div>
-            <div style={{ fontWeight: 600 }}>
-              <FormattedMessage id="左侧区域" />（basic-info）
-            </div>
-            {moduleOrderBasic.map((key, idx) => (
+            {combinedOrder.map((key, idx) => (
               <DragableRow
-                key={`basic-${idx}`}
+                key={`all-${idx}`}
                 index={idx}
                 moveRow={(oldIdx, newIdx) => {
+                  const newCombined = arrayMove(combinedOrder, newIdx, oldIdx);
+                  // 根据当前归属（而非固定常量）拆分回左右列
+                  const newBasic = newCombined.filter(k => moduleOrderBasic.includes(k));
+                  const newMain = newCombined.filter(k => moduleOrderMain.includes(k));
                   props.onValueChange({
-                    moduleOrderBasic: arrayMove(moduleOrderBasic, newIdx, oldIdx),
+                    moduleOrderBasic: newBasic,
+                    moduleOrderMain: newMain,
                   });
                 }}
               >
-                <div style={{ padding: '6px 8px', borderBottom: '1px dashed #eee' }}>
-                  {`${idx + 1}. ${nameMap[key] || key}`}
-                </div>
-              </DragableRow>
-            ))}
-
-            <div style={{ fontWeight: 600, marginTop: 12 }}>
-              <FormattedMessage id="右侧区域" />（main-info）
-            </div>
-            {moduleOrderMain.map((key, idx) => (
-              <DragableRow
-                key={`main-${idx}`}
-                index={idx}
-                moveRow={(oldIdx, newIdx) => {
-                  props.onValueChange({
-                    moduleOrderMain: arrayMove(moduleOrderMain, newIdx, oldIdx),
-                  });
-                }}
-              >
-                <div style={{ padding: '6px 8px', borderBottom: '1px dashed #eee' }}>
-                  {`${idx + 1}. ${nameMap[key] || key}`}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '6px 8px', borderBottom: '1px dashed #eee' }}>
+                  <span>{`${idx + 1}. ${nameMap[key] || key}`}</span>
+                  {/* 列归属切换：左侧 / 右侧 */}
+                  <Radio.Group
+                    size="small"
+                    value={moduleOrderBasic.includes(key) ? 'basic' : 'main'}
+                    onChange={(e) => {
+                      e.stopPropagation();
+                      const to = e.target.value; // 'basic' | 'main'
+                      if (to === 'basic') {
+                        // 从右侧移到左侧（去重后追加到左列末尾）
+                        const newMain = moduleOrderMain.filter(k => k !== key);
+                        const newBasic = moduleOrderBasic.includes(key) ? moduleOrderBasic : moduleOrderBasic.concat(key);
+                        props.onValueChange({
+                          moduleOrderBasic: newBasic,
+                          moduleOrderMain: newMain,
+                        });
+                      } else {
+                        // 从左侧移到右侧（去重后追加到右列末尾）
+                        const newBasic = moduleOrderBasic.filter(k => k !== key);
+                        const newMain = moduleOrderMain.includes(key) ? moduleOrderMain : moduleOrderMain.concat(key);
+                        props.onValueChange({
+                          moduleOrderBasic: newBasic,
+                          moduleOrderMain: newMain,
+                        });
+                      }
+                    }}
+                  >
+                    <Radio.Button value="basic">左侧</Radio.Button>
+                    <Radio.Button value="main">右侧</Radio.Button>
+                  </Radio.Group>
                 </div>
               </DragableRow>
             ))}
@@ -378,7 +391,7 @@ export const Drawer: React.FC<Props> = props => {
 
       <div className="module-list">
         {modules.map((module, idx) => {
-          if (!_.endsWith(module.key, 'List')) {
+          if (!_.endsWith(module.key, 'List') || module.key === 'studentWorkList') {
             return renderModuleListItem(module);
           }
           const values = _.get(props.value, module.key, []);

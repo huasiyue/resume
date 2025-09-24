@@ -195,16 +195,22 @@ export type ResumeConfig = {
   }>;
 
   /** 学生工作 */
-  studentWorkList?: Array<{
-    student_work_name?: string;
-    student_work_desc?: string;
-    visit_link?: string;
+  studentWorkList?: 
+    | Array<{
+        student_work_name?: string;
+        student_work_desc?: string;
+        visit_link?: string;
 
-    /** HTML 模式开关 */
-    student_work_name_isHtml?: boolean;
-    student_work_desc_isHtml?: boolean;
-    visit_link_isHtml?: boolean;
-  }>;
+        /** HTML 模式开关 */
+        student_work_name_isHtml?: boolean;
+        student_work_desc_isHtml?: boolean;
+        visit_link_isHtml?: boolean;
+      }>
+    | {
+        student_work_desc?: string;
+        /** HTML 模式开关 */
+        student_work_desc_isHtml?: boolean;
+      };
 
 
   /** 自我介绍 */

@@ -159,6 +159,9 @@ export const Template2: React.FC<Props> = props => {
                       {end ? ` ~ ${end}` : ' 至今'}
                     </span>
                   </div>
+                  {education.edu_mainwork && (
+                    <div className="education-description">{education.edu_mainwork}</div>
+                  )}
                 </div>
               );
             })}
@@ -193,9 +196,11 @@ export const Template2: React.FC<Props> = props => {
           </Wrapper>
         ) : null;
       case 'studentWorkList':
-        return !(hiddenMap && hiddenMap.studentWorkList) && studentWorkList && studentWorkList.length > 0 ? (
+        return !(hiddenMap && hiddenMap.studentWorkList) && studentWorkList && (
+          Array.isArray(studentWorkList) ? studentWorkList.length > 0 : (studentWorkList as any).student_work_desc
+        ) ? (
           <Wrapper title={titleNameMap.studentWorkList || "学生工作"} className="experience" color={theme.color}>
-            {studentWorkList.map((work, idx) => {
+            {Array.isArray(studentWorkList) ? studentWorkList.map((work, idx) => {
               return (
                 <div key={idx.toString()}>
                   <div>
@@ -205,97 +210,17 @@ export const Template2: React.FC<Props> = props => {
                   {work.student_work_desc && <div>{work.student_work_desc}</div>}
                 </div>
               );
-            })}
-          </Wrapper>
-        ) : null;
-      case 'workList':
-        return !(hiddenMap && hiddenMap.workList) && workList && workList.length > 0 ? (
-          <Wrapper title={titleNameMap.workList} className="section section-work" color={theme.color}>
-            {workList.map((work, idx) => {
-              return (
-                <div key={idx.toString()}>
-                  <div>
-                    <CrownFilled style={{ color: '#ffc107', marginRight: '8px' }} />
-                    <b className="info-name">{work.work_name}</b>
-                    {(work as any).visit_link && (
-                      <a className="sub-info" href={(work as any).visit_link}>
-                        <FormattedMessage id="访问链接" />
-                      </a>
-                    )}
-                  </div>
-                  {work.work_desc && <div>{work.work_desc}</div>}
-                </div>
-              );
-            })}
-          </Wrapper>
-        ) : null;
-      case 'aboutme':
-        return !(hiddenMap as any)?.aboutme && aboutme && (
-          Array.isArray(aboutme) ? aboutme.length > 0 : aboutme.aboutme_desc
-        ) ? (
-          <Wrapper title={titleNameMap.aboutme || <FormattedMessage id="自我介绍" />} className="section section-aboutme" color={theme.color}>
-            {/* 检查是否是数组再使用map */}
-            {Array.isArray(aboutme) ? aboutme.map((d, idx) => (
-              <div key={`${idx}`}>{d}</div>
-            )) : (
-              <div>{aboutme.aboutme_desc}</div>
+            }) : (
+              <div>
+                {(studentWorkList as any).student_work_desc_isHtml ? (
+                  <span dangerouslySetInnerHTML={{ __html: (studentWorkList as any).student_work_desc || '' }} />
+                ) : (
+                  <span>{(studentWorkList as any).student_work_desc}</span>
+                )}
+              </div>
             )}
           </Wrapper>
         ) : null;
-      case 'skillList':
-        return !(hiddenMap && hiddenMap.skillList) && skillList && skillList.length > 0 ? (
-          <Wrapper title={titleNameMap.skillList} className="section section-skill" color={theme.color}>
-            {skillList.map((skill, idx) => {
-              const skills = _.split(skill.skill_desc, '\n').join('；');
-              return skills ? (
-                <div className="skill-item" key={idx.toString()}>
-                  <span>
-                    <CheckCircleFilled style={{ color: '#ffc107', marginRight: '8px' }} />
-                    {skills}
-                  </span>
-                  {skill.skill_level && (
-                    <Rate allowHalf disabled value={skill.skill_level / 20} className="skill-rate" />
-                  )}
-                </div>
-              ) : null;
-            })}
-          </Wrapper>
-        ) : null;
-      case 'awardList':
-        return !(hiddenMap && hiddenMap.awardList) && awardList && awardList.length > 0 ? (
-          <Wrapper title={titleNameMap.awardList} className="section section-award" color={theme.color}>
-            {awardList.map((award, idx) => {
-              return (
-                <div key={idx.toString()}>
-                  <TrophyFilled style={{ color: '#ffc107', marginRight: '8px' }} />
-                  {award?.award_info_isHtml ? (
-                    <span
-                      className="info-name"
-                      dangerouslySetInnerHTML={{ __html: award.award_info || '' }}
-                    />
-                  ) : (
-                    <span className="info-name">{award.award_info}</span>
-                  )}
-                  {award?.award_time_isHtml ? (
-                    <span
-                      className="sub-info award-time"
-                      dangerouslySetInnerHTML={{ __html: award.award_time || '' }}
-                    />
-                  ) : award.award_time ? (
-                    <span className="sub-info award-time">({award.award_time})</span>
-                  ) : null}
-                </div>
-              );
-            })}
-          </Wrapper>
-        ) : null;
-      default:
-        return null;
-    }
-  };
-
-  const renderMainSection = (key: string) => {
-    switch (key) {
       case 'workExpList':
         return !(hiddenMap && hiddenMap.workExpList) && workExpList && workExpList.length > 0 ? (
           <Wrapper title={titleNameMap.workExpList} className="experience" color={theme.color}>
@@ -397,12 +322,12 @@ export const Template2: React.FC<Props> = props => {
                           research.research_name
                         )}
                         <span className="info-time">
-                    {research?.research_time_isHtml ? (
-                      <span dangerouslySetInnerHTML={{ __html: research.research_time || '' }} />
-                    ) : (
-                      research.research_time
-                    )}
-                  </span>
+                          {research?.research_time_isHtml ? (
+                            <span dangerouslySetInnerHTML={{ __html: research.research_time || '' }} />
+                          ) : (
+                            research.research_time
+                          )}
+                        </span>
                       </b>
                       {research.research_role && (
                         <Tag color={theme.tagColor}>
@@ -415,41 +340,403 @@ export const Template2: React.FC<Props> = props => {
                       )}
                     </div>
                     <div className="section-detail">
-                <span>
-                  <FormattedMessage id="项目概述" />：
-                </span>
                       <span>
-                  {research?.research_desc_isHtml ? (
-                    <span dangerouslySetInnerHTML={{ __html: research.research_desc || '' }} />
-                  ) : (
-                    research.research_desc
-                  )}
-                </span>
+                        <FormattedMessage id="项目概述" />：
+                      </span>
+                      <span>
+                        {research?.research_desc_isHtml ? (
+                          <span dangerouslySetInnerHTML={{ __html: research.research_desc || '' }} />
+                        ) : (
+                          research.research_desc
+                        )}
+                      </span>
                     </div>
                     <div className="section-detail">
-                <span>
-                  <FormattedMessage id="本人工作" />：
-                </span>
+                      <span>
+                        <FormattedMessage id="本人工作" />：
+                      </span>
                       <span className="research-content">
-                  {research?.research_content_isHtml ? (
-                    <span dangerouslySetInnerHTML={{ __html: research.research_content || '' }} />
-                  ) : (
-                    research.research_content
-                  )}
-                </span>
+                        {research?.research_content_isHtml ? (
+                          <span dangerouslySetInnerHTML={{ __html: research.research_content || '' }} />
+                        ) : (
+                          research.research_content
+                        )}
+                      </span>
                     </div>
                     {research.research_achievement && (
                       <div className="section-detail">
-                  <span>
-                    <FormattedMessage id="取得成果" />：
-                  </span>
+                        <span>
+                          <FormattedMessage id="取得成果" />：
+                        </span>
                         <span className="research-achievement">
-                    {research?.research_achievement_isHtml ? (
-                      <span dangerouslySetInnerHTML={{ __html: research.research_achievement || '' }} />
-                    ) : (
-                      research.research_achievement
+                          {research?.research_achievement_isHtml ? (
+                            <span dangerouslySetInnerHTML={{ __html: research.research_achievement || '' }} />
+                          ) : (
+                            research.research_achievement
+                          )}
+                        </span>
+                      </div>
                     )}
+                  </div>
+                ) : null
+              )}
+            </div>
+          </Wrapper>
+        ) : null;
+      default:
+        return null;
+    }
+  };
+
+  // 新增：统一渲染函数，支持所有模块在任意列渲染
+  const renderSection = (key: string) => {
+    switch (key) {
+      case 'educationList':
+        return !(hiddenMap && hiddenMap.educationList) && educationList && educationList.length > 0 ? (
+          <Wrapper
+            title={titleNameMap.educationList}
+            className="section section-education"
+            color={theme.color}
+          >
+            {educationList.map((education, idx) => {
+              const [start, end] = education.edu_time;
+              return (
+                <div key={idx.toString()} className="education-item">
+                  <div>
+                    <span>
+                      <b>
+                        {education?.school_isHtml ? (
+                          <span dangerouslySetInnerHTML={{ __html: education.school || '' }} />
+                        ) : (
+                          education.school
+                        )}
+                      </b>
+                      <span style={{ marginLeft: '8px' }}>
+                        {education.major && (
+                          <>
+                            {education?.major_isHtml ? (
+                              <span dangerouslySetInnerHTML={{ __html: education.major || '' }} />
+                            ) : (
+                              <span>{education.major}</span>
+                            )}
+                          </>
+                        )}
+                        {education.academic_degree && (
+                          <span className="sub-info" style={{ marginLeft: '4px' }}>
+                            {education?.academic_degree_isHtml ? (
+                              <span
+                                dangerouslySetInnerHTML={{
+                                  __html: education.academic_degree || '',
+                                }}
+                              />
+                            ) : (
+                              <>({education.academic_degree})</>
+                            )}
+                          </span>
+                        )}
+                      </span>
+                    </span>
+                    <span className="sub-info" style={{ float: 'right' }}>
+                      {start}
+                      {end ? ` ~ ${end}` : ' 至今'}
+                    </span>
+                  </div>
+                  {education.edu_mainwork && (
+                    <div className="education-description">{education.edu_mainwork}</div>
+                  )}
+                </div>
+              );
+            })}
+          </Wrapper>
+        ) : null;
+      case 'workList':
+        return !(hiddenMap && hiddenMap.workList) && workList && workList.length > 0 ? (
+          <Wrapper title={titleNameMap.workList} className="section section-work" color={theme.color}>
+            {workList.map((work, idx) => {
+              return (
+                <div key={idx.toString()}>
+                  <div>
+                    <CrownFilled style={{ color: '#ffc107', marginRight: '8px' }} />
+                    <b className="info-name">{work.work_name}</b>
+                    {(work as any).visit_link && (
+                      <a className="sub-info" href={(work as any).visit_link}>
+                        <FormattedMessage id="访问链接" />
+                      </a>
+                    )}
+                  </div>
+                  {work.work_desc && <div>{work.work_desc}</div>}
+                </div>
+              );
+            })}
+          </Wrapper>
+        ) : null;
+      case 'aboutme':
+        return !(hiddenMap as any)?.aboutme && aboutme && (
+          Array.isArray(aboutme) ? aboutme.length > 0 : aboutme.aboutme_desc
+        ) ? (
+          <Wrapper title={titleNameMap.aboutme || <FormattedMessage id="自我介绍" />} className="section section-aboutme" color={theme.color}>
+            {Array.isArray(aboutme) ? aboutme.map((d, idx) => (
+              <div key={`${idx}`}>{d}</div>
+            )) : (
+              <div>{aboutme.aboutme_desc}</div>
+            )}
+          </Wrapper>
+        ) : null;
+      case 'skillList':
+        return !(hiddenMap && hiddenMap.skillList) && skillList && skillList.length > 0 ? (
+          <Wrapper title={titleNameMap.skillList} className="section section-skill" color={theme.color}>
+            {skillList.map((skill, idx) => {
+              const skills = _.split(skill.skill_desc, '\n').join('；');
+              return skills ? (
+                <div className="skill-item" key={idx.toString()}>
+                  <span>
+                    <CheckCircleFilled style={{ color: '#ffc107', marginRight: '8px' }} />
+                    {skills}
                   </span>
+                  {skill.skill_level && (
+                    <Rate allowHalf disabled value={skill.skill_level / 20} className="skill-rate" />
+                  )}
+                </div>
+              ) : null;
+            })}
+          </Wrapper>
+        ) : null;
+      case 'awardList':
+        return !(hiddenMap && hiddenMap.awardList) && awardList && awardList.length > 0 ? (
+          <Wrapper title={titleNameMap.awardList} className="section section-award" color={theme.color}>
+            {awardList.map((award, idx) => {
+              return (
+                <div key={idx.toString()}>
+                  <TrophyFilled style={{ color: '#ffc107', marginRight: '8px' }} />
+                  {award?.award_info_isHtml ? (
+                    <span
+                      className="info-name"
+                      dangerouslySetInnerHTML={{ __html: award.award_info || '' }}
+                    />
+                  ) : (
+                    <span className="info-name">{award.award_info}</span>
+                  )}
+                  {award?.award_time_isHtml ? (
+                    <span
+                      className="sub-info award-time"
+                      dangerouslySetInnerHTML={{ __html: award.award_time || '' }}
+                    />
+                  ) : award.award_time ? (
+                    <span className="sub-info award-time">({award.award_time})</span>
+                  ) : null}
+                </div>
+              );
+            })}
+          </Wrapper>
+        ) : null;
+      case 'honorList':
+        return !(hiddenMap && hiddenMap.honorList) && honorList && honorList.length > 0 ? (
+          <Wrapper title={titleNameMap.honorList || "荣誉奖项"} className="experience" color={theme.color}>
+            {honorList.map((honor, idx) => {
+              return (
+                <div key={idx.toString()}>
+                  <TrophyFilled style={{ color: '#ffc107', marginRight: '8px' }} />
+                  {honor?.honor_info_isHtml ? (
+                    <span
+                      className="info-name"
+                      dangerouslySetInnerHTML={{ __html: honor.honor_info || '' }}
+                    />
+                  ) : (
+                    <span className="info-name">{honor.honor_info}</span>
+                  )}
+                  {honor?.honor_time_isHtml ? (
+                    <span
+                      className="sub-info honor-time"
+                      dangerouslySetInnerHTML={{ __html: honor.honor_time || '' }}
+                    />
+                  ) : honor.honor_time ? (
+                    <span className="sub-info honor-time">({honor.honor_time})</span>
+                  ) : null}
+                </div>
+              );
+            })}
+          </Wrapper>
+        ) : null;
+      case 'studentWorkList':
+        return !(hiddenMap && hiddenMap.studentWorkList) && studentWorkList && (
+          Array.isArray(studentWorkList) ? studentWorkList.length > 0 : (studentWorkList as any).student_work_desc
+        ) ? (
+          <Wrapper title={titleNameMap.studentWorkList || "学生工作"} className="experience" color={theme.color}>
+            {Array.isArray(studentWorkList) ? studentWorkList.map((work, idx) => {
+              return (
+                <div key={idx.toString()}>
+                  <div>
+                    <CrownFilled style={{ color: '#ffc107', marginRight: '8px' }} />
+                    <b className="info-name">{work.student_work_name}</b>
+                  </div>
+                  {work.student_work_desc && <div>{work.student_work_desc}</div>}
+                </div>
+              );
+            }) : (
+              <div>
+                {(studentWorkList as any).student_work_desc_isHtml ? (
+                  <span dangerouslySetInnerHTML={{ __html: (studentWorkList as any).student_work_desc || '' }} />
+                ) : (
+                  <span>{(studentWorkList as any).student_work_desc}</span>
+                )}
+              </div>
+            )}
+          </Wrapper>
+        ) : null;
+      case 'workExpList':
+        return !(hiddenMap && hiddenMap.workExpList) && workExpList && workExpList.length > 0 ? (
+          <Wrapper title={titleNameMap.workExpList} className="experience" color={theme.color}>
+            <div className="section section-work-exp">
+              {_.map(workExpList, (work, idx) => {
+                const [start = null, end = null] =
+                  typeof work.work_time === 'string' ? `${work.work_time || ''}`.split(',') : work.work_time;
+                return work ? (
+                  <div className="section-item" key={idx.toString()}>
+                    <div className="section-info">
+                      <b className="info-name">
+                        {work.company_name}
+                        <span className="sub-info">{work.department_name}</span>
+                      </b>
+                      <span className="info-time">
+                        {start}
+                        {end ? ` ~ ${end}` : <FormattedMessage id=" 至今" />}
+                      </span>
+                    </div>
+                    <div className="work-description">{work.work_desc}</div>
+                  </div>
+                ) : null;
+              })}
+            </div>
+          </Wrapper>
+        ) : null;
+      case 'projectList':
+        return !(hiddenMap && hiddenMap.projectList) && projectList && projectList.length > 0 ? (
+          <Wrapper title={titleNameMap.projectList} className="skill" color={theme.color}>
+            <div className="section section-project">
+              {_.map(projectList, (project, idx) =>
+                project ? (
+                  <div className="section-item" key={idx.toString()}>
+                    <div className="section-info">
+                      <b className="info-name">
+                        {project.project_name}
+                        <span className="info-time">{project.project_time}</span>
+                      </b>
+                      {project.project_role && <Tag color={theme.tagColor}>{project.project_role}</Tag>}
+                    </div>
+                    <div className="section-detail">
+                      <span>
+                        <FormattedMessage id="项目描述" />：
+                      </span>
+                      <span>{project.project_desc}</span>
+                    </div>
+                    <div className="section-detail">
+                      <span>
+                        <FormattedMessage id="主要工作" />：
+                      </span>
+                      <span className="project-content">{project.project_content}</span>
+                    </div>
+                    {project.project_tech_stack && (
+                      <div className="section-detail">
+                        <span>
+                          <FormattedMessage id="技术栈" />：
+                        </span>
+                        <span className="project-tech-stack">
+                          {project.project_tech_stack_isHtml ? (
+                            <span dangerouslySetInnerHTML={{ __html: project.project_tech_stack || '' }} />
+                          ) : (
+                            project.project_tech_stack
+                          )}
+                        </span>
+                      </div>
+                    )}
+                    {project.project_achievement && (
+                      <div className="section-detail">
+                        <span>
+                          <FormattedMessage id="取得成果" />：
+                        </span>
+                        <span className="project-achievement">
+                          {project.project_achievement_isHtml ? (
+                            <span dangerouslySetInnerHTML={{ __html: project.project_achievement || '' }} />
+                          ) : (
+                            project.project_achievement
+                          )}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                ) : null
+              )}
+            </div>
+          </Wrapper>
+        ) : null;
+      case 'researchList':
+        return !(hiddenMap && hiddenMap.researchList) && researchList && researchList.length > 0 ? (
+          <Wrapper title={titleNameMap?.researchList || "科研经历"} className="experience" color={theme.color}>
+            <div className="section section-research">
+              {_.map(researchList, (research, idx) =>
+                research ? (
+                  <div className="section-item" key={idx.toString()}>
+                    <div className="section-info">
+                      <b className="info-name">
+                        {research?.research_name_isHtml ? (
+                          <span dangerouslySetInnerHTML={{ __html: research.research_name || '' }} />
+                        ) : (
+                          research.research_name
+                        )}
+                        <span className="info-time">
+                          {research?.research_time_isHtml ? (
+                            <span dangerouslySetInnerHTML={{ __html: research.research_time || '' }} />
+                          ) : (
+                            research.research_time
+                          )}
+                        </span>
+                      </b>
+                      {research.research_role && (
+                        <Tag color={theme.tagColor}>
+                          {research?.research_role_isHtml ? (
+                            <span dangerouslySetInnerHTML={{ __html: research.research_role || '' }} />
+                          ) : (
+                            research.research_role
+                          )}
+                        </Tag>
+                      )}
+                    </div>
+                    <div className="section-detail">
+                      <span>
+                        <FormattedMessage id="项目概述" />：
+                      </span>
+                      <span>
+                        {research?.research_desc_isHtml ? (
+                          <span dangerouslySetInnerHTML={{ __html: research.research_desc || '' }} />
+                        ) : (
+                          research.research_desc
+                        )}
+                      </span>
+                    </div>
+                    <div className="section-detail">
+                      <span>
+                        <FormattedMessage id="本人工作" />：
+                      </span>
+                      <span className="research-content">
+                        {research?.research_content_isHtml ? (
+                          <span dangerouslySetInnerHTML={{ __html: research.research_content || '' }} />
+                        ) : (
+                          research.research_content
+                        )}
+                      </span>
+                    </div>
+                    {research.research_achievement && (
+                      <div className="section-detail">
+                        <span>
+                          <FormattedMessage id="取得成果" />：
+                        </span>
+                        <span className="research-achievement">
+                          {research?.research_achievement_isHtml ? (
+                            <span dangerouslySetInnerHTML={{ __html: research.research_achievement || '' }} />
+                          ) : (
+                            research.research_achievement
+                          )}
+                        </span>
                       </div>
                     )}
                   </div>
@@ -466,7 +753,7 @@ export const Template2: React.FC<Props> = props => {
   return (
     <div className="template2-resume resume-content">
       <div className="basic-info">
-        {/* 添加条件渲染 */}
+        {/* 头像 + 个人信息 */}
         {!hiddenMap?.profile && (
           <div className="profile">
             {/* 头像 + 个人信息，这部分保持不参与模块排序 */}
@@ -539,13 +826,13 @@ export const Template2: React.FC<Props> = props => {
           </div>
         )}
 
-        {/* 左侧区域按排序渲染 */}
-        {orderBasic.map(key => renderBasicSection(key))}
+        {/* 左侧区域按排序渲染（使用通用渲染函数） */}
+        {orderBasic.map(key => renderSection(key))}
       </div>
 
       <div className="main-info">
-        {/* 右侧区域按排序渲染 */}
-        {orderMain.map(key => renderMainSection(key))}
+        {/* 右侧区域按排序渲染（使用通用渲染函数） */}
+        {orderMain.map(key => renderSection(key))}
       </div>
     </div>
   );
