@@ -348,6 +348,34 @@ export const Template2: React.FC<Props> = props => {
                       </span>
                       <span className="project-content">{project.project_content}</span>
                     </div>
+                    {project.project_tech_stack && (
+                      <div className="section-detail">
+                        <span>
+                          <FormattedMessage id="技术栈" />：
+                        </span>
+                        <span className="project-tech-stack">
+                          {project.project_tech_stack_isHtml ? (
+                            <span dangerouslySetInnerHTML={{ __html: project.project_tech_stack || '' }} />
+                          ) : (
+                            project.project_tech_stack
+                          )}
+                        </span>
+                      </div>
+                    )}
+                    {project.project_achievement && (
+                      <div className="section-detail">
+                        <span>
+                          <FormattedMessage id="取得成果" />：
+                        </span>
+                        <span className="project-achievement">
+                          {project.project_achievement_isHtml ? (
+                            <span dangerouslySetInnerHTML={{ __html: project.project_achievement || '' }} />
+                          ) : (
+                            project.project_achievement
+                          )}
+                        </span>
+                      </div>
+                    )}
                   </div>
                 ) : null
               )}

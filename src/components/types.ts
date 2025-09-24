@@ -108,12 +108,19 @@ export type ResumeConfig = {
     /** 项目时间 */
     project_time?: string;
 
+    /** 技术栈 */
+    project_tech_stack?: string;
+    /** 取得成果 */
+    project_achievement?: string;
+
     /** HTML 模式开关 */
     project_name_isHtml?: boolean;
     project_role_isHtml?: boolean;
     project_desc_isHtml?: boolean;
     project_content_isHtml?: boolean;
     project_time_isHtml?: boolean;
+    project_tech_stack_isHtml?: boolean;
+    project_achievement_isHtml?: boolean;
   }>;
 
   /** 科研经历 */

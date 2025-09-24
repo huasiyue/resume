@@ -261,6 +261,32 @@ export const CONTENT_OF_MODULE = ({ intl }) => {
         displayName: intl.formatMessage({ id: 'HTML模式' }),
         formItemProps: { valuePropName: 'checked' },
       },
+      {
+        type: 'textArea',
+        attributeId: 'project_tech_stack',
+        displayName: intl.formatMessage({ id: '技术栈' }),
+        cfg: { autoSize: { minRows: 4 }, showCount: true },
+        formItemProps: { style: { marginTop: 25 } },
+      },
+      {
+        type: 'checkbox',
+        attributeId: 'project_tech_stack_isHtml',
+        displayName: intl.formatMessage({ id: 'HTML模式' }),
+        formItemProps: { valuePropName: 'checked' },
+      },
+      {
+        type: 'textArea',
+        attributeId: 'project_achievement',
+        displayName: intl.formatMessage({ id: '取得成果' }),
+        cfg: { autoSize: { minRows: 4 }, showCount: true },
+        formItemProps: { style: { marginTop: 25 } },
+      },
+      {
+        type: 'checkbox',
+        attributeId: 'project_achievement_isHtml',
+        displayName: intl.formatMessage({ id: 'HTML模式' }),
+        formItemProps: { valuePropName: 'checked' },
+      },
     ],
     workExpList: [
       {

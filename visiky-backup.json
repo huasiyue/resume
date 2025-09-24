@@ -50,24 +50,6 @@
         null
       ],
       "work_desc": "1. 担任蚂蚁高管决策和管理协同产品 “数据作战室” 的前端负责人\r\n2. 负责蚂蚁敏捷 BI 产品 “DeepInsight” 的可视分析模块产品能力建设\n3. 数据可视化 AntV 团队核心成员，负责 G2、G2Plot 开源技术的建设"
-    },
-    {
-      "company_name": "蚂蚁金服",
-      "department_name": "大数据部",
-      "work_time": [
-        "2017.06",
-        "2017.12"
-      ],
-      "work_desc": "前端实习生。使用 React 参与开发多类产品：数据研发平台、数据决策平台、数据分析平台的研发工作，同时也参与大型 BI 产品的重构工作，有良好的编码习惯。"
-    },
-    {
-      "company_name": "数沃信息科技有限公司",
-      "department_name": "",
-      "work_time": [
-        "2017.03",
-        "2017.05"
-      ],
-      "work_desc": "前端实习生。使用 Vue 来实现平台功能和逻辑，再用 ECharts 来对数据挖掘分析后的可视化结果进行展示"
     }
   ],
   "skillList": [
@@ -93,25 +75,22 @@
   ],
   "projectList": [
     {
-      "project_name": "数据作战室",
-      "project_role": "前端负责人",
-      "project_time": "2019.04 - 2020.06",
-      "project_desc": "面向总裁和高管以及决策 BI 的数字化经营决策和管理协同产品。提供一站式的数据化经营决策和管理协同功能，让高管高效获取决策信息，并提升管理效率。",
-      "project_content": "1. 项目从0到1的框架设计和开发 2. 产品体验精雕细琢的打磨 3. 建立稳定性保障机制。目前仍在迭代中，帮助提升高管业务决策效率"
+      "project_name": "实验室情报管理中心（LabIC）",
+      "project_role": "Project Manager & Developer",
+      "project_time": "2014.12 - 2025.04",
+      "project_desc": "",
+      "project_content": "",
+      "dataIndex": 0,
+      "project_tech_stack": "1",
+      "project_achievement": "1"
     },
     {
-      "project_name": "DeepInsight",
-      "project_role": "可视分析负责人",
-      "project_time": "2018.07 - 2019.04 / 2020.07 - 至今",
-      "project_desc": "DeepInsight 是蚂蚁集团自主研发的自助式 BI 数据洞察分析平台，面向企业分析人员、业务人员和开发人员，帮助蚂蚁集团实现精细化运营。",
-      "project_content": "BI 平台工具核心部分是报表制作，也就是通过数据连接、可视化配置形成图表物料之后，通过拖拽方式进行页面编排，最终形成报表页面进行发布的过程。\n1. 主导开放能力建设，拉通产品、设计建设和扩展可视化图形，提升丰富度\n2. 产品体验优化，尤其是对 ECharts 的体验顽疾进行攻克\n3. 主导可视化能力建设：业务标准化图表库建设(通用组件设计和开发经验丰富)、促进数据分析能力增强等可视化一体化建设"
-    },
-    {
-      "project_name": "G2、G2Plot",
-      "project_role": "核心开发者",
-      "project_time": "2019 - 至今",
-      "project_desc": "G2 是基于图形语法理论的可视化渲染引擎，G2Plot 是在 G2 基础上封装的开箱即用的统计可视化图表库",
-      "project_content": "AntV 可视化建设，赋能整个蚂蚁和阿里集团统计可视化分析相关业务。负责 AntV 系列: AntV 官网、G 渲染引擎、 G2、G2Plot、ThemeSet 主题构建器等开源项目的研发工作。"
+      "project_time": "2024.10 - 2024.11",
+      "project_name": "代谢性疾病控制中心项目（MDCC）",
+      "project_role": "Developer",
+      "project_desc": "项目面向本地医院代谢性疾病管理需求，目标是构建“私有化部署+数据自主管控”的诊疗管理系统。项目涵盖系统架构设计、数据标准化处理、HIS对接、随访与质控模块研发，实现患者诊疗、随访、科研数据的本地化闭环管理，解决医院数据依赖外部平台和科研数据受限等核心痛点。",
+      "project_content": "参与系统需求分析与核心功能设计，负责数据库建模与本地化存储方案设计；实现HIS数据导入与批量处理流程，支持患者、医师等基础信息高效录入；并协助测试与文档整理，保障系统落地。",
+      "dataIndex": 1
     }
   ],
   "workList": [
@@ -130,24 +109,89 @@
   "moduleHiddenMap": {
     "avatar": false,
     "profile": false,
-    "aboutme": false,
+    "aboutme": true,
     "educationList": false,
-    "awardList": false,
+    "awardList": true,
     "workList": true,
     "skillList": true,
-    "workExpList": false,
-    "projectList": false
+    "workExpList": true,
+    "projectList": false,
+    "researchList": false,
+    "honorList": true,
+    "studentWorkList": true
   },
   "moduleOrderBasic": [
     "educationList",
     "workList",
     "aboutme",
     "skillList",
-    "awardList"
+    "awardList",
+    "honorList",
+    "studentWorkList"
   ],
   "moduleOrderMain": [
-    "workExpList",
-    "projectList"
+    "researchList",
+    "projectList",
+    "workExpList"
+  ],
+  "researchList": [
+    {
+      "research_time": "2024.09 - 2025.04",
+      "research_name": "山东第一医科大学质谱大数据实验室  算法研发方向",
+      "research_role": "主要负责人",
+      "research_desc": "1",
+      "research_content": "1",
+      "dataIndex": 0,
+      "research_achievement": "1"
+    },
+    {
+      "research_time": "2024.07 - 2024.08",
+      "research_name": "山东第一医科大学质谱大数据实验室 · 伪肽段生成算法研发项目",
+      "research_role": "主要负责人",
+      "research_desc": "项目聚焦计算蛋白质组学中肽段真、假二分类任务，提出伪肽段生成方法以扩充负样本，缓解训练数据不平衡问题。通过氨基酸序列随机打乱、拼接与优化筛选，获得高质量假肽段，提升模型对真肽段的识别能力，为质谱数据分析提供算法支持。",
+      "research_content": "负责伪肽段生成算法设计与实现，包括氨基酸序列打乱、拼接及最优筛选；参与不同生成策略比较与算法优化，推动其在模型训练中的应用，提升真肽段预测准确性。",
+      "research_achievement": "<span style=\"background: #ffebee; color: #b71c1c; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;\">\n    山东第一医科大学 - 优秀实习生\n</span>",
+      "research_achievement_isHtml": true,
+      "dataIndex": 1
+    },
+    {
+      "research_time": "2023.12 - 2023.05",
+      "research_name": "山东第一医科大学质谱大数据实验室 · 面向仪器差异校正的深度学习谱图迁移方法",
+      "research_role": "核心成员",
+      "research_desc": "项目面向质谱大数据中“跨仪器谱图差异”问题，提出基于深度学习的谱图迁移方法，实现由一种仪器测得的LC-MS/MS谱图预测另一仪器下的结果。项目构建标准化预处理流程与多源数据集，开发跨仪器谱图预测模型并建立评估体系，有效提升谱库覆盖率和跨平台兼容性，为仅有单台质谱仪的实验室提供可行方案。",
+      "research_desc_isHtml": false,
+      "research_content": "负责数据集收集与预处理算法设计，完成复杂谱图数据向量化处理；搭建基于DNN的跨仪器谱图预测模型，进行参数调优，并开展相似度评估与结果验证。",
+      "research_content_isHtml": false,
+      "research_achievement": "<span style=\"background: #f3e5f5; color: #7b1fa2; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;\">\n  项目推进未达预期，留有遗憾\n</span>",
+      "research_achievement_isHtml": true,
+      "dataIndex": 2
+    },
+    {
+      "research_time": "2023.2 - 2023.10",
+      "research_name": "山东第一医科大学医学人工智能与大数据实验室 · 抑郁症检测方向",
+      "research_role": "核心成员",
+      "research_desc": "本研究基于Reddit平台的大规模社交媒体文本数据，构建了一个融合多任务学习框架与多层次情绪标签注意力机制的深度学习模型。通过采用GloVe词嵌入技术对文本进行语义表示，并结合注意力机制增强对关键语义特征的捕捉能力，实现了对用户抑郁倾向的自动化检测与分析。项目重点探讨了不同数据规模下多种机器学习算法的性能表现，为抑郁倾向的早期筛查提供了有效的技术解决方案。",
+      "research_desc_isHtml": false,
+      "research_content": "负责完整的数据预处理流程，包括文本清洗、Spacy分词和动态词汇表构建；实现GloVe词嵌入表示和注意力机制；设计并完成了CNN、RNN、Transformer等多种模型的训练与对比实验；分析了数据量对模型泛化能力的影响，撰写了实验报告和论文初稿。",
+      "research_content_isHtml": false,
+      "dataIndex": 2,
+      "research_achievement": "  <span style=\"background: #e3f2fd; color: #1976d2; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;\">\n    论文1篇投稿中\n  </span>\n  <span style=\"background: #e8f5e9; color: #388e3c; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;\">\n    软著1项\n  </span>\n  <span style=\"background: #fff3e0; color: #f57c00; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;\">\n    全国大学生计算机设计大赛山东省一等奖\n  </span>",
+      "research_achievement_isHtml": true
+    }
+  ],
+  "honorList": [
+    {
+      "honor_info": "1",
+      "honor_time": "1"
+    }
+  ],
+  "studentWorkList": [
+    {
+      "student_work_name": "1",
+      "student_work_desc": "1",
+      "visit_link": "",
+      "dataIndex": 0
+    }
   ],
   "theme": {
     "color": "#2f5785",

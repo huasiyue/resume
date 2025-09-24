@@ -118,13 +118,24 @@ export const RESUME_INFO: ResumeConfig = {
   ],
   projectList: [
     {
-      project_name: '数据作战室',
-      project_role: '前端负责人',
-      project_time: '2019.04 - 2020.06',
+      project_name: '实验室情报管理中心（LabIC）',
+      project_role: 'Project Manager & Developer',
+      project_time: '2014.12 - 2025.04',
+      project_desc: '',
+      project_content: '',
+      // project_tech_stack: '', // 留空则不显示
+      // project_achievement: '', // 留空则不显示
+    },
+    {
+      project_name: '代谢性疾病控制中心项目（MDCC）',
+      project_role: 'Developer',
+      project_time: '2024.10 - 2024.11',
       project_desc:
-        '面向总裁和高管以及决策 BI 的数字化经营决策和管理协同产品。提供一站式的数据化经营决策和管理协同功能，让高管高效获取决策信息，并提升管理效率。',
+        '项目面向本地医院代谢性疾病管理需求，目标是构建“私有化部署+数据自主管控”的诊疗管理系统。项目涵盖系统架构设计、数据标准化处理、HIS 对接、随访与质控模块研发，实现患者诊疗、随访、科研数据的本地化闭环管理，解决医院数据依赖外部平台和科研数据受限等核心痛点。',
       project_content:
-        '1. 项目从0到1的框架设计和开发 2. 产品体验精雕细琢的打磨 3. 建立稳定性保障机制。目前仍在迭代中，帮助提升高管业务决策效率',
+        '参与系统需求分析与核心功能设计；负责数据库建模与本地化存储方案设计；实现 HIS 数据导入与批量处理流程，支持患者、医师等基础信息高效录入；协助测试与文档整理，保障系统落地。',
+      // project_tech_stack: '', // 你补充后会显示
+      // project_achievement: '', // 你补充后会显示
     },
     {
       project_name: 'DeepInsight',
