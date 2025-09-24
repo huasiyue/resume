@@ -22,8 +22,8 @@
     "workPlace": "",
     "positionTitle": ""
   },
-  "educationList": [
-    {
+  "educationList": {
+    "0": {
       "edu_time": [
         "2022.08.29",
         "2026.06.30"
@@ -32,8 +32,15 @@
       "major": "计算机科学与技术",
       "academic_degree": "本科",
       "dataIndex": 0
-    }
-  ],
+    },
+    "edu_time": [
+      "12"
+    ],
+    "major": "2313",
+    "school": "2",
+    "education_desc": "<div style=\"font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Microsoft Yahei', 'PingFang SC', 'Hiragino Sans GB'; font-size:12px; color:#222; line-height:1.4; max-width:100%;\">\n  <ul style=\"list-style:none; padding:6px 8px; margin:0;\">\n\n    <!-- 学校 + 专业 + 时间 -->\n    <li style=\"display:flex; justify-content:space-between; padding:4px 0; border-bottom:1px solid rgba(0,0,0,0.06);\">\n      <div style=\"flex:1; min-width:0; overflow:hidden;\">\n        <span style=\"font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">\n          山东第一医科大学 计算机科学与技术专业（本科）\n        </span>\n      </div>\n      <div style=\"flex:0 0 auto; text-align:right; font-size:11px; color:#666; white-space:nowrap; margin-left:8px;\">\n        2022.09 - 2026.06\n      </div>\n    </li>\n\n    <!-- GPA + 排名 -->\n    <li style=\"display:flex; justify-content:flex-start; gap:16px; padding:4px 0;\">\n      <span style=\"font-size:11px; color:#555;\">GPA 3.9 / 5.0</span>\n      <span style=\"font-size:11px; color:#555;\">专业排名 1 / 48（2%）</span>\n      <span style=\"font-size:11px; color:#555;\">综测排名 1 / 48（2%）</span>\n    </li>\n\n  </ul>\n</div>\n",
+    "education_desc_isHtml": true
+  },
   "awardList": [
     {
       "award_info": "国家奖学金",
@@ -101,23 +108,23 @@
   },
   "moduleOrderBasic": [
     "aboutme",
-    "skillList",
     "awardList",
-    "researchList",
     "educationList",
     "workList",
+    "workExpList",
+    "researchList",
     "projectList",
-    "workExpList"
+    "skillList"
   ],
   "moduleOrderMain": [
-    "honorList",
-    "studentWorkList"
+    "studentWorkList",
+    "honorList"
   ],
   "researchList": [
     {
       "research_time": "2024.09 - 2025.04",
       "research_name": "山东第一医科大学质谱大数据实验室  算法研发方向",
-      "research_role": "主要负责人",
+      "research_role": "核心成员",
       "research_desc": "1",
       "research_content": "1",
       "dataIndex": 0,
@@ -158,17 +165,21 @@
       "research_achievement_isHtml": true
     }
   ],
-  "honorList": [
-    {
+  "honorList": {
+    "0": {
       "honor_info": "国家奖学金",
       "honor_time": "2024",
       "dataIndex": 0
     },
-    {
+    "1": {
       "honor_info": "校级优秀学生标兵",
       "honor_time": "2024"
-    }
-  ],
+    },
+    "honor_desc": "<div style=\"font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Microsoft Yahei', 'PingFang SC', 'Hiragino Sans GB'; font-size:12px; color:#222; line-height:1.4; max-width:100%;\">\n  <ul style=\"list-style:none; padding:6px 8px; margin:0; display:grid; grid-template-columns:repeat(3, 1fr); gap:4px 12px;\">\n\n    <li style=\"display:flex; justify-content:space-between; padding:2px 0;\">\n      <span style=\"font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">校级优秀学生</span>\n      <span style=\"font-size:11px; color:#666; margin-left:6px; white-space:nowrap;\">2022-2023</span>\n    </li>\n\n    <li style=\"display:flex; justify-content:space-between; padding:2px 0;\">\n      <span style=\"font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">校级优秀团员</span>\n      <span style=\"font-size:11px; color:#666; margin-left:6px; white-space:nowrap;\">2023-2024</span>\n    </li>\n\n    <li style=\"display:flex; justify-content:space-between; padding:2px 0;\">\n      <span style=\"font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">校级优秀学生标兵（全校仅40余人）</span>\n      <span style=\"font-size:11px; color:#666; margin-left:6px; white-space:nowrap;\">2023-2024</span>\n    </li>\n\n    <li style=\"display:flex; justify-content:space-between; padding:2px 0;\">\n      <span style=\"font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">校级一等奖学金</span>\n      <span style=\"font-size:11px; color:#666; margin-left:6px; white-space:nowrap;\">2022-2023</span>\n    </li>\n\n    <li style=\"display:flex; justify-content:space-between; padding:2px 0;\">\n      <span style=\"font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">校级一等奖学金</span>\n      <span style=\"font-size:11px; color:#666; margin-left:6px; white-space:nowrap;\">2023-2024</span>\n    </li>\n\n    <li style=\"display:flex; justify-content:space-between; padding:2px 0;\">\n      <span style=\"font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">山东省政府奖学金</span>\n      <span style=\"font-size:11px; color:#666; margin-left:6px; white-space:nowrap;\">2022-2023</span>\n    </li>\n\n    <li style=\"display:flex; justify-content:space-between; padding:2px 0;\">\n      <span style=\"font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">国家奖学金</span>\n      <span style=\"font-size:11px; color:#666; margin-left:6px; white-space:nowrap;\">2023-2024</span>\n    </li>\n  </ul>\n</div>",
+    "honor_info": "123",
+    "honor_time": "123",
+    "honor_desc_isHtml": true
+  },
   "studentWorkList": {
     "0": {
       "student_work_name": "1",

@@ -9,7 +9,7 @@ import {
   ProjectTwoTone,
   ToolTwoTone,
   ScheduleTwoTone,
-  ExperimentOutlined,
+  ExperimentTwoTone,
   TrophyOutlined,
   TeamOutlined,
 } from '@ant-design/icons';
@@ -72,19 +72,19 @@ export const MODULES = ({
     {
       key: 'researchList',
       name: titleNameMap?.researchList || intl.formatMessage({ id: '科研经历' }),
-      icon: <ExperimentOutlined />,
+      icon: <ExperimentTwoTone />,
     },
     // 添加荣誉奖项
     {
       key: 'honorList',
       name: titleNameMap?.honorList || intl.formatMessage({ id: '荣誉奖项' }),
-      icon: <TrophyOutlined />,
+      icon: <TrophyTwoTone />,
     },
     // 添加学生工作
     {
       key: 'studentWorkList',
       name: titleNameMap?.studentWorkList || intl.formatMessage({ id: '学生工作' }),
-      icon: <TeamOutlined />,
+      icon: <ContactsTwoTone />,
     },
     {
       name: intl.formatMessage({ id: '项目经历' }),
