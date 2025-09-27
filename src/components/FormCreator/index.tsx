@@ -66,9 +66,15 @@ export const FormCreator: React.FC<Props> = props => {
     }
     props.onChange(values);
   };
-  const formProps = {
-    [props.isList ? 'onFinish' : 'onValuesChange']: handleChange,
+
+  // 修复：onValuesChange 需要传递 allValues，而不是仅 changedValues
+  const handleValuesChange = (_changedValues: any, allValues: any) => {
+    handleChange(allValues);
   };
+
+  const formProps = props.isList
+    ? { onFinish: handleChange }
+    : { onValuesChange: handleValuesChange };
 
   return (
     <div>

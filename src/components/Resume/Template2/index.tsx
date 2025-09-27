@@ -430,12 +430,12 @@ export const Template2: React.FC<Props> = props => {
             </Wrapper>
           ) : null;
       case 'awardList':
-        return !(hiddenMap && hiddenMap.awardList) && (awardList as any)?.award_desc ? (
+        return !(hiddenMap && hiddenMap.awardList) && (awardList as any) ? (
           <Wrapper title={titleNameMap.awardList || <FormattedMessage id="更多信息" />} className="section section-award" color={theme.color}>
             {(awardList as any)?.award_desc_isHtml ? (
               <div dangerouslySetInnerHTML={{ __html: (awardList as any).award_desc || '' }} />
             ) : (
-              <div>{(awardList as any).award_desc}</div>
+              <div>{(awardList as any)?.award_desc || ''}</div>
             )}
           </Wrapper>
         ) : null;

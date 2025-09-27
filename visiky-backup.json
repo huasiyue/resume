@@ -34,20 +34,10 @@
   "awardList": {
     "award_desc": ""
   },
-  "workExpList": [
-    {
-      "company_name": "蚂蚁集团",
-      "department_name": "体验技术部",
-      "work_time": [
-        "2018.06",
-        null
-      ],
-      "work_desc": "1. 担任蚂蚁高管决策和管理协同产品 “数据作战室” 的前端负责人\r\n2. 负责蚂蚁敏捷 BI 产品 “DeepInsight” 的可视分析模块产品能力建设\n3. 数据可视化 AntV 团队核心成员，负责 G2、G2Plot 开源技术的建设"
-    }
-  ],
+  "workExpList": [],
   "skillList": {
-    "skill_desc_isHtml": true,
-    "skill_desc": "<ul>\n    <li><strong>编程语言：</strong> Java、Python、C++、C、C#</li>\n    <li><strong>框架与工具：</strong> Spring Boot、React、Ant Design、MongoDB、Redis、Docker、Postman、LaTeX、Zotero</li>\n    <li><strong>开发环境：</strong> MacOS、Windows、CentOS、Chrome、VS Code、IntelliJ IDEA、PyCharm</li>\n    <li><strong>算法与模型：</strong> 数据结构与算法、机器学习、深度学习（CNN、RNN、Transformer）、自然语言处理（Word2Vec、GloVe、文本挖掘）</li>\n    <li><strong>科研与数据处理：</strong> PyTorch、Scikit-learn、Spacy、Pandas、LC-MS/MS 数据分析</li>\n    <li><strong>语言能力：</strong> 英语（CET-6，000分，听说读写流利）</li>\n  </ul>"
+    "skill_desc": "<ul> <li><strong>编程语言 & 框架：</strong> Java、Python、C++、C、C#、Spring Boot、React、Ant Design、MongoDB、Redis、Docker</li> <li><strong>算法 & 模型：</strong> 数据结构与算法、机器学习、深度学习（CNN、RNN、Transformer）、自然语言处理（Word2Vec、GloVe、文本挖掘）</li> <li><strong>数据处理 & 科研工具：</strong> PyTorch、TensorFlow、Scikit-learn、Spacy、Pandas、LC-MS/MS 数据分析、LaTeX</li> <li><strong>语言能力：</strong> 英语（CET-6（000分），听说读写流利）</li> </ul>\n\n怎么有bug。选了html，他还这样显示",
+    "skill_desc_isHtml": true
   },
   "projectList": [
     {
@@ -86,7 +76,7 @@
     "profile": false,
     "aboutme": false,
     "educationList": false,
-    "awardList": false,
+    "awardList": true,
     "workList": false,
     "skillList": false,
     "workExpList": false,
