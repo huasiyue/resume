@@ -335,88 +335,18 @@ export const CONTENT_OF_MODULE = ({ intl }) => {
     ],
     awardList: [
       {
-        type: 'input',
-        attributeId: 'award_info',
+        type: 'textArea',
+        attributeId: 'award_desc',
         displayName: intl.formatMessage({ id: '更多信息' }),
-        formItemProps: { rules: [{ required: true }] },
+        cfg: { autoSize: { minRows: 4 }, showCount: true },
       },
       {
         type: 'checkbox',
-        attributeId: 'award_info_isHtml',
-        displayName: intl.formatMessage({ id: 'HTML模式' }),
-        formItemProps: { valuePropName: 'checked' },
-      },
-      {
-        type: 'input',
-        attributeId: 'award_time',
-        displayName: intl.formatMessage({ id: '时间' }),
-      },
-      {
-        type: 'checkbox',
-        attributeId: 'award_time_isHtml',
+        attributeId: 'award_desc_isHtml',
         displayName: intl.formatMessage({ id: 'HTML模式' }),
         formItemProps: { valuePropName: 'checked' },
       },
     ],
-    // 添加科研经历表单定义
-    researchList: [
-      {
-        type: 'input',
-        attributeId: 'research_time',
-        displayName: intl.formatMessage({ id: '研究时间' }),
-        formItemProps: { rules: [{ required: true }] },
-      },
-      {
-        type: 'input',
-        attributeId: 'research_name',
-        displayName: intl.formatMessage({ id: '科研项目名称' }),
-        formItemProps: { rules: [{ required: true }] },
-      },
-      {
-        type: 'input',
-        attributeId: 'research_role',
-        displayName: intl.formatMessage({ id: '担任角色' }),
-      },
-      {
-        type: 'textArea',
-        attributeId: 'research_desc',
-        displayName: intl.formatMessage({ id: '研究描述' }),
-        cfg: { autoSize: { minRows: 6 }, showCount: true },
-      },
-      {
-        type: 'checkbox',
-        attributeId: 'research_desc_isHtml',
-        displayName: intl.formatMessage({ id: 'HTML模式' }),
-        formItemProps: { valuePropName: 'checked' },
-      },
-      {
-        type: 'textArea',
-        attributeId: 'research_content',
-        displayName: intl.formatMessage({ id: '主要工作' }),
-        cfg: { autoSize: { minRows: 6 }, showCount: true },
-        formItemProps: { style: { marginTop: 25 } },
-      },
-      {
-        type: 'checkbox',
-        attributeId: 'research_content_isHtml',
-        displayName: intl.formatMessage({ id: 'HTML模式' }),
-        formItemProps: { valuePropName: 'checked' },
-      },
-      {
-        type: 'textArea',
-        attributeId: 'research_achievement',
-        displayName: intl.formatMessage({ id: '取得成果' }),
-        cfg: { autoSize: { minRows: 6 }, showCount: true },
-        formItemProps: { style: { marginTop: 25 } },
-      },
-      {
-        type: 'checkbox',
-        attributeId: 'research_achievement_isHtml',
-        displayName: intl.formatMessage({ id: 'HTML模式' }),
-        formItemProps: { valuePropName: 'checked' },
-      },
-    ],
-
     // 添加荣誉奖项表单定义
     honorList: [
       {

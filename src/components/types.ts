@@ -148,15 +148,11 @@ export type ResumeConfig = {
     /** HTML 模式开关 */
     skill_desc_isHtml?: boolean;
   };
-  /** 更多信息 */
-  awardList?: Array<{
-    // 奖项
-    award_info: string;
-    award_time?: string;
-    /** HTML 模式开关 */
-    award_info_isHtml?: boolean;
-    award_time_isHtml?: boolean;
-  }>;
+  /** 更多信息：单文本模式 */
+  awardList?: {
+      award_desc?: string;
+      award_desc_isHtml?: boolean;
+  };
 
   /** 荣誉奖项 */
   honorList?: {
@@ -178,24 +174,11 @@ export type ResumeConfig = {
   }>;
 
   /** 学生工作 */
-  studentWorkList?: 
-    | Array<{
-        student_work_name?: string;
-        student_work_desc?: string;
-        visit_link?: string;
-
-        /** HTML 模式开关 */
-        student_work_name_isHtml?: boolean;
-        student_work_desc_isHtml?: boolean;
-        visit_link_isHtml?: boolean;
-      }>
-    | {
-        student_work_desc?: string;
-        /** HTML 模式开关 */
-        student_work_desc_isHtml?: boolean;
-      };
-
-
+  studentWorkList?: {
+    student_work_desc?: string;
+    /** HTML 模式开关 */
+    student_work_desc_isHtml?: boolean;
+  };
   /** 自我介绍 */
   aboutme?: {
     aboutme_desc: string;

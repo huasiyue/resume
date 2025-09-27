@@ -95,13 +95,25 @@ export const Drawer: React.FC<Props> = props => {
    */
   const updateContent = useThrottle(
     v => {
-      const newConfig = _.merge({}, currentContent, v);
+      // 非列表模块采用“直接覆盖”保存，避免 merge 造成结构异常
+      const isPlainOverride =
+        childrenDrawer === 'awardList' ||
+        childrenDrawer === 'skillList' ||
+        childrenDrawer === 'aboutme' ||
+        childrenDrawer === 'educationList' ||
+        childrenDrawer === 'honorList' ||
+        childrenDrawer === 'studentWorkList';
+
+      const newConfig = isPlainOverride
+        ? v
+        : _.merge({}, currentContent, v);
+
       updateCurrentContent(newConfig);
       props.onValueChange({
         [childrenDrawer]: newConfig,
       });
     },
-    [currentContent],
+    [currentContent, childrenDrawer],
     800
   );
 
@@ -138,6 +150,7 @@ export const Drawer: React.FC<Props> = props => {
     childrenDrawer !== 'honorList' &&
     childrenDrawer !== 'educationList' &&
     childrenDrawer !== 'skillList' &&
+    childrenDrawer !== 'awardList' &&
     _.endsWith(childrenDrawer, 'List');
 
   // #region 1 render: moduleContent
@@ -403,7 +416,8 @@ export const Drawer: React.FC<Props> = props => {
             module.key === 'studentWorkList' ||
             module.key === 'honorList' ||
             module.key === 'educationList' ||
-            module.key === 'skillList' // 将 skillList 视为“非列表”，走单项编辑
+            module.key === 'skillList' ||
+            module.key === 'awardList'
           ) {
             return renderModuleListItem(module);
           }

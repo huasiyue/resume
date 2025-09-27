@@ -430,31 +430,13 @@ export const Template2: React.FC<Props> = props => {
             </Wrapper>
           ) : null;
       case 'awardList':
-        return !(hiddenMap && hiddenMap.awardList) && awardList && awardList.length > 0 ? (
-          <Wrapper title={titleNameMap.awardList} className="section section-award" color={theme.color}>
-            {awardList.map((award, idx) => {
-              return (
-                <div key={idx.toString()}>
-                  <TrophyFilled style={{ color: '#ffc107', marginRight: '8px' }} />
-                  {award?.award_info_isHtml ? (
-                    <span
-                      className="info-name"
-                      dangerouslySetInnerHTML={{ __html: award.award_info || '' }}
-                    />
-                  ) : (
-                    <span className="info-name">{award.award_info}</span>
-                  )}
-                  {award?.award_time_isHtml ? (
-                    <span
-                      className="sub-info award-time"
-                      dangerouslySetInnerHTML={{ __html: award.award_time || '' }}
-                    />
-                  ) : award.award_time ? (
-                    <span className="sub-info award-time">({award.award_time})</span>
-                  ) : null}
-                </div>
-              );
-            })}
+        return !(hiddenMap && hiddenMap.awardList) && (awardList as any)?.award_desc ? (
+          <Wrapper title={titleNameMap.awardList || <FormattedMessage id="更多信息" />} className="section section-award" color={theme.color}>
+            {(awardList as any)?.award_desc_isHtml ? (
+              <div dangerouslySetInnerHTML={{ __html: (awardList as any).award_desc || '' }} />
+            ) : (
+              <div>{(awardList as any).award_desc}</div>
+            )}
           </Wrapper>
         ) : null;
       case 'honorList':
