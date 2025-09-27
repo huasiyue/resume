@@ -147,50 +147,26 @@ export const CONTENT_OF_MODULE = ({ intl }) => {
         attributeId: 'mobile',
         displayName: intl.formatMessage({ id: '手机号码' }),
         formItemProps: {
-          rules: [
-            { required: true, message: 'Please input your phone number!' },
-          ],
+          rules: [{ required: true, message: 'Please input your phone number!' }],
         },
       },
       {
         type: 'input',
         attributeId: 'email',
         displayName: intl.formatMessage({ id: '邮箱' }),
-        formItemProps: {
-          rules: [{ required: true, message: 'Please input your email!' }],
-        },
+        formItemProps: { rules: [{ required: true, message: 'Please input your email!' }] },
       },
       {
         type: 'input',
-        attributeId: 'github',
-        displayName: intl.formatMessage({ id: 'Github' }),
-        cfg: {
-          placeholder: 'Please input your github account, optional',
-        },
+        attributeId: 'birth_date',
+        displayName: intl.formatMessage({ id: '出生年月' }),
+        cfg: { placeholder: '例如：2005.01' },
       },
       {
         type: 'input',
-        attributeId: 'zhihu',
-        displayName: intl.formatMessage({ id: '知乎' }),
-        cfg: {
-          placeholder:
-            'Please input the link to visit your zhihu account, optional',
-        },
-      },
-      {
-        type: 'input',
-        attributeId: 'workExpYear',
-        displayName: intl.formatMessage({ id: '工作经验' }),
-      },
-      {
-        type: 'input',
-        attributeId: 'workPlace',
-        displayName: intl.formatMessage({ id: '期望工作地' }),
-      },
-      {
-        type: 'input',
-        attributeId: 'positionTitle',
-        displayName: intl.formatMessage({ id: '职位' }),
+        attributeId: 'political_status',
+        displayName: intl.formatMessage({ id: '政治面貌' }),
+        cfg: { placeholder: '例如：中共预备党员' },
       },
     ],
     educationList: [
@@ -332,26 +308,10 @@ export const CONTENT_OF_MODULE = ({ intl }) => {
     ],
     skillList: [
       {
-        type: 'input',
-        attributeId: 'skill_name',
-        displayName: intl.formatMessage({ id: '技能项' }),
-      },
-      {
-        type: 'number',
-        attributeId: 'skill_level',
-        displayName: intl.formatMessage({ id: '掌握程度' }),
-        cfg: {
-          step: 20,
-          min: 0,
-          max: 100,
-          formatter: value => `${value}%`,
-          parser: value => _.replace(value, '%', ''),
-        },
-      },
-      {
         type: 'textArea',
         attributeId: 'skill_desc',
-        displayName: intl.formatMessage({ id: '技能描述' }),
+        displayName: intl.formatMessage({ id: '个人技能' }),
+        cfg: { autoSize: { minRows: 4 }, showCount: true },
       },
       {
         type: 'checkbox',

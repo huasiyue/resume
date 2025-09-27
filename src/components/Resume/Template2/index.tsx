@@ -1,14 +1,9 @@
 import React from 'react';
-import { Rate, Tag } from 'antd';
+import { Tag } from 'antd';
 import {
   PhoneFilled,
   MailFilled,
-  GithubFilled,
-  ZhihuCircleFilled,
-  CheckCircleFilled,
   ScheduleFilled,
-  EnvironmentFilled,
-  HeartFilled,
   CrownFilled,
   TrophyFilled,
 } from '@ant-design/icons';
@@ -45,7 +40,7 @@ export const Template2: React.FC<Props> = props => {
   const { value, theme } = props;
 
   /** 个人基础信息 */
-  const profile = _.get(value, 'profile');
+  const profile: any = _.get(value, 'profile') ?? {};
 
   const titleNameMap = _.get(
     value,
@@ -419,24 +414,21 @@ export const Template2: React.FC<Props> = props => {
           </Wrapper>
         ) : null;
       case 'skillList':
-        return !(hiddenMap && hiddenMap.skillList) && skillList && skillList.length > 0 ? (
-          <Wrapper title={titleNameMap.skillList} className="section section-skill" color={theme.color}>
-            {skillList.map((skill, idx) => {
-              const skills = _.split(skill.skill_desc, '\n').join('；');
-              return skills ? (
-                <div className="skill-item" key={idx.toString()}>
-                  <span>
-                    <CheckCircleFilled style={{ color: '#ffc107', marginRight: '8px' }} />
-                    {skills}
-                  </span>
-                  {skill.skill_level && (
-                    <Rate allowHalf disabled value={skill.skill_level / 20} className="skill-rate" />
-                  )}
-                </div>
-              ) : null;
-            })}
-          </Wrapper>
-        ) : null;
+          return !(hiddenMap && hiddenMap.skillList) && skillList && (
+            Array.isArray(skillList) ? skillList.length > 0 : (skillList as any)?.skill_desc
+          ) ? (
+            <Wrapper title={titleNameMap.skillList || <FormattedMessage id="个人技能" />} className="section section-skill" color={theme.color}>
+              {Array.isArray(skillList) ? (
+                skillList.map((d, idx) => (
+                  <div key={`${idx}`}>{d}</div>
+                ))
+              ) : (skillList as any)?.skill_desc_isHtml ? (
+                <div dangerouslySetInnerHTML={{ __html: (skillList as any).skill_desc || '' }} />
+              ) : (
+                <div>{(skillList as any).skill_desc}</div>
+              )}
+            </Wrapper>
+          ) : null;
       case 'awardList':
         return !(hiddenMap && hiddenMap.awardList) && awardList && awardList.length > 0 ? (
           <Wrapper title={titleNameMap.awardList} className="section section-award" color={theme.color}>
@@ -647,6 +639,7 @@ export const Template2: React.FC<Props> = props => {
                         </Tag>
                       )}
                     </div>
+                    {/* 下面内容不变 */}
                     <div className="section-detail">
                       <span>
                         <FormattedMessage id="项目概述" />：
@@ -661,7 +654,7 @@ export const Template2: React.FC<Props> = props => {
                     </div>
                     <div className="section-detail">
                       <span>
-                        <FormattedMessage id=" 本人工作" />：
+                        <FormattedMessage id="本人工作" />：
                       </span>
                       <span className="research-content">
                         {research?.research_content_isHtml ? (
@@ -674,7 +667,7 @@ export const Template2: React.FC<Props> = props => {
                     {research.research_achievement && (
                       <div className="section-detail">
                         <span>
-                          <FormattedMessage id=" 取得成果" />：
+                          <FormattedMessage id="取得成果" />：
                         </span>
                         <span className="research-achievement">
                           {research?.research_achievement_isHtml ? (
@@ -706,55 +699,30 @@ export const Template2: React.FC<Props> = props => {
             <div className="profile-info">
               {/* 个人信息内容 */}
               {profile.name && <div className="name">{profile.name}</div>}
-              {profile.job_title && <div className="job-title">{profile.job_title}</div>}
-
+              {/* 只保留：电话、邮箱、出生年月、政治面貌 */}
               <div className="profile-list">
                 {profile.mobile && (
                   <div className="phone">
                     <PhoneFilled style={{ color: theme.color, marginRight: '8px' }} />
-                    <span>{profile.mobile}</span>
+                    <span>联系方式：{profile.mobile}</span>
                   </div>
                 )}
                 {profile.email && (
                   <div className="email">
                     <MailFilled style={{ color: theme.color, marginRight: '8px' }} />
-                    <span>{profile.email}</span>
+                    <span>电子邮件：{profile.email}</span>
                   </div>
                 )}
-                {profile.github && (
-                  <div className="github">
-                    <GithubFilled style={{ color: theme.color, marginRight: '8px' }} />
-                    <span>{profile.github}</span>
-                  </div>
-                )}
-                {profile.zhihu && (
-                  <div className="github">
-                    <ZhihuCircleFilled style={{ color: theme.color, marginRight: '8px' }} />
-                    <span>{profile.zhihu}</span>
-                  </div>
-                )}
-                {profile.workExpYear && (
-                  <div className="work-exp-year">
+                {profile.birth_date && (
+                  <div className="birth-date">
                     <ScheduleFilled style={{ color: theme.color, marginRight: '8px' }} />
-                    <span>
-                    <FormattedMessage id="工作经验" />：{profile.workExpYear}
-                  </span>
+                    <span>出生年月：{profile.birth_date}</span>
                   </div>
                 )}
-                {profile.workPlace && (
-                  <div className="work-place">
-                    <EnvironmentFilled style={{ color: theme.color, marginRight: '8px' }} />
-                    <span>
-                    <FormattedMessage id="期望工作地" />：{profile.workPlace}
-                  </span>
-                  </div>
-                )}
-                {profile.positionTitle && (
-                  <div className="position-title">
-                    <HeartFilled style={{ color: theme.color, marginRight: '8px' }} />
-                    <span>
-                    <FormattedMessage id="职位" />：{profile.positionTitle}
-                  </span>
+                {profile.political_status && (
+                  <div className="political-status">
+                    <CrownFilled style={{ color: theme.color, marginRight: '8px' }} />
+                    <span>政治面貌：{profile.political_status}</span>
                   </div>
                 )}
               </div>

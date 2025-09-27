@@ -109,6 +109,7 @@ export const Drawer: React.FC<Props> = props => {
 
   const swapItems = (moduleKey: string, oldIdx: number, newIdx: number) => {
     const newValues = _.clone(_.get(props.value, moduleKey, []));
+    if (!Array.isArray(newValues)) return; // 防御：非数组不做移动
     props.onValueChange({
       [moduleKey]: arrayMove(newValues, newIdx, oldIdx),
     });
@@ -116,6 +117,7 @@ export const Drawer: React.FC<Props> = props => {
 
   const deleteItem = (moduleKey: string, idx: number) => {
     const newValues = _.get(props.value, moduleKey, []);
+    if (!Array.isArray(newValues)) return; // 防御：非数组不做删除
     props.onValueChange({
       [moduleKey]: newValues.slice(0, idx).concat(newValues.slice(idx + 1)),
     });
@@ -131,7 +133,12 @@ export const Drawer: React.FC<Props> = props => {
   }, [intl]);
 
   const DEFAULT_TITLE_MAP = getDefaultTitleNameMap({ intl });
-  const isList = childrenDrawer !== 'studentWorkList' && childrenDrawer !== 'honorList' && childrenDrawer !== 'educationList' && _.endsWith(childrenDrawer, 'List');
+  const isList =
+    childrenDrawer !== 'studentWorkList' &&
+    childrenDrawer !== 'honorList' &&
+    childrenDrawer !== 'educationList' &&
+    childrenDrawer !== 'skillList' &&
+    _.endsWith(childrenDrawer, 'List');
 
   // #region 1 render: moduleContent
   const renderModuleList = ({ icon, key, name }, idx, values) => {
@@ -391,7 +398,13 @@ export const Drawer: React.FC<Props> = props => {
 
       <div className="module-list">
         {modules.map((module, idx) => {
-          if (!_.endsWith(module.key, 'List') || module.key === 'studentWorkList' || module.key === 'honorList' || module.key === 'educationList') {
+          if (
+            !_.endsWith(module.key, 'List') ||
+            module.key === 'studentWorkList' ||
+            module.key === 'honorList' ||
+            module.key === 'educationList' ||
+            module.key === 'skillList' // 将 skillList 视为“非列表”，走单项编辑
+          ) {
             return renderModuleListItem(module);
           }
           const values = _.get(props.value, module.key, []);

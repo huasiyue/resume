@@ -8,6 +8,9 @@
     "workList": "个人作品",
     "aboutme": "自我介绍"
   },
+  "null": {
+    "skill_desc": "  <ul>\n    <li><strong>编程语言：</strong> Java、Python、C++</li>\n    <li><strong>框架与工具：</strong> SpringBoot、React、MySQL、MongoDB、Redis、Docker、Git</li>\n    <li><strong>算法与模型：</strong> 数据结构与算法、机器学习、深度学习（CNN、RNN、Transformer）、自然语言处理（Word2Vec、GloVe、文本挖掘）</li>\n    <li><strong>科研与数据处理：</strong> PyTorch、Scikit-learn、Spacy、Pandas、LC-MS/MS 数据分析</li>\n    <li><strong>语言能力：</strong> 英语（CET-6，580分，听说读写流利）</li>\n  </ul>"
+  },
   "avatar": {
     "hidden": false,
     "shape": "circle"
@@ -20,7 +23,9 @@
     "zhihu": "",
     "workExpYear": "",
     "workPlace": "",
-    "positionTitle": ""
+    "positionTitle": "",
+    "birth_date": "2003.11",
+    "political_status": "中共预备党员"
   },
   "educationList": {
     "0": {
@@ -59,7 +64,20 @@
       "work_desc": "1. 担任蚂蚁高管决策和管理协同产品 “数据作战室” 的前端负责人\r\n2. 负责蚂蚁敏捷 BI 产品 “DeepInsight” 的可视分析模块产品能力建设\n3. 数据可视化 AntV 团队核心成员，负责 G2、G2Plot 开源技术的建设"
     }
   ],
-  "skillList": [],
+  "skillList": {
+    "0": "s",
+    "1": "k",
+    "2": "i",
+    "3": "l",
+    "4": "l",
+    "5": "_",
+    "6": "d",
+    "7": "e",
+    "8": "s",
+    "9": "c",
+    "dataIndex": "dataIndex",
+    "skill_desc": ""
+  },
   "projectList": [
     {
       "project_name": "实验室情报管理中心（LabIC）",
@@ -68,7 +86,7 @@
       "project_desc": "LabIC面向高校实验室，构建一站式学术情报管理平台，实现科研成果、论文、专利等多源学术信息的自动采集、解析与可视化展示。平台集成RSS订阅、AI大模型解析与数据大屏，实现学术动态实时跟踪、团队科研画像生成及跨实验室协作，助力科研人员精准掌握前沿研究方向，提高学术管理效率。",
       "project_content": "设计并实现学术情报收集与AI自动化解析系统，支持期刊RSS订阅与自动更新；构建数据大屏与成员科研画像，直观展示成果与学术轨迹；搭建信息管理系统，覆盖成员学术信息与资产管理，提升科研数据处理与展示效率。",
       "dataIndex": 0,
-      "project_tech_stack": "<span style=\"background:#e3f2fd; color:#1976d2; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">Spring Boot</span>\n<span style=\"background:#e8f5e9; color:#388e3c; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">MongoDB</span>\n<span style=\"background:#fff3e0; color:#f57c00; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">Redis</span>\n<span style=\"background:#ede7f6; color:#512da8; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">Spring Security</span>\n<span style=\"background:#f1f8e9; color:#689f38; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">Sa-Token</span>\n<span style=\"background:#f3e5f5; color:#7b1fa2; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">Ant Design</span>\n<span style=\"background:#ede7f6; color:#512da8; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">Ant Design Pro</span>\n<span style=\"background:#fce4ec; color:#c2185b; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">React</span>\n<span style=\"background:#fff0f5; color:#c2185b; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">ECharts</span>\n<span style=\"background:#f9fbe7; color:#827717; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">Selenium Grid</span>\n<span style=\"background:#fce4ec; color:#880e4f; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">DeepSeek-r1</span>\n<span style=\"background:#e8eaf6; color:#1a237e; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">Dify</span>",
+      "project_tech_stack": "<span style=\"background:#e3f2fd; color:#1976d2; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">Spring Boot</span> <span style=\"background:#e8f5e9; color:#388e3c; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">MongoDB</span> <span style=\"background:#fff3e0; color:#f57c00; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">Redis</span> <span style=\"background:#ede7f6; color:#512da8; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">Spring Security</span> <span style=\"background:#f1f8e9; color:#689f38; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">Sa-Token</span> <span style=\"background:#f3e5f5; color:#7b1fa2; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">Ant Design</span> <span style=\"background:#ede7f6; color:#512da8; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">Ant Design Pro</span> <span style=\"background:#fce4ec; color:#c2185b; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">React</span> <span style=\"background:#fff0f5; color:#c2185b; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">ECharts</span> <span style=\"background:#f9fbe7; color:#827717; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">Selenium Grid</span> <span style=\"background:#fce4ec; color:#880e4f; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">DeepSeek-r1</span> <span style=\"background:#e8eaf6; color:#1a237e; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">Dify</span>",
       "project_tech_stack_isHtml": true,
       "project_achievement": "<span style=\"background:#fff3e0; color:#ef6c00; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">全国大学生计算机设计大赛三等奖</span>\n<span style=\"background:#fff3e0; color:#ef6c00; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:500;\">全国大学生计算机设计大赛山东省一等奖</span>",
       "project_achievement_isHtml": true
@@ -88,7 +106,7 @@
   ],
   "workList": [],
   "aboutme": {
-    "aboutme_desc": "\n    ",
+    "aboutme_desc": "GPA 3.9/5.0，专业排名第一，获国家奖学金与省级竞赛奖项。具备扎实的算法与数据结构基础，熟悉 Python/Java，掌握深度学习框架（PyTorch、TensorFlow），有蛋白质质谱数据分析与文本挖掘研究经历。参与多项科研与工程项目，具备算法设计与落地实现能力。",
     "aboutme_isHtml": false,
     "aboutme_desc_isHtml": false
   },
@@ -99,7 +117,7 @@
     "educationList": false,
     "awardList": true,
     "workList": true,
-    "skillList": true,
+    "skillList": false,
     "workExpList": true,
     "projectList": false,
     "researchList": false,
@@ -107,14 +125,14 @@
     "studentWorkList": false
   },
   "moduleOrderBasic": [
-    "aboutme",
     "awardList",
     "educationList",
-    "workList",
-    "workExpList",
+    "aboutme",
+    "skillList",
     "researchList",
     "projectList",
-    "skillList"
+    "workExpList",
+    "workList"
   ],
   "moduleOrderMain": [
     "studentWorkList",
@@ -175,7 +193,7 @@
       "honor_info": "校级优秀学生标兵",
       "honor_time": "2024"
     },
-    "honor_desc": "<div style=\"font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Microsoft Yahei', 'PingFang SC', 'Hiragino Sans GB'; font-size:12px; color:#222; line-height:1.4; max-width:100%;\">\n  <ul style=\"list-style:none; padding:6px 8px; margin:0; display:grid; grid-template-columns:repeat(3, 1fr); gap:4px 12px;\">\n\n    <li style=\"display:flex; justify-content:space-between; padding:2px 0;\">\n      <span style=\"font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">校级优秀学生</span>\n      <span style=\"font-size:11px; color:#666; margin-left:6px; white-space:nowrap;\">2022-2023</span>\n    </li>\n\n    <li style=\"display:flex; justify-content:space-between; padding:2px 0;\">\n      <span style=\"font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">校级优秀团员</span>\n      <span style=\"font-size:11px; color:#666; margin-left:6px; white-space:nowrap;\">2023-2024</span>\n    </li>\n\n    <li style=\"display:flex; justify-content:space-between; padding:2px 0;\">\n      <span style=\"font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">校级优秀学生标兵（全校仅40余人）</span>\n      <span style=\"font-size:11px; color:#666; margin-left:6px; white-space:nowrap;\">2023-2024</span>\n    </li>\n\n    <li style=\"display:flex; justify-content:space-between; padding:2px 0;\">\n      <span style=\"font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">校级一等奖学金</span>\n      <span style=\"font-size:11px; color:#666; margin-left:6px; white-space:nowrap;\">2022-2023</span>\n    </li>\n\n    <li style=\"display:flex; justify-content:space-between; padding:2px 0;\">\n      <span style=\"font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">校级一等奖学金</span>\n      <span style=\"font-size:11px; color:#666; margin-left:6px; white-space:nowrap;\">2023-2024</span>\n    </li>\n\n    <li style=\"display:flex; justify-content:space-between; padding:2px 0;\">\n      <span style=\"font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">山东省政府奖学金</span>\n      <span style=\"font-size:11px; color:#666; margin-left:6px; white-space:nowrap;\">2022-2023</span>\n    </li>\n\n    <li style=\"display:flex; justify-content:space-between; padding:2px 0;\">\n      <span style=\"font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">国家奖学金</span>\n      <span style=\"font-size:11px; color:#666; margin-left:6px; white-space:nowrap;\">2023-2024</span>\n    </li>\n  </ul>\n</div>",
+    "honor_desc": "<div style=\"font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Microsoft Yahei', 'PingFang SC', 'Hiragino Sans GB'; font-size:12px; color:#222; line-height:1.4; max-width:100%;\">\n  <ul style=\"list-style:none; padding:6px 8px; margin:0; display:grid; grid-template-columns:repeat(3, 1fr); gap:4px 12px;\">\n\n    <li style=\"display:flex; justify-content:space-between; padding:2px 0;\">\n      <span style=\"font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">校级优秀学生</span>\n      <span style=\"font-size:11px; color:#666; margin-left:6px; white-space:nowrap;\">2022-2023</span>\n    </li>\n\n    <li style=\"display:flex; justify-content:space-between; padding:2px 0;\">\n      <span style=\"font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">校级优秀团员</span>\n      <span style=\"font-size:11px; color:#666; margin-left:6px; white-space:nowrap;\">2023-2024</span>\n    </li>\n\n    <li style=\"display:flex; justify-content:space-between; padding:2px 0;\">\n      <span style=\"font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">校级优秀学生标兵（全校仅40余人）</span>\n      <span style=\"font-size:11px; color:#666; margin-left:6px; white-space:nowrap;\">2023-2024</span>\n    </li>\n\n    <li style=\"display:flex; justify-content:space-between; padding:2px 0;\">\n      <span style=\"font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">校级一等奖学金</span>\n      <span style=\"font-size:11px; color:#666; margin-left:6px; white-space:nowrap;\">2022-2023</span>\n    </li>\n\n    <li style=\"display:flex; justify-content:space-between; padding:2px 0;\">\n      <span style=\"font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">校级一等奖学金</span>\n      <span style=\"font-size:11px; color:#666; margin-left:6px; white-space:nowrap;\">2023-2024</span>\n    </li>\n\n    <li style=\"display:flex; justify-content:space-between; padding:2px 0;\">\n      <span style=\"font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">山东省政府奖学金</span>\n      <span style=\"font-size:11px; color:#666; margin-left:6px; white-space:nowrap;\">2022-2023</span>\n    </li>\n\n    <li style=\"display:flex; justify-content:space-between; padding:2px 0;\">\n      <span style=\"font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">国家奖学金</span>\n      <span style=\"font-size:11px; color:#666; margin-left:6px; white-space:nowrap;\">2023-2024</span>\n    </li>\n\n    <li style=\"display:flex; justify-content:space-between; padding:2px 0;\">\n      <span style=\"font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">校级优秀团员</span>\n      <span style=\"font-size:11px; color:#666; margin-left:6px; white-space:nowrap;\">2024-2025</span>\n    </li>\n\n  </ul>\n</div>\n",
     "honor_info": "123",
     "honor_time": "123",
     "honor_desc_isHtml": true

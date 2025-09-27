@@ -23,6 +23,8 @@ export type ResumeConfig = {
     positionTitle?: string;
 
     job_title?: string; // 添加这一行
+    birth_date?: string; // 新增：出生年月
+    political_status?: string; // 新增：政治面貌
 
     /** HTML 模式开关 */
     name_isHtml?: boolean;
@@ -137,29 +139,20 @@ export type ResumeConfig = {
     research_desc_isHtml?: boolean;
     research_content_isHtml?: boolean;
     research_time_isHtml?: boolean;
-    research_achievement_isHtml?: boolean; // 添加这一行
+    research_achievement_isHtml?: boolean;
   }>;
-
   /** 个人技能 */
-  skillList?: Array<{
-    /** 技能项 */
-    skill_name?: string;
-    /** 掌握程度 */
-    skill_level?: number;
-    /** 技能描述 */
-    skill_desc?: string;
-
+  skillList?: {
+    /** 单文本描述（新模式） */
+    skill_desc: string;
     /** HTML 模式开关 */
-    skill_name_isHtml?: boolean;
     skill_desc_isHtml?: boolean;
-  }>;
-
+  };
   /** 更多信息 */
   awardList?: Array<{
     // 奖项
     award_info: string;
     award_time?: string;
-
     /** HTML 模式开关 */
     award_info_isHtml?: boolean;
     award_time_isHtml?: boolean;
