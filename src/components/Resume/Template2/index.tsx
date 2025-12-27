@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tag } from 'antd';
+import { Tag, Progress } from 'antd';
 import {
   PhoneFilled,
   MailFilled,
@@ -229,6 +229,15 @@ export const Template2: React.FC<Props> = props => {
                       </b>
                       {project.project_role && <Tag color={theme.tagColor}>{project.project_role}</Tag>}
                     </div>
+                    {/* 新增：参与度进度条 */}
+                    {typeof project.participation_percent === 'number' && (
+                      <div className="section-detail" style={{ marginTop: 8 }}>
+                        <span><FormattedMessage id="参与度" />：{project.participation_percent}%</span>
+                        <div style={{ width: 240, marginTop: 6 }}>
+                          <Progress percent={project.participation_percent} size="small" showInfo={false} />
+                        </div>
+                      </div>
+                    )}
                     <div className="section-detail">
                       <span>
                         <FormattedMessage id="项目描述" />：
@@ -543,6 +552,21 @@ export const Template2: React.FC<Props> = props => {
                       </b>
                       {project.project_role && <Tag color={theme.tagColor}>{project.project_role}</Tag>}
                     </div>
+                    {/* 新增：参与度进度条（安全解析与钳制） */}
+                    {(() => {
+                      const raw = project?.participation_percent;
+                      const num = typeof raw === 'string' ? parseFloat(raw) : raw;
+                      const isValid = Number.isFinite(num as number);
+                      const percent = isValid ? Math.max(0, Math.min(100, Number(num))) : null;
+                      return percent !== null ? (
+                        <div className="section-detail" style={{ marginTop: 8 }}>
+                          <span><FormattedMessage id="参与度" />：{percent}%</span>
+                          <div style={{ width: '85%', margin: '6px auto 0' }}>
+                            <Progress percent={percent} size="small" showInfo={false} />
+                          </div>
+                        </div>
+                      ) : null;
+                    })()}
                     <div className="section-detail">
                       <span>
                         <FormattedMessage id="项目描述" />：
@@ -621,7 +645,20 @@ export const Template2: React.FC<Props> = props => {
                         </Tag>
                       )}
                     </div>
-                    {/* 下面内容不变 */}
+                    {(() => {
+                      const raw = research?.participation_percent;
+                      const num = typeof raw === 'string' ? parseFloat(raw) : raw;
+                      const isValid = Number.isFinite(num as number);
+                      const percent = isValid ? Math.max(0, Math.min(100, Number(num))) : null;
+                      return percent !== null ? (
+                        <div className="section-detail" style={{ marginTop: 8 }}>
+                          <span><FormattedMessage id="参与度" />：{percent}%</span>
+                          <div style={{ width: '85%', margin: '6px auto 0' }}>
+                            <Progress percent={percent} size="small" showInfo={false} />
+                          </div>
+                        </div>
+                      ) : null;
+                    })()}
                     <div className="section-detail">
                       <span>
                         <FormattedMessage id="项目概述" />：

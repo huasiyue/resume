@@ -1,5 +1,5 @@
 import React from 'react';
-import { Rate, Tag, Badge, Card } from 'antd';
+import { Rate, Tag, Badge, Card, Progress } from 'antd';
 import {
   PhoneFilled,
   MailFilled,
@@ -74,6 +74,8 @@ export const Template3: React.FC<Props> = props => {
 
   /** 项目经验 */
   const projectList = _.get(value, 'projectList');
+  /** 科研经历 */
+  const researchList = _.get(value, 'researchList');
 
   /** 个人技能 */
   const skillList = _.get(value, 'skillList');
@@ -489,6 +491,21 @@ export const Template3: React.FC<Props> = props => {
                           </Tag>
                         )}
                       </div>
+                      {/* 参与度进度条：居中、85% 宽度 */}
+                      {(() => {
+                        const raw = project?.participation_percent;
+                        const num = typeof raw === 'string' ? parseFloat(raw) : raw;
+                        const isValid = Number.isFinite(num as number);
+                        const percent = isValid ? Math.max(0, Math.min(100, Number(num))) : null;
+                        return percent !== null ? (
+                          <div className="section-detail" style={{ marginTop: 8 }}>
+                            <span><FormattedMessage id="参与度" />：{percent}%</span>
+                            <div style={{ width: '85%', margin: '6px auto 0' }}>
+                              <Progress percent={percent} size="small" showInfo={false} />
+                            </div>
+                          </div>
+                        ) : null;
+                      })()}
                       <div className="section-detail">
                         <b>
                           <FormattedMessage id="项目描述" />：
@@ -520,6 +537,92 @@ export const Template3: React.FC<Props> = props => {
                           </span>
                         )}
                       </div>
+                    </div>
+                  ) : null
+                )}
+              </div>
+            )
+          : null}
+
+        {/* 新增：科研经历渲染，含参与度进度条 */}
+        {researchList?.length
+          ? wrapper({
+              id: 'research',
+              title: titleNameMap?.researchList,
+              color: theme.color,
+            })(
+              <div className="section section-research">
+                {_.map(researchList, (research, idx) =>
+                  research ? (
+                    <div className="section-item" key={idx.toString()}>
+                      <div className="section-info">
+                        <b className="info-name">
+                          {research?.research_name_isHtml ? (
+                            <span dangerouslySetInnerHTML={{ __html: research.research_name || '' }} />
+                          ) : (
+                            research.research_name
+                          )}
+                          <span className="info-time">
+                            {research?.research_time_isHtml ? (
+                              <span dangerouslySetInnerHTML={{ __html: research.research_time || '' }} />
+                            ) : (
+                              research.research_time
+                            )}
+                          </span>
+                        </b>
+                        {research.research_role && (
+                          <Tag color={theme.tagColor}>
+                            {research?.research_role_isHtml ? (
+                              <span dangerouslySetInnerHTML={{ __html: research.research_role || '' }} />
+                            ) : (
+                              research.research_role
+                            )}
+                          </Tag>
+                        )}
+                      </div>
+
+                      {/* 参与度进度条：居中、85% 宽度 */}
+                      {(() => {
+                        const raw = research?.participation_percent;
+                        const num = typeof raw === 'string' ? parseFloat(raw) : raw;
+                        const isValid = Number.isFinite(num as number);
+                        const percent = isValid ? Math.max(0, Math.min(100, Number(num))) : null;
+                        return percent !== null ? (
+                          <div className="section-detail" style={{ marginTop: 8 }}>
+                            <span><FormattedMessage id="参与度" />：{percent}%</span>
+                            <div style={{ width: '85%', margin: '6px auto 0' }}>
+                              <Progress percent={percent} size="small" showInfo={false} />
+                            </div>
+                          </div>
+                        ) : null;
+                      })()}
+
+                      <div className="section-detail">
+                        <b><FormattedMessage id="项目概述" />：</b>
+                        {research?.research_desc_isHtml ? (
+                          <span dangerouslySetInnerHTML={{ __html: research.research_desc || '' }} />
+                        ) : (
+                          <span>{research.research_desc}</span>
+                        )}
+                      </div>
+                      <div className="section-detail">
+                        <b><FormattedMessage id="本人工作" />：</b>
+                        {research?.research_content_isHtml ? (
+                          <span className="research-content" dangerouslySetInnerHTML={{ __html: research.research_content || '' }} />
+                        ) : (
+                          <span className="research-content">{research.research_content}</span>
+                        )}
+                      </div>
+                      {research.research_achievement && (
+                        <div className="section-detail">
+                          <b><FormattedMessage id="取得成果" />：</b>
+                          {research?.research_achievement_isHtml ? (
+                            <span className="research-achievement" dangerouslySetInnerHTML={{ __html: research.research_achievement || '' }} />
+                          ) : (
+                            <span className="research-achievement">{research.research_achievement}</span>
+                          )}
+                        </div>
+                      )}
                     </div>
                   ) : null
                 )}

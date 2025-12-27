@@ -1,12 +1,21 @@
 import React from 'react';
 import './header.less';
 
+import { useModeSwitcher } from '@/hooks/useModeSwitcher';
+
 const Header: React.FC = () => {
-  return (
-    <header style={{ backgroundColor: 'transparent' }}>
-      {/* 页头内容已移除 */}
-    </header>
-  );
+    const [ModeSwitcher, mode, changeMode] = useModeSwitcher({});
+
+    return (
+        <header style={{ backgroundColor: 'transparent' }}>
+            {ModeSwitcher}
+            {mode === 'edit' && (
+                <span className="action-link" onClick={() => changeMode('read')}>
+                    查看
+                </span>
+            )}
+        </header>
+    );
 };
 
 export default Header;

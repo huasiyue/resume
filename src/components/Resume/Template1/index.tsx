@@ -1,5 +1,5 @@
 import React from 'react';
-import { Rate, Tag } from 'antd';
+import { Rate, Tag, Progress } from 'antd';
 import {
   MobileFilled,
   MailFilled,

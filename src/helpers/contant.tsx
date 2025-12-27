@@ -257,6 +257,28 @@ export const CONTENT_OF_MODULE = ({ intl }) => {
         displayName: intl.formatMessage({ id: 'HTML模式' }),
         formItemProps: { valuePropName: 'checked' },
       },
+      // 新增：参与度（百分比）
+      {
+        type: 'number',
+        attributeId: 'participation_percent',
+        displayName: intl.formatMessage({ id: '参与度（百分比）' }),
+        cfg: { min: 0, max: 100 },
+        formItemProps: { style: { marginTop: 25 } },
+      },
+    ],
+    // 新增：科研经历表单（含参与度）
+    researchList: [
+      { type: 'input', attributeId: 'research_time', displayName: intl.formatMessage({ id: '起止时间' }), formItemProps: { rules: [{ required: true }] } },
+      { type: 'input', attributeId: 'research_name', displayName: intl.formatMessage({ id: '项目名称' }), formItemProps: { rules: [{ required: true }] } },
+      { type: 'input', attributeId: 'research_role', displayName: intl.formatMessage({ id: '担任角色' }) },
+      { type: 'textArea', attributeId: 'research_desc', displayName: intl.formatMessage({ id: '项目概述' }), cfg: { autoSize: { minRows: 6 }, showCount: true } },
+      { type: 'checkbox', attributeId: 'research_desc_isHtml', displayName: intl.formatMessage({ id: 'HTML模式' }), formItemProps: { valuePropName: 'checked' } },
+      { type: 'textArea', attributeId: 'research_content', displayName: intl.formatMessage({ id: '本人工作' }), cfg: { autoSize: { minRows: 6 }, showCount: true }, formItemProps: { style: { marginTop: 25 } } },
+      { type: 'checkbox', attributeId: 'research_content_isHtml', displayName: intl.formatMessage({ id: 'HTML模式' }), formItemProps: { valuePropName: 'checked' } },
+      { type: 'textArea', attributeId: 'research_achievement', displayName: intl.formatMessage({ id: '取得成果' }), cfg: { autoSize: { minRows: 4 }, showCount: true }, formItemProps: { style: { marginTop: 25 } } },
+      { type: 'checkbox', attributeId: 'research_achievement_isHtml', displayName: intl.formatMessage({ id: 'HTML模式' }), formItemProps: { valuePropName: 'checked' } },
+      // 参与度（百分比）
+      { type: 'number', attributeId: 'participation_percent', displayName: intl.formatMessage({ id: '参与度（百分比）' }), cfg: { min: 0, max: 100 }, formItemProps: { style: { marginTop: 25 } } },
     ],
     workExpList: [
       {

@@ -437,22 +437,17 @@ export const Drawer: React.FC<Props> = props => {
           isList={isList}
           onChange={v => {
             if (isList) {
-              const newValue = _.get(props.value, childrenDrawer, []);
+              // 克隆数组，避免直接修改原引用导致渲染异常或数据串行
+              const newValue = _.clone(_.get(props.value, childrenDrawer, []));
               if (currentContent) {
-                newValue[currentContent.dataIndex] = _.merge(
-                  {},
-                  currentContent,
-                  v
-                );
+                newValue[currentContent.dataIndex] = _.merge({}, currentContent, v);
               } else {
                 newValue.push(v);
               }
               props.onValueChange({
                 [childrenDrawer]: newValue,
               });
-              // 关闭抽屉
               setChildrenDrawer(null);
-              // 清空当前选中内容
               updateCurrentContent(null);
             } else {
               updateContent(v);

@@ -103,7 +103,6 @@ export type ResumeConfig = {
     project_content?: string;
     /** 项目时间 */
     project_time?: string;
-
     /** 技术栈 */
     project_tech_stack?: string;
     /** 取得成果 */
@@ -117,6 +116,8 @@ export type ResumeConfig = {
     project_time_isHtml?: boolean;
     project_tech_stack_isHtml?: boolean;
     project_achievement_isHtml?: boolean;
+    /** 参与度（百分比） */
+    participation_percent?: number;
   }>;
 
   /** 科研经历 */
@@ -140,6 +141,8 @@ export type ResumeConfig = {
     research_content_isHtml?: boolean;
     research_time_isHtml?: boolean;
     research_achievement_isHtml?: boolean;
+    /** 参与度（百分比） */
+    participation_percent?: number;
   }>;
   /** 个人技能 */
   skillList?: {
