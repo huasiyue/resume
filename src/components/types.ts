@@ -120,6 +120,8 @@ export type ResumeConfig = {
     project_achievement_isHtml?: boolean;
     /** 参与度（百分比） */
     participation_percent?: number;
+    /** 完成度（百分比） */
+    completion_percent?: number;
   }>;
 
   /** 科研经历 */
@@ -145,6 +147,8 @@ export type ResumeConfig = {
     research_achievement_isHtml?: boolean;
     /** 参与度（百分比） */
     participation_percent?: number;
+    /** 完成度（百分比） */
+    completion_percent?: number;
   }>;
   /** 个人技能 */
   skillList?: {
