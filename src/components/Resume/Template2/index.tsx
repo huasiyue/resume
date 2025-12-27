@@ -60,6 +60,9 @@ export const Template2: React.FC<Props> = props => {
   /** 荣誉奖项 */
   const honorList = _.get(value, 'honorList');
 
+  /** 竞赛奖项 */
+  const competitionAwardList = _.get(value, 'competitionAwardList');
+
   /** 学生工作 */
   const studentWorkList = _.get(value, 'studentWorkList');
 
@@ -87,6 +90,7 @@ export const Template2: React.FC<Props> = props => {
     projectList?: boolean;
     researchList?: boolean;
     honorList?: boolean;
+    competitionAwardList?: boolean;
     studentWorkList?: boolean;
     skillList?: boolean;
     awardList?: boolean;
@@ -96,11 +100,23 @@ export const Template2: React.FC<Props> = props => {
   };
 
   /** 模块排序（两列） */
-  const DEFAULT_BASIC_ORDER = ['educationList', 'workList', 'aboutme', 'skillList', 'awardList', 'honorList', 'studentWorkList'];
+  const DEFAULT_BASIC_ORDER = ['educationList', 'workList', 'aboutme', 'skillList', 'awardList', 'honorList', 'competitionAwardList', 'studentWorkList'];
   const DEFAULT_MAIN_ORDER = ['workExpList', 'projectList', 'researchList'];
 
-  const orderBasic = _.get(value, 'moduleOrderBasic', DEFAULT_BASIC_ORDER);
-  const orderMain = _.get(value, 'moduleOrderMain', DEFAULT_MAIN_ORDER);
+  // 使用已保存的顺序为主，仅补齐缺失的新模块
+  const savedBasic = _.get(value, 'moduleOrderBasic');
+  const savedMain = _.get(value, 'moduleOrderMain');
+
+  const basicBase = Array.isArray(savedBasic) ? savedBasic : DEFAULT_BASIC_ORDER;
+  const mainBase = Array.isArray(savedMain) ? savedMain : DEFAULT_MAIN_ORDER;
+
+  const allSaved = new Set([...basicBase, ...mainBase]);
+  const extrasBasic = DEFAULT_BASIC_ORDER.filter(k => !allSaved.has(k));
+  const extrasMain = DEFAULT_MAIN_ORDER.filter(k => !allSaved.has(k));
+
+  const orderBasic = [...basicBase, ...extrasBasic];
+  const orderMain = [...mainBase, ...extrasMain].filter(k => !orderBasic.includes(k));
+
 
   // renderBasicSection
   const renderBasicSection = (key: string) => {
@@ -125,44 +141,38 @@ export const Template2: React.FC<Props> = props => {
             </div>
           </Wrapper>
         ) : null;
-      case 'honorList':
-        return !(hiddenMap && hiddenMap.honorList) && honorList && (
-          Array.isArray(honorList) ? honorList.length > 0 : (honorList as any).honor_desc
-        ) ? (
-          <Wrapper title={titleNameMap.honorList || "荣誉奖项"} className="experience" color={theme.color}>
-            {Array.isArray(honorList) ? honorList.map((honor, idx) => {
-              return (
-                <div key={idx.toString()}>
-                  <TrophyFilled style={{ color: '#ffc107', marginRight: '8px' }} />
-                  {honor?.honor_info_isHtml ? (
-                    <span
-                      className="info-name"
-                      dangerouslySetInnerHTML={{ __html: honor.honor_info || '' }}
-                    />
-                  ) : (
-                    <span className="info-name">{honor.honor_info}</span>
-                  )}
-                  {honor?.honor_time_isHtml ? (
-                    <span
-                      className="sub-info honor-time"
-                      dangerouslySetInnerHTML={{ __html: honor.honor_time || '' }}
-                    />
-                  ) : honor.honor_time ? (
-                    <span className="sub-info honor-time">({honor.honor_time})</span>
-                  ) : null}
-                </div>
-              );
-            }) : (
-              <div>
-                {(honorList as any).honor_desc_isHtml ? (
-                  <span dangerouslySetInnerHTML={{ __html: (honorList as any).honor_desc || '' }} />
-                ) : (
-                  <span>{(honorList as any).honor_desc}</span>
-                )}
-              </div>
+    case 'honorList':
+      return !(hiddenMap && hiddenMap.honorList) && (honorList as any)?.honor_desc ? (
+        <Wrapper title={titleNameMap.honorList || "荣誉奖项"} className="experience" color={theme.color}>
+          <div className="education-item">
+            {(honorList as any).honor_desc_isHtml ? (
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: (honorList as any).honor_desc || '',
+                }}
+              />
+            ) : (
+              <span>{(honorList as any).honor_desc}</span>
             )}
-          </Wrapper>
-        ) : null;
+          </div>
+        </Wrapper>
+      ) : null;
+    case 'competitionAwardList':
+      return !(hiddenMap && hiddenMap.competitionAwardList) && (competitionAwardList as any)?.competition_award_desc ? (
+        <Wrapper title={titleNameMap.competitionAwardList || "竞赛奖项"} className="experience" color={theme.color}>
+          <div className="education-item">
+            {(competitionAwardList as any).competition_award_desc_isHtml ? (
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: (competitionAwardList as any).competition_award_desc || '',
+                }}
+              />
+            ) : (
+              <span>{(competitionAwardList as any).competition_award_desc}</span>
+            )}
+          </div>
+        </Wrapper>
+      ) : null;
       case 'studentWorkList':
         return !(hiddenMap && hiddenMap.studentWorkList) && studentWorkList && (
           Array.isArray(studentWorkList) ? studentWorkList.length > 0 : (studentWorkList as any).student_work_desc
@@ -448,44 +458,38 @@ export const Template2: React.FC<Props> = props => {
             )}
           </Wrapper>
         ) : null;
-      case 'honorList':
-        return !(hiddenMap && hiddenMap.honorList) && honorList && (
-          Array.isArray(honorList) ? honorList.length > 0 : (honorList as any).honor_desc
-        ) ? (
-          <Wrapper title={titleNameMap.honorList || "荣誉奖项"} className="experience" color={theme.color}>
-            {Array.isArray(honorList) ? honorList.map((honor, idx) => {
-              return (
-                <div key={idx.toString()}>
-                  <TrophyFilled style={{ color: '#ffc107', marginRight: '8px' }} />
-                  {honor?.honor_info_isHtml ? (
-                    <span
-                      className="info-name"
-                      dangerouslySetInnerHTML={{ __html: honor.honor_info || '' }}
-                    />
-                  ) : (
-                    <span className="info-name">{honor.honor_info}</span>
-                  )}
-                  {honor?.honor_time_isHtml ? (
-                    <span
-                      className="sub-info honor-time"
-                      dangerouslySetInnerHTML={{ __html: honor.honor_time || '' }}
-                    />
-                  ) : honor.honor_time ? (
-                    <span className="sub-info honor-time">({honor.honor_time})</span>
-                  ) : null}
-                </div>
-              );
-            }) : (
-              <div>
-                {(honorList as any).honor_desc_isHtml ? (
-                  <span dangerouslySetInnerHTML={{ __html: (honorList as any).honor_desc || '' }} />
-                ) : (
-                  <span>{(honorList as any).honor_desc}</span>
-                )}
-              </div>
+          case 'honorList':
+      return !(hiddenMap && hiddenMap.honorList) && (honorList as any)?.honor_desc ? (
+        <Wrapper title={titleNameMap.honorList || "荣誉奖项"} className="experience" color={theme.color}>
+          <div className="education-item">
+            {(honorList as any).honor_desc_isHtml ? (
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: (honorList as any).honor_desc || '',
+                }}
+              />
+            ) : (
+              <span>{(honorList as any).honor_desc}</span>
             )}
-          </Wrapper>
-        ) : null;
+          </div>
+        </Wrapper>
+      ) : null;
+    case 'competitionAwardList':
+      return !(hiddenMap && hiddenMap.competitionAwardList) && (competitionAwardList as any)?.competition_award_desc ? (
+        <Wrapper title={titleNameMap.competitionAwardList || "竞赛奖项"} className="experience" color={theme.color}>
+          <div className="education-item">
+            {(competitionAwardList as any).competition_award_desc_isHtml ? (
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: (competitionAwardList as any).competition_award_desc || '',
+                }}
+              />
+            ) : (
+              <span>{(competitionAwardList as any).competition_award_desc}</span>
+            )}
+          </div>
+        </Wrapper>
+      ) : null;
       case 'studentWorkList':
         return !(hiddenMap && hiddenMap.studentWorkList) && studentWorkList && (
           Array.isArray(studentWorkList) ? studentWorkList.length > 0 : (studentWorkList as any).student_work_desc

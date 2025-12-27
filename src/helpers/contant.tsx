@@ -80,6 +80,11 @@ export const MODULES = ({
       name: titleNameMap?.honorList || intl.formatMessage({ id: '荣誉奖项' }),
       icon: <TrophyTwoTone />,
     },
+    {
+      key: 'competitionAwardList',
+      name: titleNameMap?.competitionAwardList || intl.formatMessage({ id: '竞赛奖项' }),
+      icon: <TrophyTwoTone />,
+    },
     // 添加学生工作
     {
       key: 'studentWorkList',
@@ -380,6 +385,20 @@ export const CONTENT_OF_MODULE = ({ intl }) => {
       {
         type: 'checkbox',
         attributeId: 'honor_desc_isHtml',
+        displayName: intl.formatMessage({ id: 'HTML模式' }),
+        formItemProps: { valuePropName: 'checked' },
+      },
+    ],
+    competitionAwardList: [
+      {
+        type: 'textArea',
+        attributeId: 'competition_award_desc',
+        displayName: intl.formatMessage({ id: '竞赛奖项' }),
+        cfg: { autoSize: { minRows: 4 }, showCount: true },
+      },
+      {
+        type: 'checkbox',
+        attributeId: 'competition_award_desc_isHtml',
         displayName: intl.formatMessage({ id: 'HTML模式' }),
         formItemProps: { valuePropName: 'checked' },
       },

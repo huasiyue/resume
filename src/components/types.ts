@@ -53,6 +53,8 @@ export type ResumeConfig = {
     awardList?: string;
     /** 默认: 荣誉奖项 */
     honorList?: string;
+    /** 默认: 竞赛奖项 */
+    competitionAwardList?: string;
     /** 默认: 作品 */
     workList?: string;
     /** 默认: 学生工作 */
@@ -155,6 +157,12 @@ export type ResumeConfig = {
   awardList?: {
       award_desc?: string;
       award_desc_isHtml?: boolean;
+  };
+
+  /** 竞赛奖项：单文本模式 */
+  competitionAwardList?: {
+      competition_award_desc?: string;
+      competition_award_desc_isHtml?: boolean;
   };
 
   /** 荣誉奖项 */

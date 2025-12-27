@@ -16,6 +16,8 @@ export function getDefaultTitleNameMap({ intl }): ResumeConfig['titleNameMap'] {
     awardList: intl.formatMessage({ id: '更多信息' }),
     /** 默认: 荣誉奖项 */
     honorList: intl.formatMessage({ id: '荣誉奖项' }),
+    /** 默认: 竞赛奖项 */
+    competitionAwardList: intl.formatMessage({ id: '竞赛奖项' }),
     /** 默认: 作品 */
     workList: intl.formatMessage({ id: '个人作品' }),
     /** 默认: 学生工作 */

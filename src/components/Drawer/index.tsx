@@ -102,7 +102,8 @@ export const Drawer: React.FC<Props> = props => {
         childrenDrawer === 'aboutme' ||
         childrenDrawer === 'educationList' ||
         childrenDrawer === 'honorList' ||
-        childrenDrawer === 'studentWorkList';
+        childrenDrawer === 'studentWorkList' ||
+        childrenDrawer === 'competitionAwardList';
 
       const newConfig = isPlainOverride
         ? v
@@ -151,6 +152,7 @@ export const Drawer: React.FC<Props> = props => {
     childrenDrawer !== 'educationList' &&
     childrenDrawer !== 'skillList' &&
     childrenDrawer !== 'awardList' &&
+    childrenDrawer !== 'competitionAwardList' &&
     _.endsWith(childrenDrawer, 'List');
 
   // #region 1 render: moduleContent
@@ -323,11 +325,23 @@ export const Drawer: React.FC<Props> = props => {
 
   // 排序相关：定义左右列模块与当前顺序
   // 这里是关键修改点：添加新模块到默认排序中
-  const BASIC_KEYS = ['educationList', 'workList', 'aboutme', 'skillList', 'awardList', 'honorList', 'studentWorkList'];
+  const BASIC_KEYS = ['educationList', 'workList', 'aboutme', 'skillList', 'awardList', 'honorList', 'competitionAwardList', 'studentWorkList'];
   const MAIN_KEYS = ['workExpList', 'projectList', 'researchList'];
 
-  const moduleOrderBasic = _.get(props.value, 'moduleOrderBasic', BASIC_KEYS);
-  const moduleOrderMain = _.get(props.value, 'moduleOrderMain', MAIN_KEYS);
+  // 使用已保存的顺序为主，仅补齐缺失的新模块
+  const savedBasic = _.get(props.value, 'moduleOrderBasic');
+  const savedMain = _.get(props.value, 'moduleOrderMain');
+
+  const basicBase = Array.isArray(savedBasic) ? savedBasic : BASIC_KEYS;
+  const mainBase = Array.isArray(savedMain) ? savedMain : MAIN_KEYS;
+
+  const allSaved = new Set([...basicBase, ...mainBase]);
+  const extrasBasic = BASIC_KEYS.filter(k => !allSaved.has(k));
+  const extrasMain = MAIN_KEYS.filter(k => !allSaved.has(k));
+
+  const moduleOrderBasic = [...basicBase, ...extrasBasic];
+  const moduleOrderMain = [...mainBase, ...extrasMain].filter(k => !moduleOrderBasic.includes(k));
+
   const nameMap = modules.reduce((acc, m) => ({ ...acc, [m.key]: m.name }), {});
   const combinedOrder = [...moduleOrderBasic, ...moduleOrderMain];
 
@@ -417,7 +431,8 @@ export const Drawer: React.FC<Props> = props => {
             module.key === 'honorList' ||
             module.key === 'educationList' ||
             module.key === 'skillList' ||
-            module.key === 'awardList'
+            module.key === 'awardList' ||
+            module.key === 'competitionAwardList'
           ) {
             return renderModuleListItem(module);
           }
