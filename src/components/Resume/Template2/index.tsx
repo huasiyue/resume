@@ -552,17 +552,25 @@ export const Template2: React.FC<Props> = props => {
                       </b>
                       {project.project_role && <Tag color={theme.tagColor}>{project.project_role}</Tag>}
                     </div>
-                    {/* 新增：参与度进度条（安全解析与钳制） */}
-                    {(() => {
+                      {(() => {
                       const raw = project?.participation_percent;
                       const num = typeof raw === 'string' ? parseFloat(raw) : raw;
                       const isValid = Number.isFinite(num as number);
                       const percent = isValid ? Math.max(0, Math.min(100, Number(num))) : null;
                       return percent !== null ? (
-                        <div className="section-detail" style={{ marginTop: 8 }}>
-                          <span><FormattedMessage id="参与度" />：{percent}%</span>
-                          <div style={{ width: '85%', margin: '6px auto 0' }}>
-                            <Progress percent={percent} size="small" showInfo={false} />
+                        <div className="section-detail" style={{ marginTop: 8, display: 'flex', alignItems: 'center'}}>
+                          <span><FormattedMessage id="参与度" />：</span>
+                          <div style={{ width: '90%', margin: '0 auto', display: 'flex', alignItems: 'center'}}>
+                            <div style={{ flex: 1, display: 'flex', alignItems: 'center' }}>
+                              <Progress
+                                type="line"
+                                status="normal"
+                                percent={percent}
+                                size="small"
+                                showInfo={true}
+                                format={(p) => `${p}%`}
+                              />
+                            </div>
                           </div>
                         </div>
                       ) : null;
@@ -651,10 +659,19 @@ export const Template2: React.FC<Props> = props => {
                       const isValid = Number.isFinite(num as number);
                       const percent = isValid ? Math.max(0, Math.min(100, Number(num))) : null;
                       return percent !== null ? (
-                        <div className="section-detail" style={{ marginTop: 8 }}>
-                          <span><FormattedMessage id="参与度" />：{percent}%</span>
-                          <div style={{ width: '85%', margin: '6px auto 0' }}>
-                            <Progress percent={percent} size="small" showInfo={false} />
+                        <div className="section-detail" style={{ marginTop: 8, display: 'flex', alignItems: 'center'}}>
+                          <span><FormattedMessage id="参与度" />：</span>
+                          <div style={{ width: '90%', margin: '0 auto', display: 'flex', alignItems: 'center'}}>
+                            <div style={{ flex: 1, display: 'flex', alignItems: 'center' }}>
+                              <Progress
+                                type="line"
+                                status="normal"
+                                percent={percent}
+                                size="small"
+                                showInfo={true}
+                                format={(p) => `${p}%`}
+                              />
+                            </div>
                           </div>
                         </div>
                       ) : null;
