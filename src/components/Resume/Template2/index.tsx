@@ -358,7 +358,7 @@ export const Template2: React.FC<Props> = props => {
                         <div className="section-detail" style={{ marginTop: 8, display: 'flex', alignItems: 'center'}}>
                           <span><FormattedMessage id="参与度" />：</span>
                           <div style={{ width: '90%', margin: '0 auto', display: 'flex', alignItems: 'center'}}>
-                            <div style={{ flex: 1, display: 'flex', alignItems: 'center' }}>
+                            <div style={{ flex: 1, minWidth: 0, display: 'flex', alignItems: 'center'}}>
                               <Progress type="line" status="normal" percent={percent} size="small" showInfo={true} format={(p) => `${p}%`} />
                             </div>
                           </div>
@@ -374,7 +374,7 @@ export const Template2: React.FC<Props> = props => {
                         <div className="section-detail" style={{ marginTop: 8, display: 'flex', alignItems: 'center'}}>
                           <span><FormattedMessage id="完成度" />：</span>
                           <div style={{ width: '90%', margin: '0 auto', display: 'flex', alignItems: 'center'}}>
-                            <div style={{ flex: 1, display: 'flex', alignItems: 'center' }}>
+                            <div style={{ flex: 1, minWidth: 0, display: 'flex', alignItems: 'center' }}>
                               <Progress type="line" status="normal" percent={percent} size="small" showInfo={true} format={(p) => `${p}%`} />
                             </div>
                           </div>
