@@ -276,6 +276,18 @@ export const CONTENT_OF_MODULE = ({ intl }) => {
         cfg: { min: 0, max: 100 },
         formItemProps: { style: { marginTop: 12 } },
       },
+      {
+        type: 'checkbox',
+        attributeId: 'participation_visible',
+        displayName: intl.formatMessage({ id: '显示参与度' }),
+        formItemProps: { valuePropName: 'checked', style: { marginTop: 12 } },
+      },
+      {
+        type: 'checkbox',
+        attributeId: 'completion_visible',
+        displayName: intl.formatMessage({ id: '显示完成度' }),
+        formItemProps: { valuePropName: 'checked', style: { marginTop: 8 } },
+      },
     ],
     // 新增：科研经历表单（含参与度）
     researchList: [
@@ -290,6 +302,8 @@ export const CONTENT_OF_MODULE = ({ intl }) => {
       { type: 'checkbox', attributeId: 'research_achievement_isHtml', displayName: intl.formatMessage({ id: 'HTML模式' }), formItemProps: { valuePropName: 'checked' } },
       { type: 'number', attributeId: 'participation_percent', displayName: intl.formatMessage({ id: '参与度（百分比）' }), cfg: { min: 0, max: 100 }, formItemProps: { style: { marginTop: 25 } } },
       { type: 'number', attributeId: 'completion_percent', displayName: intl.formatMessage({ id: '完成度（百分比）' }), cfg: { min: 0, max: 100 }, formItemProps: { style: { marginTop: 12 } } },
+      { type: 'checkbox', attributeId: 'participation_visible', displayName: intl.formatMessage({ id: '显示参与度' }), formItemProps: { valuePropName: 'checked', style: { marginTop: 12 } } },
+      { type: 'checkbox', attributeId: 'completion_visible', displayName: intl.formatMessage({ id: '显示完成度' }), formItemProps: { valuePropName: 'checked', style: { marginTop: 8 } } },
     ],
     workExpList: [
       {

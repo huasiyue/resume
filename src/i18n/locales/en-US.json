@@ -98,5 +98,7 @@
   "右侧区域": "Right Column",
   "重置排序": "Reset Order",
   "完成度": "Completion",
-  "完成度（百分比）": "Completion (percentage)"
+  "完成度（百分比）": "Completion (percentage)",
+  "显示参与度": "Show participation",
+  "显示完成度": "Show completion"
 }

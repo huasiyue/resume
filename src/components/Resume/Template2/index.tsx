@@ -240,6 +240,7 @@ export const Template2: React.FC<Props> = props => {
                       {project.project_role && <Tag color={theme.tagColor}>{project.project_role}</Tag>}
                     </div>
 {(() => {
+                      if (project?.participation_visible === false) return null;
                       const raw = project?.participation_percent;
                       const num = typeof raw === 'string' ? parseFloat(raw) : raw;
                       const isValid = Number.isFinite(num as number);
@@ -256,6 +257,7 @@ export const Template2: React.FC<Props> = props => {
                       ) : null;
                     })()}
                     {(() => {
+                      if (project?.completion_visible === false) return null;
                       const raw = project?.completion_percent;
                       const num = typeof raw === 'string' ? parseFloat(raw) : raw;
                       const isValid = Number.isFinite(num as number);
@@ -350,6 +352,7 @@ export const Template2: React.FC<Props> = props => {
                       )}
                     </div>
                     {(() => {
+                      if (research?.participation_visible === false) return null;
                       const raw = research?.participation_percent;    
                       const num = typeof raw === 'string' ? parseFloat(raw) : raw;
                       const isValid = Number.isFinite(num as number);
@@ -366,6 +369,7 @@ export const Template2: React.FC<Props> = props => {
                       ) : null;
                     })()}
                     {(() => {
+                      if (research?.completion_visible === false) return null;
                       const raw = research?.completion_percent;
                       const num = typeof raw === 'string' ? parseFloat(raw) : raw;
                       const isValid = Number.isFinite(num as number);
@@ -611,6 +615,7 @@ export const Template2: React.FC<Props> = props => {
                       {project.project_role && <Tag color={theme.tagColor}>{project.project_role}</Tag>}
                     </div>
                                         {(() => {
+                      if (project?.participation_visible === false) return null;
                       const raw = project?.participation_percent;
                       const num = typeof raw === 'string' ? parseFloat(raw) : raw;
                       const isValid = Number.isFinite(num as number);
@@ -627,6 +632,7 @@ export const Template2: React.FC<Props> = props => {
                       ) : null;
                     })()}
                     {(() => {
+                      if (project?.completion_visible === false) return null;
                       const raw = project?.completion_percent;
                       const num = typeof raw === 'string' ? parseFloat(raw) : raw;
                       const isValid = Number.isFinite(num as number);
@@ -721,6 +727,7 @@ export const Template2: React.FC<Props> = props => {
                       )}
                     </div>
                     {(() => {
+                      if (research?.participation_visible === false) return null;
                       const raw = research?.participation_percent;
                       const num = typeof raw === 'string' ? parseFloat(raw) : raw;
                       const isValid = Number.isFinite(num as number);
@@ -737,6 +744,7 @@ export const Template2: React.FC<Props> = props => {
                       ) : null;
                     })()}
                     {(() => {
+                      if (research?.completion_visible === false) return null;
                       const raw = research?.completion_percent;
                       const num = typeof raw === 'string' ? parseFloat(raw) : raw;
                       const isValid = Number.isFinite(num as number);

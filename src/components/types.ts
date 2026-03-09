@@ -122,6 +122,10 @@ export type ResumeConfig = {
     participation_percent?: number;
     /** 完成度（百分比） */
     completion_percent?: number;
+    /** 显示参与度 */
+    participation_visible?: boolean;
+    /** 显示完成度 */
+    completion_visible?: boolean;
   }>;
 
   /** 科研经历 */
@@ -149,6 +153,10 @@ export type ResumeConfig = {
     participation_percent?: number;
     /** 完成度（百分比） */
     completion_percent?: number;
+    /** 显示参与度 */
+    participation_visible?: boolean;
+    /** 显示完成度 */
+    completion_visible?: boolean;
   }>;
   /** 个人技能 */
   skillList?: {
