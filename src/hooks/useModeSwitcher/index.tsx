@@ -7,7 +7,7 @@ import './index.less';
 
 export function getMode() {
   const query = getSearchObj();
-  return (query ? query.mode : 'read') as string;
+  return (query ? query.mode : 'edit') as string;
 }
 
 export const useModeSwitcher = ({

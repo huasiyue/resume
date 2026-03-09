@@ -175,7 +175,12 @@ export const saveToLocalStorage = _.throttle(
     // 同步写入到已授权的本地文件（半自动备份）
     // 不阻塞 UI，失败则忽略
     writeBackupFile(config).catch(() => {});
-    message.success(intl.formatMessage({ id: '已缓存在本地' }), 0.65);
+    message.open({
+      key: 'local-cache',
+      type: 'success',
+      content: intl.formatMessage({ id: '已缓存在本地' }),
+      duration: 0.65,
+    });
   },
   5000
 );

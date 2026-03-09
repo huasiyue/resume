@@ -21,6 +21,10 @@ import type { ResumeConfig, ThemeConfig } from './types';
 import './index.less';
 
 const codec = jsonUrl('lzma');
+const DEFAULT_THEME: ThemeConfig = {
+  color: '#2f5785',
+  tagColor: '#8bc34a',
+};
 
 export const Page: React.FC = () => {
   const lang = getLanguage();
@@ -33,10 +37,8 @@ export const Page: React.FC = () => {
   const query = getSearchObj();
   const [config, setConfig] = useState<ResumeConfig>();
   const [loading, updateLoading] = useState<boolean>(true);
-  const [theme, setTheme] = useState<ThemeConfig>({
-    color: '#2f5785',
-    tagColor: '#8bc34a',
-  });
+  const [theme, setTheme] = useState<ThemeConfig>(DEFAULT_THEME);
+  const initialThemeRef = useRef<ThemeConfig>(DEFAULT_THEME);
 
   // 备份文件相关状态
   const [backupFileHandle, setBackupFileHandle] = useState<any>(null);
@@ -52,7 +54,7 @@ export const Page: React.FC = () => {
     const searchObj = qs.parse(currentSearch);
     if (!searchObj.template) {
       const search = qs.stringify({
-        template: config?.template || 'template2',
+        template: config?.template || 'template1',
         ...qs.parse(currentSearch),
       });
       window.location.href = `${pathname}?${search}${hash}`;
@@ -192,23 +194,31 @@ export const Page: React.FC = () => {
   useEffect(() => {
     const targetNode = document.querySelector('.resume-content');
     if (!targetNode) return;
+    let frame = 0;
 
-    const observer = new MutationObserver(() => {
-      setBox(targetNode.getBoundingClientRect());
-    });
-    observer.observe(targetNode, {
-      childList: true,
-      subtree: true,
-      attributes: true,
-    });
+    const updateBox = () => {
+      if (frame) cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        setBox(targetNode.getBoundingClientRect());
+      });
+    };
 
-    const interval = setInterval(() => {
-      setBox(targetNode.getBoundingClientRect());
-    }, 1000);
+    updateBox();
+
+    let resizeObserver: ResizeObserver | undefined;
+    if ('ResizeObserver' in window) {
+      resizeObserver = new ResizeObserver(updateBox);
+      resizeObserver.observe(targetNode);
+    }
+
+    window.addEventListener('resize', updateBox);
+    window.addEventListener('scroll', updateBox, true);
 
     return () => {
-      observer.disconnect();
-      clearInterval(interval);
+      if (resizeObserver) resizeObserver.disconnect();
+      window.removeEventListener('resize', updateBox);
+      window.removeEventListener('scroll', updateBox, true);
+      if (frame) cancelAnimationFrame(frame);
     };
   }, []);
 
@@ -262,8 +272,26 @@ export const Page: React.FC = () => {
       const url = new URL(window.location.href);
       url.searchParams.set('data', data);
 
-      console.log('sharing url', url.toString());
       copyToClipboard(url.toString());
+      message.success(intl.formatMessage({ id: '已复制分享链接' }));
+    });
+  };
+
+  const resetConfig = () => {
+    if (!originalConfig.current) return;
+    Modal.confirm({
+      title: intl.formatMessage({ id: '确认恢复到初始配置？' }),
+      okText: intl.formatMessage({ id: '确定' }),
+      onOk: () => {
+        const base = originalConfig.current as ResumeConfig;
+        changeConfig(
+          _.omit(customAssign({}, base, _.get(base, ['locales', lang])), [
+            'locales',
+          ])
+        );
+        setTheme(initialThemeRef.current);
+        message.success(intl.formatMessage({ id: '已恢复到初始配置' }));
+      },
     });
   };
 
@@ -347,7 +375,7 @@ export const Page: React.FC = () => {
             <Resume
               value={config}
               theme={theme}
-              template={query.template || 'template2'}
+              template={query.template || 'template1'}
             />
           )}
           {mode === 'edit' && (
@@ -360,7 +388,7 @@ export const Page: React.FC = () => {
                     theme={theme}
                     onThemeChange={onThemeChange}
                     // @ts-ignore
-                    template={query.template || 'template2'}
+                    template={query.template || 'template1'}
                     onTemplateChange={updateTemplate}
                   />
                   <Button
@@ -386,6 +414,18 @@ export const Page: React.FC = () => {
                     }}
                   >
                     <FormattedMessage id="保存简历" />
+                  </Button>
+                  <Button
+                    onClick={handleSharing}
+                    style={{
+                      backgroundColor: '#36cfc9',
+                      borderColor: '#36cfc9',
+                      color: 'white',
+                      fontSize: '13px',
+                      padding: '4px 12px'
+                    }}
+                  >
+                    <FormattedMessage id="分享链接" />
                   </Button>
                   <Upload
                     accept=".json"
@@ -416,6 +456,18 @@ export const Page: React.FC = () => {
                     }}
                   >
                     加载备份文件
+                  </Button>
+                  <Button
+                    onClick={resetConfig}
+                    style={{
+                      backgroundColor: '#595959',
+                      borderColor: '#595959',
+                      color: 'white',
+                      fontSize: '13px',
+                      padding: '4px 12px'
+                    }}
+                  >
+                    <FormattedMessage id="恢复初始配置" />
                   </Button>
                   <Button
                     type="primary"
