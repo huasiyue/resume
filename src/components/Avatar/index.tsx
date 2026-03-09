@@ -9,7 +9,7 @@ export const Avatar = ({
                          size = 'default',
                        }) => {
   // 使用base64编码的默认头像以确保打印时可见
-  const defaultAvatarSrc = '/kjh.png'; // 放在public目录下
+  const defaultAvatarSrc = '/default.png'; // 放在public目录下
 
   // 图片加载失败处理，必须返回boolean值
   const onError = () => {

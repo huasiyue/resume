@@ -263,7 +263,7 @@ export const Page: React.FC = () => {
   };
 
   const exportConfig = () => {
-    exportDataToLocal(getConfigJson(), `${user}'s resume info`);
+    exportDataToLocal(getConfigJson(), 'resume-backup.json');
   };
 
   const handleSharing = () => {
@@ -342,7 +342,7 @@ export const Page: React.FC = () => {
     try {
       // @ts-ignore
       const handle = await window.showSaveFilePicker({
-        suggestedName: `${user || 'resume'}-backup.json`,
+        suggestedName: 'resume-backup.json',
         types: [
           {
             description: 'JSON',

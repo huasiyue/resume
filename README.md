@@ -1,5 +1,7 @@
 # Resume Generator
 
+本项目基于 https://github.com/visiky/resume 二次开发，遵循 MIT 协议。
+
 一个基于 React + Ant Design 的简历生成器，用于在浏览器中编辑简历内容、选择模板与主题，并输出适合 A4 打印的简历页面。
 
 ## 目的

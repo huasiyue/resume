@@ -22,10 +22,12 @@ node_modules
 
 # gatsby files
 .cache/
-public
 
 # package lock file
 package-lock.json
 
 # temp
 **temp**
+kjh-backup.json
+visiky-backup.json
+resume-backup.json
