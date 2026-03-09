@@ -28,6 +28,8 @@
 npm install
 ```
 
+- 注意事项：如果报错 cache 可在项目根目录执行： mkdir -p .cache ，再运行 npm run start
+
 ## 本地启动
 
 ```bash
