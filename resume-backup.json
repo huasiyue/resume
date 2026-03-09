@@ -1,0 +1,120 @@
+{
+  "titleNameMap": {
+    "educationList": "教育背景",
+    "workExpList": "工作经历",
+    "projectList": "项目经历",
+    "skillList": "个人技能",
+    "awardList": "更多信息",
+    "workList": "个人作品",
+    "aboutme": "自我介绍",
+    "researchList": "科研经历",
+    "honorList": "荣誉奖项",
+    "competitionAwardList": "竞赛奖项",
+    "studentWorkList": "学生工作"
+  },
+  "avatar": {
+    "hidden": false,
+    "shape": "circle"
+  },
+  "profile": {
+    "name": "张三",
+    "email": "zhangsan@example.com",
+    "mobile": "18800000000",
+    "github": "https://github.com/zhangsan",
+    "zhihu": "",
+    "workExpYear": "2年",
+    "workPlace": "北京",
+    "positionTitle": "前端工程师",
+    "birth_date": "2000.01",
+    "political_status": ""
+  },
+  "educationList": {
+    "education_desc": "北京某大学 · 计算机科学与技术 · 2018.09-2022.06",
+    "education_desc_isHtml": false
+  },
+  "awardList": {
+    "award_desc": ""
+  },
+  "workExpList": [
+    {
+      "work_time": "2022.07 - 至今",
+      "company_name": "某科技公司",
+      "department_name": "研发部",
+      "work_desc": "负责前端页面与组件建设",
+      "work_desc_isHtml": false,
+      "dataIndex": 0
+    }
+  ],
+  "skillList": {
+    "skill_desc": "React、TypeScript、Ant Design、Node.js",
+    "skill_desc_isHtml": false
+  },
+  "projectList": [
+    {
+      "project_name": "在线简历生成器",
+      "project_role": "前端开发",
+      "project_time": "2023.01 - 2023.06",
+      "project_desc": "支持模板与主题切换",
+      "project_content": "实现编辑器、预览与导出流程",
+      "project_tech_stack": "React, Ant Design",
+      "project_tech_stack_isHtml": false,
+      "project_achievement": "提升交付效率",
+      "project_achievement_isHtml": false,
+      "participation_percent": 80,
+      "completion_percent": 100,
+      "dataIndex": 0
+    }
+  ],
+  "workList": [],
+  "aboutme": {
+    "aboutme_desc": "热爱前端工程化与用户体验。",
+    "aboutme_isHtml": false
+  },
+  "moduleHiddenMap": {
+    "avatar": false,
+    "profile": false,
+    "aboutme": false,
+    "educationList": false,
+    "awardList": true,
+    "workList": false,
+    "skillList": false,
+    "workExpList": false,
+    "projectList": false,
+    "researchList": true,
+    "honorList": true,
+    "studentWorkList": true,
+    "competitionAwardList": true
+  },
+  "moduleOrderBasic": [
+    "awardList",
+    "educationList",
+    "aboutme",
+    "skillList",
+    "researchList",
+    "projectList",
+    "workExpList",
+    "workList",
+    "studentWorkList"
+  ],
+  "moduleOrderMain": [
+    "honorList",
+    "competitionAwardList"
+  ],
+  "researchList": [],
+  "honorList": {
+    "honor_desc": "",
+    "honor_desc_isHtml": false
+  },
+  "studentWorkList": {
+    "student_work_desc": "",
+    "student_work_desc_isHtml": false
+  },
+  "competitionAwardList": {
+    "competition_award_desc": "",
+    "competition_award_desc_isHtml": false
+  },
+  "theme": {
+    "color": "#2f5785",
+    "tagColor": "#8bc34a"
+  }
+}
