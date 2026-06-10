@@ -39,6 +39,8 @@ export type ResumeConfig = {
 
   /** 标题名称映射 */
   titleNameMap?: {
+    /** 默认: 个人信息 */
+    profile?: string;
     /** 默认: 教育背景 */
     educationList?: string;
     /** 默认: 工作经历 */
@@ -73,6 +75,10 @@ export type ResumeConfig = {
   moduleOrderMain?: string[];  // 右列（main-info）：workExpList, projectList
 
   /** 教育背景：单文本 */
+  templateOptions?: {
+    watermarkVisible?: boolean;
+  };
+
   educationList?: {
     /** 单文本描述 */
     education_desc?: string;

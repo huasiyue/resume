@@ -7,12 +7,12 @@ import './index.less';
 
 export function getMode() {
   const query = getSearchObj();
-  return (query ? query.mode : 'edit') as string;
+  return ((query && query.mode) || 'edit') as string;
 }
 
 export const useModeSwitcher = ({
-                                  className,
-                                }: {
+  className,
+}: {
   className?: string;
 }): [JSX.Element, string, (v) => void] => {
   const mode = getMode();

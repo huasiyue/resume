@@ -1,0 +1,350 @@
+@font-face {
+  font-family: 'NbuNotoSerifSC';
+  src: url('/nbu-template/fonts/NotoSerifSC.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'NbuNotoSerifSC';
+  src: url('/nbu-template/fonts/NotoSerifSC-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.nbu-resume {
+  position: relative;
+  width: 794px;
+  min-height: 1123px;
+  margin-bottom: 60px;
+  overflow: hidden;
+  background: #fff;
+  color: #191514;
+  font-family: 'NbuNotoSerifSC', 'Songti SC', 'SimSun', serif;
+  font-size: 14px;
+  line-height: 1.48;
+  box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.15);
+
+  @media (max-width: 794px) {
+    width: 100%;
+  }
+}
+
+.nbu-header,
+.nbu-footer {
+  position: relative;
+  height: 56px;
+  overflow: hidden;
+  background: #96272c;
+}
+
+.nbu-header-pattern,
+.nbu-footer-pattern {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nbu-header-logo {
+  position: absolute;
+  left: 30px;
+  top: 50%;
+  width: auto;
+  max-width: 230px;
+  height: 42px;
+  transform: translateY(-50%);
+  object-fit: contain;
+}
+
+.nbu-school {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  max-width: 390px;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.nbu-main {
+  position: relative;
+  z-index: 1;
+  padding: 30px 44px 84px;
+}
+
+.nbu-watermark {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  width: 540px;
+  max-width: 76%;
+  transform: translate(-50%, -50%);
+  opacity: 0.045;
+  pointer-events: none;
+}
+
+.nbu-footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 44px;
+}
+
+.nbu-contact {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 0 30px;
+  color: #fff;
+  font-size: 12px;
+  white-space: nowrap;
+
+  span {
+    display: inline-flex;
+    min-width: 0;
+    max-width: 32%;
+    align-items: center;
+    gap: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.nbu-profile {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 148px;
+  gap: 20px;
+  align-items: start;
+}
+
+.nbu-profile-content {
+  min-width: 0;
+}
+
+.nbu-profile-section {
+  margin-top: 0;
+}
+
+.nbu-profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 28px;
+  row-gap: 9px;
+}
+
+.nbu-profile-field {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 8px;
+  min-width: 0;
+
+  b {
+    white-space: nowrap;
+  }
+
+  span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+}
+
+.nbu-photo {
+  display: flex;
+  width: 148px;
+  height: 166px;
+  margin-top: 42px;
+  align-items: center;
+  justify-content: center;
+  border: 4px double #6d6d6d;
+  background: rgba(255, 255, 255, 0.82);
+  color: #51636b;
+  font-size: 82px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.nbu-section {
+  margin-top: 19px;
+}
+
+.nbu-section-title {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #dfcf72;
+  color: #111;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.nbu-section-icon {
+  display: inline-flex;
+  width: 28px;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.nbu-section-body {
+  padding-top: 8px;
+}
+
+.nbu-plain-block {
+  white-space: pre-wrap;
+}
+
+.nbu-item {
+  break-inside: avoid;
+
+  & + .nbu-item {
+    margin-top: 11px;
+  }
+}
+
+.nbu-item-heading {
+  display: flex;
+  gap: 20px;
+  align-items: baseline;
+  justify-content: space-between;
+  color: #15110f;
+  font-size: 15px;
+
+  b {
+    min-width: 0;
+    font-size: 16px;
+    overflow-wrap: anywhere;
+  }
+
+  > span {
+    flex: 0 0 auto;
+    max-width: 230px;
+    text-align: right;
+  }
+}
+
+.nbu-item-subtitle {
+  margin-top: 1px;
+  font-weight: 700;
+}
+
+.nbu-resume p {
+  margin: 3px 0 0;
+}
+
+.nbu-resume ul {
+  margin: 3px 0 0;
+  padding-left: 1.15em;
+}
+
+.nbu-resume li {
+  margin: 1px 0;
+}
+
+.nbu-rich-text {
+  margin-top: 3px;
+
+  p,
+  ul,
+  ol {
+    margin-top: 3px;
+    margin-bottom: 0;
+  }
+}
+
+.nbu-two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+
+  .nbu-section {
+    min-width: 0;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  .nbu-resume {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0;
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .nbu-header-logo {
+    left: 18px;
+    max-width: 168px;
+    height: 36px;
+  }
+
+  .nbu-school {
+    right: 18px;
+    max-width: 230px;
+    font-size: 12px;
+  }
+
+  .nbu-main {
+    padding: 24px 20px 78px;
+  }
+
+  .nbu-profile {
+    grid-template-columns: 1fr;
+  }
+
+  .nbu-photo {
+    grid-row: 1;
+    width: 126px;
+    height: 144px;
+    margin: 0 auto;
+  }
+
+  .nbu-profile-grid,
+  .nbu-two-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .nbu-section-title {
+    font-size: 21px;
+  }
+
+  .nbu-item-heading {
+    display: block;
+
+    > span {
+      display: block;
+      max-width: none;
+      text-align: left;
+    }
+  }
+
+  .nbu-contact {
+    gap: 12px;
+    justify-content: flex-start;
+    overflow: hidden;
+    font-size: 10px;
+  }
+}

@@ -163,6 +163,30 @@ export const CONTENT_OF_MODULE = ({ intl }) => {
       },
       {
         type: 'input',
+        attributeId: 'github',
+        displayName: intl.formatMessage({ id: 'Github' }),
+        cfg: { placeholder: 'https://github.com/yourname' },
+      },
+      {
+        type: 'input',
+        attributeId: 'positionTitle',
+        displayName: intl.formatMessage({ id: '职位' }),
+        cfg: { placeholder: '例如：前端工程师' },
+      },
+      {
+        type: 'input',
+        attributeId: 'workPlace',
+        displayName: intl.formatMessage({ id: '期望工作地' }),
+        cfg: { placeholder: '例如：浙江杭州' },
+      },
+      {
+        type: 'input',
+        attributeId: 'workExpYear',
+        displayName: intl.formatMessage({ id: '工作经验' }),
+        cfg: { placeholder: '例如：2年' },
+      },
+      {
+        type: 'input',
         attributeId: 'birth_date',
         displayName: intl.formatMessage({ id: '出生年月' }),
         cfg: { placeholder: '例如：2005.01' },

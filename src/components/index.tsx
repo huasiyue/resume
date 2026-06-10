@@ -44,23 +44,6 @@ export const Page: React.FC = () => {
   const [backupFileHandle, setBackupFileHandle] = useState<any>(null);
   const [isBackupEnabled, setIsBackupEnabled] = useState<boolean>(false);
 
-  useEffect(() => {
-    const {
-      pathname,
-      hash: currentHash,
-      search: currentSearch,
-    } = window.location;
-    const hash = currentHash === '#/' ? '' : currentHash;
-    const searchObj = qs.parse(currentSearch);
-    if (!searchObj.template) {
-      const search = qs.stringify({
-        template: config?.template || 'template1',
-        ...qs.parse(currentSearch),
-      });
-      window.location.href = `${pathname}?${search}${hash}`;
-    }
-  }, [config]);
-
   // 检查是否有备份文件绑定
   useEffect(() => {
     const hasBackup = localStorage.getItem('hasBackupFile') === 'true';

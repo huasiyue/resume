@@ -51,10 +51,10 @@
     "typescript": "^4.2.3"
   },
   "scripts": {
-    "start": "NODE_ENV=development XDG_CONFIG_HOME=/tmp/gatsby-config gatsby develop",
-    "build": "XDG_CONFIG_HOME=/tmp/gatsby-config gatsby build --prefix-paths",
-    "clean": "XDG_CONFIG_HOME=/tmp/gatsby-config gatsby clean",
-    "deploy": "XDG_CONFIG_HOME=/tmp/gatsby-config npm run clean && XDG_CONFIG_HOME=/tmp/gatsby-config gatsby build --prefix-paths && gh-pages -d public",
+    "start": "cross-env NODE_ENV=development XDG_CONFIG_HOME=.gatsby-config gatsby develop",
+    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider XDG_CONFIG_HOME=.gatsby-config gatsby build && node scripts/fix-static-paths.js",
+    "clean": "cross-env XDG_CONFIG_HOME=.gatsby-config gatsby clean",
+    "deploy": "npm run clean && npm run build && gh-pages -d public",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "lint-staged": "lint-staged",
     "i18n-pick": "node ./scripts/i18n-pick.js",

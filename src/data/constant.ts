@@ -2,6 +2,8 @@ import type { ResumeConfig } from '@/components/types';
 
 export function getDefaultTitleNameMap({ intl }): ResumeConfig['titleNameMap'] {
   return {
+    /** 默认: 个人信息 */
+    profile: intl.formatMessage({ id: '个人信息' }),
     /** 默认: 教育背景 */
     educationList: intl.formatMessage({ id: '教育背景' }),
     /** 默认: 工作经历 */

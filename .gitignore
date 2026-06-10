@@ -27,12 +27,14 @@ node_modules
 package-lock.json
 
 # temp
-**temp**
+temp/
+tmp/
+*.temp
+*.tmp
 resume-backup.json
 
 public/defalut.png
 
 public/static/defalut.png
-
 
 

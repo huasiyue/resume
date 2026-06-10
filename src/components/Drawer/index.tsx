@@ -344,6 +344,8 @@ export const Drawer: React.FC<Props> = props => {
 
   const nameMap = modules.reduce((acc, m) => ({ ...acc, [m.key]: m.name }), {});
   const combinedOrder = [...moduleOrderBasic, ...moduleOrderMain];
+  const watermarkVisible =
+    props.value?.templateOptions?.watermarkVisible !== false;
 
   const moduleContent = (
     <DndProvider backend={HTML5Backend}>
@@ -422,6 +424,26 @@ export const Drawer: React.FC<Props> = props => {
           </div>
         </Panel>
       </Collapse>
+
+      <div className="template-options">
+        <div className="template-option-item">
+          <span className="template-option-name">
+            {'\u80cc\u666f\u6c34\u5370'}
+          </span>
+          <Switch
+            size="small"
+            checked={watermarkVisible}
+            onChange={checked => {
+              props.onValueChange({
+                templateOptions: {
+                  ...(props.value?.templateOptions || {}),
+                  watermarkVisible: checked,
+                },
+              });
+            }}
+          />
+        </div>
+      </div>
 
       <div className="module-list">
         {modules.map((module, idx) => {

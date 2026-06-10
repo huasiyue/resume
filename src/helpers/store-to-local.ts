@@ -119,7 +119,8 @@ async function writeBackupFile(config: ResumeConfig): Promise<void> {
   }
 }
 
-export const LOCAL_KEY = user => `${user ?? ''}resume-config`;
+export const LOCAL_KEY = user =>
+  user ? `${user}resume-config` : 'resume-config-sdfmu-v1';
 
 export async function getConfig(
   lang: string,
@@ -150,13 +151,21 @@ export async function getConfig(
     }
   }
 
-  // 3) 最后从远程/模板读取
-  return fetchResume(lang, branch, user).catch(() => {
-    message.warn(intl.formatMessage({ id: '从模板中获取' }), 1);
-    return _.omit(
+  const templateConfig = () =>
+    _.omit(
       customAssign({}, RESUME_INFO, _.get(RESUME_INFO, ['locales', lang])),
       ['locales']
     );
+
+  // 3) 没有指定 GitHub 用户时，直接使用内置模板，避免静态部署首屏等待远程请求
+  if (!user) {
+    return templateConfig();
+  }
+
+  // 4) 最后从远程/模板读取
+  return fetchResume(lang, branch, user).catch(() => {
+    message.warn(intl.formatMessage({ id: '从模板中获取' }), 1);
+    return templateConfig();
   });
 }
 
