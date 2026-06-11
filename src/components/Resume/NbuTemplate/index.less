@@ -283,14 +283,61 @@
 @media print {
   @page {
     size: A4;
-    margin: 0;
+    margin: 0 0 20mm 0;
   }
 
   .nbu-resume {
     width: 210mm;
     min-height: 297mm;
     margin: 0;
+    overflow: visible;
     box-shadow: none;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .nbu-main {
+    padding-bottom: 18mm;
+  }
+
+  .nbu-header {
+    display: block !important;
+    background: #96272c !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .nbu-watermark {
+    position: fixed;
+    top: 52%;
+  }
+
+  .nbu-section {
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  .nbu-section-title {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .nbu-item,
+  .nbu-profile,
+  .nbu-profile-section,
+  .nbu-two-columns > .nbu-section {
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
+  .nbu-footer {
+    position: fixed;
+    bottom: 0;
+    height: 12mm;
+    display: block !important;
+    background: #96272c !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 }
 
