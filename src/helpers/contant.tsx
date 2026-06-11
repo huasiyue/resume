@@ -128,6 +128,19 @@ export const CONTENT_OF_MODULE = ({ intl }) => {
         },
       },
       {
+        type: 'image-upload',
+        attributeId: 'src',
+        displayName: intl.formatMessage({ id: '本地头像' }),
+        cfg: {
+          uploadText: intl.formatMessage({ id: '上传图片' }),
+          clearText: intl.formatMessage({ id: '清除头像' }),
+          unsupportedText: intl.formatMessage({ id: '当前浏览器不支持本地图片上传' }),
+          invalidTypeText: intl.formatMessage({ id: '请选择 JPG、PNG 或 WebP 图片' }),
+          tooLargeText: intl.formatMessage({ id: '图片不能超过 5MB' }),
+          readErrorText: intl.formatMessage({ id: '图片读取失败，请重新选择' }),
+        },
+      },
+      {
         type: 'select',
         attributeId: 'shape',
         displayName: intl.formatMessage({ id: '头像形状' }),
