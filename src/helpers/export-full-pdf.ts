@@ -4,6 +4,8 @@ type ExportFullPdfOptions = {
 };
 
 const PAGE_WIDTH_MM = 210;
+const MIN_EXPORT_SCALE = 3.5;
+const MAX_EXPORT_SCALE = 4;
 
 function waitForAnimationFrame() {
   return new Promise<void>(resolve => {
@@ -69,7 +71,10 @@ export async function exportFullResumePdf({
   await waitForImages(element);
   await waitForAnimationFrame();
 
-  const scale = Math.min(2, Math.max(1, window.devicePixelRatio || 1));
+  const scale = Math.min(
+    MAX_EXPORT_SCALE,
+    Math.max(MIN_EXPORT_SCALE, window.devicePixelRatio || 1)
+  );
   const canvas = await html2canvas(element, {
     backgroundColor: '#ffffff',
     useCORS: true,
