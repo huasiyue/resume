@@ -1,6 +1,7 @@
 import React, { useCallback, useState, useEffect, useRef } from 'react';
 import { Button, Affix, Upload, Spin, message, Modal } from 'antd';
 import type { RcFile } from 'antd/lib/upload';
+import { FilePdfOutlined } from '@ant-design/icons';
 import _ from 'lodash-es';
 import qs from 'query-string';
 import jsonUrl from 'json-url';
@@ -13,6 +14,7 @@ import { customAssign } from '@/helpers/customAssign';
 import { copyToClipboard } from '@/helpers/copy-to-board';
 import { getDevice } from '@/helpers/detect-device';
 import { exportDataToLocal } from '@/helpers/export-to-local';
+import { exportFullResumePdf } from '@/helpers/export-full-pdf';
 import { getConfig, saveToLocalStorage } from '@/helpers/store-to-local';
 import { Drawer } from './Drawer';
 import { Resume } from './Resume';
@@ -39,6 +41,7 @@ export const Page: React.FC = () => {
   const [loading, updateLoading] = useState<boolean>(true);
   const [theme, setTheme] = useState<ThemeConfig>(DEFAULT_THEME);
   const initialThemeRef = useRef<ThemeConfig>(DEFAULT_THEME);
+  const [exportingFullPdf, setExportingFullPdf] = useState(false);
 
   // 备份文件相关状态
   const [backupFileHandle, setBackupFileHandle] = useState<any>(null);
@@ -244,6 +247,29 @@ export const Page: React.FC = () => {
   const copyConfig = () => {
     copyToClipboard(getConfigJson());
   };
+
+  const exportFullPdf = useCallback(async () => {
+    const resumeElement = document.querySelector('.resume-content');
+
+    if (!(resumeElement instanceof HTMLElement)) {
+      message.error(intl.formatMessage({ id: '未找到可导出的简历内容' }));
+      return;
+    }
+
+    setExportingFullPdf(true);
+    try {
+      await exportFullResumePdf({
+        element: resumeElement,
+        fileName: 'resume-full.pdf',
+      });
+      message.success(intl.formatMessage({ id: '完整PDF导出完成' }));
+    } catch (error) {
+      console.error(error);
+      message.error(intl.formatMessage({ id: '完整PDF导出失败' }));
+    } finally {
+      setExportingFullPdf(false);
+    }
+  }, [intl]);
 
   const exportConfig = () => {
     exportDataToLocal(getConfigJson(), 'resume-backup.json');
@@ -463,6 +489,20 @@ export const Page: React.FC = () => {
                     }}
                   >
                     <FormattedMessage id="打印简历" />
+                  </Button>
+                  <Button
+                    icon={<FilePdfOutlined />}
+                    onClick={exportFullPdf}
+                    loading={exportingFullPdf}
+                    style={{
+                      backgroundColor: '#096dd9',
+                      borderColor: '#096dd9',
+                      color: 'white',
+                      fontSize: '12px',
+                      padding: '4px 8px'
+                    }}
+                  >
+                    <FormattedMessage id="导出完整PDF" />
                   </Button>
                   <Button
                     onClick={enableAutoBackup}

@@ -100,5 +100,9 @@
   "完成度": "Completion",
   "完成度（百分比）": "Completion (percentage)",
   "显示参与度": "Show participation",
-  "显示完成度": "Show completion"
+  "显示完成度": "Show completion",
+  "导出完整PDF": "Export full PDF",
+  "完整PDF导出完成": "Full PDF exported",
+  "完整PDF导出失败": "Full PDF export failed",
+  "未找到可导出的简历内容": "No resume content found"
 }
